@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://5gj4vhu7e00u"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_mnmlo"]
+[ext_resource type="Texture2D" uid="uid://da5odjfxwj0s2" path="res://assets/sprites/enemy.svg" id="2_8j4n8"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_oo8mp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wrow"]
+shader = ExtResource("2_oo8mp")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_size = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mn76i"]
+radius = 12.2661
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njfxq"]
+radius = 11.7045
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_mnmlo")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2wrow")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_8j4n8")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 3.00338)
+shape = SubResource("CircleShape2D_mn76i")
+metadata/_edit_lock_ = true
+
+[node name="Raycasts" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Left" type="RayCast2D" parent="Raycasts"]
+position = Vector2(-13.4502, 0)
+target_position = Vector2(0, 20)
+metadata/_edit_lock_ = true
+
+[node name="Right" type="RayCast2D" parent="Raycasts"]
+position = Vector2(13.45, 0)
+target_position = Vector2(0, 20)
+metadata/_edit_lock_ = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
+visible = false
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_njfxq")
+debug_color = Color(0.701961, 0.027451, 0, 0.419608)
+metadata/_edit_lock_ = true

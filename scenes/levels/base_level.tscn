@@ -1,0 +1,196 @@
+[gd_scene load_steps=9 format=3 uid="uid://d383w8w2oom0a"]
+
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1_v1el1"]
+[ext_resource type="TileSet" uid="uid://c2hrwukt7g7lv" path="res://assets/tilesets/base_tileset.tres" id="2_as5if"]
+[ext_resource type="PackedScene" uid="uid://c7ifo3nn7j0rh" path="res://scenes/player/player.tscn" id="3_l3lqv"]
+
+[sub_resource type="Animation" id="Animation_4dlp2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/ColorOverlay:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/PauseLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yyyl3"]
+resource_name = "pause"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/ColorOverlay:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/PauseLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5hqrv"]
+resource_name = "player_died"
+length = 1.3
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.65),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"respawn_player"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/ColorOverlay:color")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.59, 0.6, 0.8, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jm0uu"]
+resource_name = "resume"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/ColorOverlay:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.392157), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/PauseLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lkex1"]
+_data = {
+"RESET": SubResource("Animation_4dlp2"),
+"pause": SubResource("Animation_yyyl3"),
+"player_died": SubResource("Animation_5hqrv"),
+"resume": SubResource("Animation_jm0uu")
+}
+
+[node name="Level" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_v1el1")
+metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+
+[node name="ColorOverlay" type="ColorRect" parent="HUD"]
+offset_right = 640.0
+offset_bottom = 368.0
+color = Color(0, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="PauseLabel" type="Label" parent="HUD"]
+visible = false
+offset_right = 640.0
+offset_bottom = 360.0
+theme_override_font_sizes/font_size = 24
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="World" type="Node2D" parent="."]
+process_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="World"]
+
+[node name="CameraBounds" type="Polygon2D" parent="World"]
+color = Color(1, 1, 1, 0.117647)
+metadata/_edit_lock_ = true
+
+[node name="TileMap" type="TileMap" parent="World"]
+clip_children = 1
+texture_filter = 3
+scale = Vector2(0.25, 0.25)
+tile_set = ExtResource("2_as5if")
+format = 2
+metadata/_edit_lock_ = true
+
+[node name="Entities" type="Node2D" parent="World"]
+metadata/_edit_lock_ = true
+
+[node name="Objects" type="Node2D" parent="World"]
+metadata/_edit_lock_ = true
+
+[node name="player" parent="World" instance=ExtResource("3_l3lqv")]
+position = Vector2(91.4264, 281.22)
+
+[node name="DeathZone" type="Area2D" parent="World" groups=["death_zone"]]
+collision_layer = 4
+collision_mask = 4
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/DeathZone"]
+position = Vector2(1024, 729.75)
+debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_lkex1")
+}
+
+[connection signal="died" from="World/player" to="." method="_on_player_died"]
