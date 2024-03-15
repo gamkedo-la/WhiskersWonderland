@@ -1250,6 +1250,8 @@ floor_constant_speed = true
 floor_snap_length = 4.0
 platform_on_leave = 1
 platform_floor_layers = 4278190081
+platform_wall_layers = 1
+safe_margin = 0.1
 script = ExtResource("1_kdwnm")
 
 [node name="DebugLabel" type="Label" parent="."]
@@ -1478,45 +1480,6 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 metadata/_edit_lock_ = true
 
-[node name="Raycasts" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
-
-[node name="LeftWall" type="Node2D" parent="Raycasts"]
-metadata/_edit_lock_ = true
-
-[node name="1" type="RayCast2D" parent="Raycasts/LeftWall"]
-position = Vector2(0, -24)
-target_position = Vector2(-12, 0)
-metadata/_edit_lock_ = true
-
-[node name="2" type="RayCast2D" parent="Raycasts/LeftWall"]
-position = Vector2(0, -14)
-target_position = Vector2(-12, 0)
-metadata/_edit_lock_ = true
-
-[node name="3" type="RayCast2D" parent="Raycasts/LeftWall"]
-position = Vector2(0, -4)
-target_position = Vector2(-12, 0)
-metadata/_edit_lock_ = true
-
-[node name="RightWall" type="Node2D" parent="Raycasts"]
-metadata/_edit_lock_ = true
-
-[node name="1" type="RayCast2D" parent="Raycasts/RightWall"]
-position = Vector2(0, -24)
-target_position = Vector2(12, 0)
-metadata/_edit_lock_ = true
-
-[node name="2" type="RayCast2D" parent="Raycasts/RightWall"]
-position = Vector2(0, -14)
-target_position = Vector2(12, 0)
-metadata/_edit_lock_ = true
-
-[node name="3" type="RayCast2D" parent="Raycasts/RightWall"]
-position = Vector2(0, -4)
-target_position = Vector2(12, 0)
-metadata/_edit_lock_ = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14.5)
 shape = SubResource("CapsuleShape2D_yyidg")
@@ -1564,7 +1527,7 @@ script = ExtResource("12_e4xmf")
 
 [node name="ButtonRecorder" type="Node" parent="."]
 script = ExtResource("14_ukcfi")
-replay_file_path = "C:/Users/VitorDavi/AppData/Roaming/Godot/app_userdata/Whisker's Wonderland/replays/bug1.replay"
+replay_file_path = "C:/Users/VitorDavi/AppData/Roaming/Godot/app_userdata/Whisker's Wonderland/replays/moving_platforms_test (1089 143).replay"
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="area_entered" from="StompHitbox" to="." method="stomp"]

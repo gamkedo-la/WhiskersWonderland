@@ -17,8 +17,6 @@ const DEAD = 'dead'
 @onready var tail = $Visuals/scale/root/CanvasGroup/Body/Tail
 @onready var camera_target = $CameraTarget
 @onready var camera = $CameraTarget/Camera
-@onready var left_wall_raycasts = $Raycasts/LeftWall
-@onready var right_wall_raycasts = $Raycasts/RightWall
 @onready var animation_player = $Visuals/AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var button_recorder = $ButtonRecorder
@@ -34,7 +32,7 @@ const DEAD = 'dead'
 
 @export var JUMP_HEIGHT : float = 70.0
 @export var JUMP_TIME : float = 0.32
-@export var WALL_STICK_TIME : float = 0.15
+@export var WALL_STICK_TIME : float = 0.1
 
 @onready var JUMP_SPEED : float = -2*JUMP_HEIGHT/JUMP_TIME
 @onready var GRAVITY : float = 2*JUMP_HEIGHT/(JUMP_TIME*JUMP_TIME)
@@ -180,6 +178,7 @@ func moving_update(delta):
 		if velocity.y > 0:
 			if wall_direction != 0 and move_direction.x == wall_direction:
 				state_machine.change_state(SLIDING)
+				move_and_slide()
 				return
 	
 	# Horizontal movement
@@ -289,48 +288,18 @@ func sliding_update(delta):
 	move_and_slide()
 	
 	var collision = get_last_slide_collision()
-	if collision:
-		if collision.get_collider() is StaticBody2D:
-			var platform_velocity = collision.get_collider_velocity()
-			velocity.x = 0
-			velocity.y = platform_velocity.y
-		else:
-			velocity.x = 0
-			velocity.y = WALL_SLIDE_SPEED
+	if collision and collision.get_collider() is TileMap:
+		velocity.x = 0
+		velocity.y = WALL_SLIDE_SPEED
 	
 	animation_player.play("slide")
 
-func check_wall_raycasts(raycast_group):
-	# Find which ray is colliding
-	var raycast = Utils.get_colliding_ray(raycast_group)
-	if raycast == null:
-		return false
-	
-	# Validate collision based on collider type
-	var collider = raycast.get_collider()
-	if collider:
-		# Tilemap collision
-		if collider is TileMap:
-			var tile_pos = raycast.get_collision_point() - raycast.get_collision_normal()
-			if Utils.get_tile_custom_data(tilemap, tile_pos, "can_slide"):
-				return true
-		
-		# Moving platforms
-		elif collider is StaticBody2D:
-			if "is_solid" in collider.get_parent():
-				return collider.get_parent().is_solid
-			return true
-	return false
-
 func update_wall_direction():
-	var near_left_wall = check_wall_raycasts(left_wall_raycasts)
-	var near_right_wall = check_wall_raycasts(right_wall_raycasts)
-	
-	if near_left_wall and near_right_wall:
-		# If near two walls, choose based on input direction
-		wall_direction = move_direction.x
+	if is_on_wall():
+		var collision = get_last_slide_collision()
+		wall_direction = -collision.get_normal().x
 	else:
-		wall_direction = int(near_right_wall) - int(near_left_wall)
+		wall_direction = 0
 	
 	if wall_direction != 0:
 		jump_damped = false

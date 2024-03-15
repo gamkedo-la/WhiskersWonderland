@@ -33,7 +33,6 @@ position = Vector2(304, 96)
 curve = SubResource("Curve2D_x1u4v")
 paused = false
 time_in_seconds = 3.0
-is_solid = false
 
 [node name="MovingPlatform3" parent="World/Objects" index="2" instance=ExtResource("2_f7d57")]
 position = Vector2(640, 96)
@@ -41,7 +40,6 @@ curve = SubResource("Curve2D_2ts2g")
 paused = false
 loop = true
 time_in_seconds = 6.0
-is_solid = false
 
 [node name="MovingPlatform4" parent="World/Objects" index="3" instance=ExtResource("2_f7d57")]
 position = Vector2(892.068, 138.79)

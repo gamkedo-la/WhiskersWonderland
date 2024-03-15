@@ -44,13 +44,6 @@ func get_tile_custom_data(tilemap: TileMap, global_pos: Vector2, layer_name: Str
 		return tile_data.get_custom_data(layer_name)
 	return null
 
-# Raycasts
-func get_colliding_ray(raycast_group):
-	for raycast in raycast_group.get_children():
-		if raycast.is_colliding():
-			return raycast
-	return null
-
 # Random
 func rand_vec2() -> Vector2:
 	return Vector2(randf(), randf())
