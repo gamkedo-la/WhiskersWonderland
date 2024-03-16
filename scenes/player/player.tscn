@@ -1527,7 +1527,6 @@ script = ExtResource("12_e4xmf")
 
 [node name="ButtonRecorder" type="Node" parent="."]
 script = ExtResource("14_ukcfi")
-replay_file_path = "C:/Users/VitorDavi/AppData/Roaming/Godot/app_userdata/Whisker's Wonderland/replays/moving_platforms_test (1089 143).replay"
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="area_entered" from="StompHitbox" to="." method="stomp"]

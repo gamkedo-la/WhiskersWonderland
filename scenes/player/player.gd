@@ -288,8 +288,8 @@ func sliding_update(delta):
 	move_and_slide()
 	
 	var collision = get_last_slide_collision()
-	if collision and collision.get_collider() is TileMap:
-		velocity.x = 0
+	if collision:
+		velocity.x = 10 * wall_direction
 		velocity.y = WALL_SLIDE_SPEED
 	
 	animation_player.play("slide")
