@@ -194,3 +194,4 @@ libraries = {
 }
 
 [connection signal="died" from="World/player" to="." method="_on_player_died"]
+[connection signal="reached_checkpoint" from="World/player" to="." method="_on_player_reached_checkpoint"]

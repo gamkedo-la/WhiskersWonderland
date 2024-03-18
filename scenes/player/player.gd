@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal reached_checkpoint(checkpoint)
 signal died
 
 const INPUT_ACTIONS = ['jump']
@@ -83,6 +84,8 @@ func _ready():
 	visuals.set_outline_color(outline_color)
 	button_recorder.set_listener(encode_inputs)
 	button_recorder.init()
+	
+	Debug.kill_player.connect(die)
 
 func encode_inputs() -> PackedByteArray:
 	return PackedByteArray([
@@ -366,6 +369,8 @@ func respawn(at: Vector2):
 func _on_trigger_area_entered(area):
 	if area.is_in_group("damage_zone"):
 		die.call_deferred()
+	elif area.is_in_group("checkpoint"):
+		reached_checkpoint.emit(area)
 
 func _on_replay_started(data):
 	global_position = data.player_position

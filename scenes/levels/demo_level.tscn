@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d26jajadnh05l"]
+[gd_scene load_steps=13 format=3 uid="uid://d26jajadnh05l"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_mgdkq"]
 [ext_resource type="Texture2D" uid="uid://ceno8i0m5jun3" path="res://assets/backgrounds/bg4.png" id="2_rk6xg"]
@@ -7,6 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://8dlrjt0kr82v" path="res://assets/backgrounds/bg1.png" id="5_qe7s0"]
 [ext_resource type="PackedScene" uid="uid://5gj4vhu7e00u" path="res://scenes/enemies/enemy.tscn" id="6_vylj2"]
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="7_ifmo3"]
+[ext_resource type="PackedScene" uid="uid://blsxeqp4v2k1j" path="res://scenes/objects/checkpoint.tscn" id="8_o3eey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5abh6"]
+size = Vector2(64, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8yfc0"]
+size = Vector2(32, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_024wf"]
+size = Vector2(128, 160)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fi0ga"]
 size = Vector2(4703.67, 408.679)
@@ -75,6 +85,45 @@ position = Vector2(2835.42, 199.968)
 rotation = -3.14159
 paused = false
 time_in_seconds = 2.5
+
+[node name="Checkpoint1" parent="World/Objects" index="2" instance=ExtResource("8_o3eey")]
+position = Vector2(112, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/Checkpoint1" index="0"]
+position = Vector2(0, -80)
+shape = SubResource("RectangleShape2D_5abh6")
+debug_color = Color(0.627451, 0.34902, 1, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Checkpoint2" parent="World/Objects" index="3" instance=ExtResource("8_o3eey")]
+position = Vector2(1216, 160)
+number = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/Checkpoint2" index="0"]
+position = Vector2(0, -80)
+shape = SubResource("RectangleShape2D_8yfc0")
+debug_color = Color(0.627451, 0.34902, 1, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Checkpoint3" parent="World/Objects" index="4" instance=ExtResource("8_o3eey")]
+position = Vector2(2304, 176)
+number = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/Checkpoint3" index="0"]
+position = Vector2(0, -80)
+shape = SubResource("RectangleShape2D_8yfc0")
+debug_color = Color(0.627451, 0.34902, 1, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Checkpoint4" parent="World/Objects" index="5" instance=ExtResource("8_o3eey")]
+position = Vector2(3024, 176)
+number = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/Checkpoint4" index="0"]
+position = Vector2(48, -80)
+shape = SubResource("RectangleShape2D_024wf")
+debug_color = Color(0.627451, 0.34902, 1, 0.419608)
+metadata/_edit_lock_ = true
 
 [node name="player" parent="World" index="5"]
 position = Vector2(113.314, 278.975)

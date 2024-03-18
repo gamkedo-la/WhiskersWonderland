@@ -1,5 +1,6 @@
 extends Node
 
+signal kill_player
 signal reloaded_scene
 
 const BUILD_VERSION = "0.1.4"
@@ -32,6 +33,10 @@ func _process(_delta):
 		if Input.is_action_just_pressed("debug_fast"):
 			Engine.time_scale = clamp(Engine.time_scale + 0.25, 0.25, 4.0)
 			print('Speed up (%s)' % [Engine.time_scale])
+		
+		if Input.is_action_just_pressed("debug_die"):
+			print('Killed player')
+			kill_player.emit()
 
 func quit():
 	print('Quit')
