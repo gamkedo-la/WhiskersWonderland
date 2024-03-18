@@ -10,16 +10,22 @@ func _ready():
 	update_speed()
 	update_animation()
 	if not Engine.is_editor_hint():
-		self.paused = false
+		reparent_child_nodes()
 		recalculate_collision_shape()
 		if not is_solid:
 			$Body/CollisionPolygon.one_way_collision = true
+		self.paused = false
 
 func recalculate_collision_shape():
 	var collision_polygon = $Body/CollisionPolygon
 	var rotated = Utils.rotate_polygon(collision_polygon.polygon, -collision_polygon.global_rotation)
 	collision_polygon.polygon = rotated
 	collision_polygon.global_rotation = 0.0
+
+func reparent_child_nodes():
+	for child in get_children():
+		if child != $Body and child != $PathFollow2D and child != $AnimationPlayer:
+			child.reparent($Body)
 
 func _process(_delta):
 	queue_redraw()
@@ -49,8 +55,9 @@ func set_time_in_seconds(value: float):
 
 func set_paused(value: bool):
 	paused = value
-	if Engine.is_editor_hint():
-		update_animation()
+	if not Engine.is_editor_hint():
+		paused = false
+	update_animation()
 
 func set_loop(value: bool):
 	loop = value

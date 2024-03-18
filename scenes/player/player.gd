@@ -295,11 +295,19 @@ func sliding_update(delta):
 	animation_player.play("slide")
 
 func update_wall_direction():
+	wall_direction = 0
 	if is_on_wall():
 		var collision = get_last_slide_collision()
-		wall_direction = -collision.get_normal().x
-	else:
-		wall_direction = 0
+		var collider = collision.get_collider()
+		var normal = collision.get_normal()
+		
+		if collider is StaticBody2D:
+			wall_direction = -normal.x
+		
+		elif collider is TileMap:
+			var tile_pos = collision.get_position() - normal
+			if Utils.get_tile_custom_data(tilemap, tile_pos, "can_slide"):
+				wall_direction = -normal.x
 	
 	if wall_direction != 0:
 		jump_damped = false
@@ -356,7 +364,7 @@ func respawn(at: Vector2):
 
 ### Callback functions
 func _on_trigger_area_entered(area):
-	if area.is_in_group("death_zone"):
+	if area.is_in_group("damage_zone"):
 		die.call_deferred()
 
 func _on_replay_started(data):
