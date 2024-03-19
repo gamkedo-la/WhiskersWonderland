@@ -6,6 +6,7 @@ extends Node2D
 @onready var player = $World/player
 @onready var animation_player = $AnimationPlayer
 
+@onready var player_spawn_pos : Vector2 = player.global_position
 var current_checkpoint : Node2D
 var current_camera : Node2D
 
@@ -41,7 +42,8 @@ func _process(_delta):
 func respawn_player():
 	# This is called by "player_died" animation
 	Globals.resume()
-	player.respawn(current_checkpoint.global_position)
+	var respawn_pos = current_checkpoint.global_position if current_checkpoint else player_spawn_pos
+	player.respawn(respawn_pos)
 
 func _on_player_reached_checkpoint(checkpoint):
 	if (current_checkpoint == null) or (current_checkpoint.number < checkpoint.number):
