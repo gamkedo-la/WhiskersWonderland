@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://olgh2e41sixh"]
+
+[ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_m4w2p"]
+[ext_resource type="TileSet" uid="uid://bik5n3mn3bvfd" path="res://assets/tilesets/desert_tileset.tres" id="2_p0r6n"]
+
+[node name="Level" instance=ExtResource("1_m4w2p")]
+
+[node name="TileMap" parent="World" index="2"]
+tile_set = ExtResource("2_p0r6n")

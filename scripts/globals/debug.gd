@@ -3,7 +3,7 @@ extends Node
 signal kill_player
 signal reloaded_scene
 
-const BUILD_VERSION = "0.1.4"
+const BUILD_VERSION = "0.1.5"
 
 func _ready():
 	print("Build v%s" % [BUILD_VERSION])
