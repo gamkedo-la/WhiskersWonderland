@@ -1,5 +1,8 @@
 extends Node2D
 
+const JUMP_DUST_EFFECT = preload("res://scenes/effects/jump_dust.tscn")
+const LAND_DUST_EFFECT = preload("res://scenes/effects/land_dust.tscn")
+
 @onready var player = get_parent()
 @onready var root = $scale/root
 @onready var canvas_group = $scale/root/CanvasGroup
@@ -36,8 +39,6 @@ func slide():
 	earR_spring.velocity = 1.5 * wall_direction
 
 func jump():
-	$Particles/Jump.emitting = true
-	
 	# Bounce ears
 	earL_spring.position = -0.3
 	earR_spring.position = 0.3
@@ -50,6 +51,8 @@ func jump():
 	scale_tween.play()
 
 func land():
+	spawn_land_dust()
+	
 	# Bounce ears
 	earL_spring.position = 0.3
 	earR_spring.position = -0.3
@@ -60,6 +63,21 @@ func land():
 	scale_tween = get_tree().create_tween()
 	scale_tween.tween_property(root, "scale", Vector2.ONE, 0.1)
 	scale_tween.play()
+
+func spawn_jump_dust():
+	var effect = JUMP_DUST_EFFECT.instantiate()
+	player.last_collision.get_collider().add_child(effect)
+	effect.global_position = player.global_position - Vector2(0, 4)
+
+func spawn_wall_jump_dust():
+	var effect = JUMP_DUST_EFFECT.instantiate()
+	player.last_collision.get_collider().add_child(effect)
+	effect.global_position = player.last_collision.get_position() + Vector2(4 * player.wall_direction, 0)
+
+func spawn_land_dust():
+	var effect = LAND_DUST_EFFECT.instantiate()
+	player.last_collision.get_collider().add_child(effect)
+	effect.global_position = player.global_position
 
 func set_outline_color(color: Color):
 	canvas_group.get_material().set_shader_parameter("outline_color", color)

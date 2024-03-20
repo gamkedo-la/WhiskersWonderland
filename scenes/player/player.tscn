@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kdwnm"]
 [ext_resource type="Script" path="res://scenes/player/player_visuals.gd" id="2_d2q2l"]
 [ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="3_7o83m"]
+[ext_resource type="Texture2D" uid="uid://dpqbmsd1gyr8s" path="res://assets/sprites/dust.png" id="4_2xxth"]
 [ext_resource type="Shader" path="res://assets/shaders/player.gdshader" id="4_tl4wn"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="12_e4xmf"]
 [ext_resource type="Texture2D" uid="uid://bchtxrlu0xe7u" path="res://assets/sprites/fox/body.svg" id="12_vl8k8"]
 [ext_resource type="Texture2D" uid="uid://bin6ib7h1mnpc" path="res://assets/sprites/fox/eye.svg" id="13_5vacb"]
 [ext_resource type="Texture2D" uid="uid://con0jccvx3rvq" path="res://assets/sprites/fox/arm.svg" id="13_dh55j"]
 [ext_resource type="Texture2D" uid="uid://ci6ltbervn7xf" path="res://assets/sprites/fox/leg.svg" id="14_8jgml"]
-[ext_resource type="Texture2D" uid="uid://6jos4kfe6j74" path="res://assets/sprites/circle.png" id="14_jljhp"]
 [ext_resource type="Script" path="res://scripts/button_recorder.gd" id="14_ukcfi"]
 [ext_resource type="Texture2D" uid="uid://g1rdkt1mygd3" path="res://assets/sprites/fox/head.svg" id="16_imd78"]
 [ext_resource type="Texture2D" uid="uid://cdm858erymlae" path="res://assets/sprites/fox/ear.svg" id="16_muh7x"]
@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://vjib2srih6eq" path="res://assets/sprites/fox/tail3.svg" id="21_88jl7"]
 
 [sub_resource type="Curve" id="Curve_f15jo"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.955145, 0), -3.59175, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -0.154222, 0, 0, Vector2(1, 0.199898), -2.5061, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s2j7u"]
@@ -1312,10 +1312,12 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="Dust" type="CPUParticles2D" parent="Visuals/Particles"]
+visible = false
+position = Vector2(0, -2)
 emitting = false
 amount = 3
 lifetime = 0.5
-texture = ExtResource("14_jljhp")
+texture = ExtResource("4_2xxth")
 emission_shape = 3
 emission_rect_extents = Vector2(4, 1)
 direction = Vector2(0, -1)
@@ -1323,8 +1325,9 @@ spread = 10.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 7.0
 initial_velocity_max = 7.0
-scale_amount_min = 0.05
-scale_amount_max = 0.06
+angle_max = 15.0
+scale_amount_min = 0.06
+scale_amount_max = 0.08
 scale_amount_curve = SubResource("Curve_f15jo")
 color = Color(0.847059, 0.847059, 0.847059, 1)
 metadata/_edit_lock_ = true
@@ -1336,40 +1339,25 @@ one_shot = true
 [node name="Slide" type="CPUParticles2D" parent="Visuals/Particles"]
 position = Vector2(-11.5683, -16.3723)
 emitting = false
-amount = 4
+amount = 3
 lifetime = 0.6
-texture = ExtResource("14_jljhp")
+texture = ExtResource("4_2xxth")
 direction = Vector2(0, -1)
 spread = 2.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 10.0
 initial_velocity_max = 15.0
-scale_amount_min = 0.05
-scale_amount_max = 0.06
+angle_min = 15.0
+angle_max = 30.0
+scale_amount_min = 0.06
+scale_amount_max = 0.07
 scale_amount_curve = SubResource("Curve_f15jo")
-color = Color(0.847059, 0.847059, 0.847059, 1)
+color = Color(0.85098, 0.85098, 0.85098, 0.847059)
 metadata/_edit_lock_ = true
 
 [node name="DelayTimer" type="Timer" parent="Visuals/Particles/Slide"]
 wait_time = 0.1
 one_shot = true
-
-[node name="Jump" type="CPUParticles2D" parent="Visuals/Particles"]
-visible = false
-emitting = false
-lifetime = 0.6
-one_shot = true
-texture = ExtResource("14_jljhp")
-direction = Vector2(0, -1)
-spread = 2.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 10.0
-initial_velocity_max = 15.0
-scale_amount_min = 0.05
-scale_amount_max = 0.06
-scale_amount_curve = SubResource("Curve_f15jo")
-color = Color(0.847059, 0.847059, 0.847059, 1)
-metadata/_edit_lock_ = true
 
 [node name="scale" type="Node2D" parent="Visuals"]
 scale = Vector2(0.037, 0.037)
@@ -1517,6 +1505,7 @@ editor_draw_drag_margin = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -14.5)
 shape = SubResource("CapsuleShape2D_yyidg")
 metadata/_edit_lock_ = true

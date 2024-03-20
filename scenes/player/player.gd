@@ -54,6 +54,7 @@ var WALL_JUMP_SPEED : Vector2
 var recolor_outline_on_replay : bool = true
 
 var tilemap : TileMap
+var last_collision : KinematicCollision2D
 
 var hang_timer : float = 0.0
 var coyote_timer : float = 0.0
@@ -125,6 +126,9 @@ func _process(_delta):
 	$DebugLabel.text = state_machine.current_state
 
 func _physics_process(delta):
+	var collision = get_last_slide_collision()
+	last_collision = collision if collision else last_collision
+	
 	state_machine.update(delta)
 
 func moving_update(delta):
@@ -264,7 +268,9 @@ func sliding_update(delta):
 	
 	visuals.scale.x = -wall_direction
 	visuals.slide()
-	slide_particles.emitting = slide_particles_timer.is_stopped()
+	if slide_particles_timer.is_stopped() and not slide_particles.emitting:
+		slide_particles.restart()
+		slide_particles.emitting = true
 	
 	# Check for wall jump
 	if inputs.jump.press:
@@ -329,6 +335,7 @@ func jump(jump_factor := 1.0):
 	velocity.y = JUMP_SPEED * jump_factor
 	
 	animation_player.play("jump")
+	visuals.spawn_jump_dust()
 	visuals.jump()
 
 func wall_jump():
@@ -337,6 +344,7 @@ func wall_jump():
 	velocity.y = -WALL_JUMP_SPEED.y
 	
 	animation_player.play("jump")
+	visuals.spawn_wall_jump_dust()
 	visuals.jump()
 
 func land():

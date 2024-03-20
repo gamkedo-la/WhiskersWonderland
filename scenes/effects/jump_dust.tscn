@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgbamowrbf437"]
+
+[ext_resource type="Script" path="res://scenes/effects/effect.gd" id="1_nu6u2"]
+[ext_resource type="Texture2D" uid="uid://dpqbmsd1gyr8s" path="res://assets/sprites/dust.png" id="1_rw2fw"]
+
+[sub_resource type="Curve" id="Curve_f15jo"]
+_data = [Vector2(0, 1), 0.0, -0.192777, 0, 0, Vector2(1, 0.325534), -2.3271, 0.0, 0, 0]
+point_count = 2
+
+[node name="JumpDust" type="Node2D" node_paths=PackedStringArray("particles")]
+script = ExtResource("1_nu6u2")
+particles = NodePath("Particles")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.898039)
+position = Vector2(0, 4)
+emitting = false
+amount = 1
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+local_coords = true
+texture = ExtResource("1_rw2fw")
+emission_shape = 3
+emission_rect_extents = Vector2(2, 1)
+direction = Vector2(0, -1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+scale_amount_min = 0.12
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_f15jo")
+color = Color(0.913725, 0.913725, 0.913725, 0.913725)
+metadata/_edit_lock_ = true
