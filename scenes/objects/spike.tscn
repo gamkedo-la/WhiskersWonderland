@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cncj35b34m6jk" path="res://assets/tilesets/base_tileset.png" id="1_3rnw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ibw8"]
-size = Vector2(8, 6)
+size = Vector2(8, 8)
 
 [node name="Spike" type="Area2D" groups=["damage_zone"]]
 collision_layer = 4
@@ -19,8 +19,7 @@ frame = 7
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_3ibw8")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 metadata/_edit_lock_ = true
