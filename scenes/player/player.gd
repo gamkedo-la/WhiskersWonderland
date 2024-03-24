@@ -358,6 +358,10 @@ func stomp(area):
 			entity.stomp()
 			jump(1.2)
 			jump_damped = true
+	if area.is_in_group("platform"):
+		if abs(velocity.x) > 0:
+			var entity = area.get_parent()
+			entity.fall()
 
 func is_alive() -> bool:
 	return not state_machine.is_current(DEAD)

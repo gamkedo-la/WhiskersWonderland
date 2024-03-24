@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://x0jpiql4ck8j"]
+
+[ext_resource type="Script" path="res://scenes/objects/falling_platform.gd" id="1_rta8d"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qaeim"]
+bounce = 0.95
+
+[node name="FallingPlatform" type="RigidBody2D" groups=["platform"]]
+physics_material_override = SubResource("PhysicsMaterial_qaeim")
+gravity_scale = 0.0
+script = ExtResource("1_rta8d")
+
+[node name="placeholder" type="Polygon2D" parent="."]
+color = Color(0.427451, 0.360784, 0.0941176, 1)
+polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["platform"]]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
+metadata/_edit_lock_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
