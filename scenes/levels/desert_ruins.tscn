@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://olgh2e41sixh"]
+[gd_scene load_steps=7 format=3 uid="uid://olgh2e41sixh"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_m4w2p"]
 [ext_resource type="TileSet" uid="uid://bik5n3mn3bvfd" path="res://assets/tilesets/desert_tileset.tres" id="2_p0r6n"]
 [ext_resource type="Texture2D" uid="uid://m6xg386uen0q" path="res://assets/backgrounds/desert-bg1.png" id="2_xawx6"]
 [ext_resource type="Texture2D" uid="uid://bymyxcllu2bih" path="res://assets/backgrounds/desert-bg2.png" id="3_6uuit"]
+[ext_resource type="Texture2D" uid="uid://biwddihvc6yo5" path="res://assets/backgrounds/desert-bg3.png" id="4_6iwlf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mb2p"]
 size = Vector2(3934.07, 316.516)
@@ -33,6 +34,17 @@ metadata/_edit_lock_ = true
 [node name="sprite" type="Sprite2D" parent="World/ParallaxBackground/2" index="0"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_6uuit")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="3" type="ParallaxLayer" parent="World/ParallaxBackground" index="2"]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(640, 0)
+metadata/_edit_lock_ = true
+
+[node name="sprite" type="Sprite2D" parent="World/ParallaxBackground/3" index="0"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_6iwlf")
 centered = false
 metadata/_edit_lock_ = true
 
