@@ -5,7 +5,9 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qaeim"]
 bounce = 0.95
 
-[node name="FallingPlatform" type="RigidBody2D" groups=["platform"]]
+[node name="FallingPlatform" type="RigidBody2D" groups=["falling_platform"]]
+collision_layer = 2
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_qaeim")
 gravity_scale = 0.0
 script = ExtResource("1_rta8d")
@@ -20,12 +22,14 @@ visible = false
 polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
 metadata/_edit_lock_ = true
 
-[node name="Area2D" type="Area2D" parent="." groups=["platform"]]
+[node name="Area2D" type="Area2D" parent="." groups=["falling_platform"]]
+position = Vector2(0, -12)
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="Area2D"]
 visible = false
+position = Vector2(0, 12)
 polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
 metadata/_edit_lock_ = true
 

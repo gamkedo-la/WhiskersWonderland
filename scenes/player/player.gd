@@ -130,6 +130,8 @@ func _physics_process(delta):
 	last_collision = collision if collision else last_collision
 	
 	state_machine.update(delta)
+	
+	Globals.player_pos = global_position
 
 func moving_update(delta):
 	# Update timers
@@ -358,8 +360,9 @@ func stomp(area):
 			entity.stomp()
 			jump(1.2)
 			jump_damped = true
-	if area.is_in_group("platform"):
-		if abs(velocity.x) > 0:
+	if area.is_in_group("falling_platform"):
+		# Platform can only fall if player is above it
+		if global_position.y <= area.global_position.y:
 			var entity = area.get_parent()
 			entity.fall()
 

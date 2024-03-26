@@ -2,6 +2,7 @@ extends Node
 
 var camera : Node2D
 var current_level : int
+var player_pos : Vector2
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS # This script still executes during game pause
