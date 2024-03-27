@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxgr32ypkty8c"]
+[gd_scene load_steps=9 format=3 uid="uid://bxgr32ypkty8c"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_68e1g"]
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="2_f7d57"]
 [ext_resource type="PackedScene" uid="uid://b280ii26f55pm" path="res://scenes/objects/spike.tscn" id="3_qksng"]
 [ext_resource type="PackedScene" uid="uid://x0jpiql4ck8j" path="res://scenes/objects/falling_platform.tscn" id="4_qagil"]
+[ext_resource type="PackedScene" uid="uid://bsn8dlt5qpeye" path="res://scenes/objects/crumbling_block.tscn" id="5_pw86k"]
 
 [sub_resource type="Curve2D" id="Curve2D_x1u4v"]
 _data = {
@@ -77,8 +78,20 @@ rotation = -1.5708
 position = Vector2(1124, 280)
 rotation = -1.5708
 
+[node name="CrumblingBlock1" parent="World/Objects" index="11" instance=ExtResource("5_pw86k")]
+position = Vector2(-192, 216)
+
+[node name="CrumblingBlock3" parent="World/Objects" index="12" instance=ExtResource("5_pw86k")]
+position = Vector2(-144, 216)
+
+[node name="CrumblingBlock5" parent="World/Objects" index="13" instance=ExtResource("5_pw86k")]
+position = Vector2(-96, 216)
+
+[node name="CrumblingBlock7" parent="World/Objects" index="14" instance=ExtResource("5_pw86k")]
+position = Vector2(-32, 216)
+
 [node name="player" parent="World" index="5"]
-position = Vector2(772.392, 276.22)
+position = Vector2(25.9548, 273.975)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(912.139, 572.853)

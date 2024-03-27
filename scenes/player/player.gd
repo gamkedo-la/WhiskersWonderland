@@ -48,7 +48,7 @@ const DEAD = 'dead'
 @export var WALL_JUMP_DISTANCE := Vector2(25, 72)
 var WALL_JUMP_SPEED : Vector2
 
-@export var CORNER_CORRECTION : int = 8 # Up to 8 pixels
+@export var CORNER_CORRECTION : int = 12 # Up to 12 pixels
 
 @export var JUMP_DAMP_FACTOR : float = 0.1
 @export var JUMP_HANG_TIME : float = 0.033

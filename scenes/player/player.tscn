@@ -1274,7 +1274,7 @@ radius = 8.0
 height = 29.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2u8f"]
-size = Vector2(9.85169, 30.2735)
+size = Vector2(9.85169, 26.9513)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5sy2"]
 size = Vector2(19.4733, 7.06092)
@@ -1518,7 +1518,7 @@ collision_mask = 4
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
-position = Vector2(-0.0833864, -14.8806)
+position = Vector2(-0.0833864, -13.2195)
 shape = SubResource("RectangleShape2D_o2u8f")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 metadata/_edit_lock_ = true
