@@ -12,6 +12,6 @@ func fall():
 		$Timer.start()
 
 func _on_timer_timeout():
-	gravity_scale = 0.4
+	gravity_scale = 0.5
 	await get_tree().create_timer(0.5).timeout
 	set_process(true)

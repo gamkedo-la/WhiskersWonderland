@@ -360,11 +360,6 @@ func stomp(area):
 			entity.stomp()
 			jump(1.2)
 			jump_damped = true
-	if area.is_in_group("falling_platform"):
-		# Platform can only fall if player is above it
-		if global_position.y <= area.global_position.y:
-			var entity = area.get_parent()
-			entity.fall()
 
 func is_alive() -> bool:
 	return not state_machine.is_current(DEAD)
@@ -384,8 +379,15 @@ func respawn(at: Vector2):
 func _on_trigger_area_entered(area):
 	if area.is_in_group("damage_zone"):
 		die.call_deferred()
-	elif area.is_in_group("checkpoint"):
+	
+	if area.is_in_group("checkpoint"):
 		reached_checkpoint.emit(area)
+	
+	if area.is_in_group("falling_platform"):
+		# Platform can only fall if player is above it
+		if global_position.y <= area.global_position.y:
+			var entity = area.get_parent()
+			entity.fall()
 
 func _on_replay_started(data):
 	global_position = data.player_position
