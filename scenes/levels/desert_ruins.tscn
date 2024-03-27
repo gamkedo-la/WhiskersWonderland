@@ -75,7 +75,7 @@ layer_0/tile_data = PackedInt32Array(1441831, 65536, 1, 1376295, 65536, 1, 13107
 [node name="Quicksand1" parent="World/Objects" index="0" instance=ExtResource("7_qt3ru")]
 position = Vector2(648, 240)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/Quicksand1" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Objects/Quicksand1" index="0"]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_lbm34")
 
