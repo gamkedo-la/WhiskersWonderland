@@ -18,6 +18,7 @@ const DEAD = 'dead'
 @onready var tail = $Visuals/scale/root/CanvasGroup/Body/Tail
 @onready var camera_target = $CameraTarget
 @onready var camera = $CameraTarget/Camera
+@onready var trigger = $Trigger
 @onready var animation_player = $Visuals/AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var button_recorder = $ButtonRecorder
@@ -39,6 +40,10 @@ const DEAD = 'dead'
 @onready var GRAVITY : float = 2*JUMP_HEIGHT/(JUMP_TIME*JUMP_TIME)
 @onready var MAX_FALL_SPEED : float = abs(JUMP_SPEED)
 @export var WALL_SLIDE_SPEED : float = 80.0
+
+@export var QUICKSAND_MOVE_SPEED : float = 120.0
+@export var QUICKSAND_FALL_SPEED : float = 40.0
+@export var QUICKSAND_JUMP_FACTOR : float = 0.6
 
 @export var WALL_JUMP_DISTANCE := Vector2(25, 72)
 var WALL_JUMP_SPEED : Vector2
@@ -130,7 +135,6 @@ func _physics_process(delta):
 	last_collision = collision if collision else last_collision
 	
 	state_machine.update(delta)
-	
 	Globals.player_pos = global_position
 
 func moving_update(delta):
@@ -144,6 +148,7 @@ func moving_update(delta):
 	ears.scale.x = last_direction
 	tail.scale.x = last_direction
 	
+	var in_quicksand = is_in_quicksand()
 	var is_grounded = is_on_floor()
 	if is_grounded:
 		coyote_timer = JUMP_COYOTE_TIME
@@ -164,6 +169,11 @@ func moving_update(delta):
 		hang_timer = 0.0
 		jump_damped = true
 	
+	# Can always jump in quicksand
+	if in_quicksand:
+		if inputs.jump.press:
+			jump(QUICKSAND_JUMP_FACTOR)
+	
 	# Jump right after leaving a platform (coyote jump)
 	if can_jump():
 		if inputs.jump.press and coyote_timer > 0.0:
@@ -175,7 +185,7 @@ func moving_update(delta):
 			jump()
 	
 	# Wall sliding
-	if not is_grounded:
+	if not is_grounded and not in_quicksand:
 		update_wall_direction()
 		
 		# Check wall jump
@@ -193,16 +203,22 @@ func moving_update(delta):
 	# Horizontal movement
 	var acceleration = GROUND_ACCELERATION if is_grounded else AIR_ACCELERATION
 	var friction = GROUND_FRICTION if is_grounded else AIR_FRICTION
+	var run_speed = MAX_SPEED
+	var fall_speed = MAX_FALL_SPEED
+	
+	if in_quicksand:
+		run_speed = QUICKSAND_MOVE_SPEED
+		fall_speed = QUICKSAND_FALL_SPEED
 	
 	if move_direction.x != 0:
-		velocity.x = Utils.approach(velocity.x, MAX_SPEED * move_direction.x, acceleration * delta)
+		velocity.x = Utils.approach(velocity.x, run_speed * move_direction.x, acceleration * delta)
 	else:
 		velocity.x = Utils.approach(velocity.x, 0, friction * delta)
 	
 	# Vertical movement
 	velocity.y += GRAVITY * delta
-	if velocity.y > MAX_FALL_SPEED:
-		velocity.y = MAX_FALL_SPEED
+	if velocity.y > fall_speed:
+		velocity.y = fall_speed
 	
 	# Manage jump additional time on air (hang time)
 	if hang_timer > 0.0:
@@ -249,13 +265,19 @@ func moving_update(delta):
 	if stuck_inside_terrain():
 		die()
 
-func stuck_inside_terrain():
+func stuck_inside_terrain() -> bool:
 	var directions = [Vector2.UP, Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT]
 	for dir in directions:
 		var pos = global_transform.translated(dir)
 		if not test_move(pos, Vector2.ZERO):
 			return false
 	return true
+
+func is_in_quicksand() -> bool:
+	for area in trigger.get_overlapping_areas():
+		if area.is_in_group("quicksand"):
+			return true
+	return false
 
 func sliding_enter():
 	velocity.y = 0
