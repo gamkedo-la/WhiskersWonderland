@@ -36,12 +36,12 @@ func get_bounding_box(polygon: PackedVector2Array) -> Rect2:
 	return Rect2(top_left, bottom_right - top_left)
 
 # Tilemap
-func get_tile_custom_data(tilemap: TileMap, global_pos: Vector2, layer_name: String, layer: int = 0):
+func get_tile_custom_data(tilemap: TileMap, global_pos: Vector2, property_name: String, layer: int = 0):
 	var local_pos = tilemap.to_local(global_pos)
 	var cell_pos = Vector2i(tilemap.local_to_map(local_pos))
 	var tile_data = tilemap.get_cell_tile_data(layer, cell_pos)
 	if tile_data:
-		return tile_data.get_custom_data(layer_name)
+		return tile_data.get_custom_data(property_name)
 	return null
 
 # Random

@@ -149,6 +149,8 @@ func moving_update(delta):
 	tail.scale.x = last_direction
 	
 	var in_quicksand = is_in_quicksand()
+	z_index = -2 if in_quicksand else 0
+	
 	var is_grounded = is_on_floor()
 	if is_grounded:
 		coyote_timer = JUMP_COYOTE_TIME

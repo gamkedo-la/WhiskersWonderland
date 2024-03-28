@@ -79,19 +79,19 @@ position = Vector2(1124, 280)
 rotation = -1.5708
 
 [node name="CrumblingBlock1" parent="World/Objects" index="11" instance=ExtResource("5_pw86k")]
-position = Vector2(-192, 216)
+position = Vector2(-252.65, 92.3225)
 
 [node name="CrumblingBlock3" parent="World/Objects" index="12" instance=ExtResource("5_pw86k")]
-position = Vector2(-144, 216)
+position = Vector2(-176.109, 129.188)
 
 [node name="CrumblingBlock5" parent="World/Objects" index="13" instance=ExtResource("5_pw86k")]
-position = Vector2(-96, 216)
+position = Vector2(-101.946, 178.54)
 
 [node name="CrumblingBlock7" parent="World/Objects" index="14" instance=ExtResource("5_pw86k")]
 position = Vector2(-32, 216)
 
 [node name="player" parent="World" index="5"]
-position = Vector2(25.9548, 273.975)
+position = Vector2(879.026, 273.975)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(912.139, 572.853)

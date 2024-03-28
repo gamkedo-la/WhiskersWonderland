@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d383w8w2oom0a"]
+[gd_scene load_steps=10 format=3 uid="uid://d383w8w2oom0a"]
 
 [ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1_v1el1"]
 [ext_resource type="TileSet" uid="uid://c2hrwukt7g7lv" path="res://assets/tilesets/base_tileset.tres" id="2_as5if"]
+[ext_resource type="Script" path="res://scenes/levels/tilemap.gd" id="3_8sttt"]
 [ext_resource type="PackedScene" uid="uid://c7ifo3nn7j0rh" path="res://scenes/player/player.tscn" id="3_l3lqv"]
 
 [sub_resource type="Animation" id="Animation_4dlp2"]
@@ -166,6 +167,7 @@ texture_filter = 3
 scale = Vector2(0.25, 0.25)
 tile_set = ExtResource("2_as5if")
 format = 2
+script = ExtResource("3_8sttt")
 metadata/_edit_lock_ = true
 
 [node name="Entities" type="Node2D" parent="World"]

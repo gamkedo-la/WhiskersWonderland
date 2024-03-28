@@ -1,21 +1,21 @@
+@tool
 extends Area2D
 
-@export var color := Color("995f32be")
-
-var collision_shape
+@export var size := Vector2i(1, 1) : set = set_size
 
 func _ready():
-	for child in get_children():
-		if child is CollisionShape2D:
-			if child.shape is RectangleShape2D:
-				collision_shape = child
-			else:
-				printerr("Quicksand object should use a RectangleShape2D as a trigger")
+	# Scrolling animation
+	if not Engine.is_editor_hint():
+		var pos = $Sprite.global_position.x
+		var tween = get_tree().create_tween().set_loops()
+		tween.tween_property($Sprite, "global_position:x", pos - 16, 2.0).from(pos)
+		tween.play()
 
-func _process(_delta):
-	queue_redraw()
-
-func _draw():
-	var rect = collision_shape.shape.get_rect()
-	rect.position += collision_shape.global_position - global_position
-	draw_rect(rect, color)
+func set_size(value):
+	# Update collider and sprite sizes
+	size = value
+	$CollisionShape.position = size * 8
+	$CollisionShape.shape.size = size * 16
+	
+	$Sprite.position = -Vector2.ONE
+	$Sprite.size = ($CollisionShape.shape.size + Vector2(18, 2)) * 4
