@@ -298,6 +298,11 @@ func sliding_update(delta):
 		slide_particles.restart()
 		slide_particles.emitting = true
 	
+	if is_in_quicksand():
+		state_machine.change_state(MOVING)
+		move_and_slide()
+		return
+	
 	# Check for wall jump
 	if inputs.jump.press:
 		wall_jump()

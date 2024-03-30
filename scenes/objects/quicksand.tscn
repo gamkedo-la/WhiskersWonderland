@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://buajmv5ybelpt" path="res://assets/tilesets/desert_tileset.png" id="2_uxr8r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l15m"]
-size = Vector2(144, 64)
+size = Vector2(144, 56)
 
 [node name="Quicksand" type="Area2D" groups=["quicksand"]]
 z_index = -1
