@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqv63xk0jh7jo"]
+
+[ext_resource type="Script" path="res://scenes/objects/slime.gd" id="1_xgkn2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e40gv"]
+size = Vector2(16, 40)
+
+[node name="Slime" type="Area2D" groups=["slime"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_xgkn2")
+size = Vector2(50, 32)
+
+[node name="Sprite" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.623529, 0.360784, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e40gv")

@@ -18,6 +18,6 @@ func set_size(value):
 	size.y = clampi(size.y, 2, 24)
 	$CollisionShape.position = size * 8 + Vector2i(0, 4)
 	$CollisionShape.shape.size = size * 16 - Vector2i(0, 8)
-	
+
 	$Sprite.position = -Vector2.ONE
 	$Sprite.size = (size * 16 + Vector2i(18, 2)) * 4

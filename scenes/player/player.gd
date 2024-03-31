@@ -7,6 +7,7 @@ const INPUT_ACTIONS = ['jump']
 
 const MOVING = 'moving'
 const SLIDING = 'sliding'
+const IN_SLIME = 'in_slime'
 const DEAD = 'dead'
 
 @onready var visuals = $Visuals
@@ -68,6 +69,8 @@ var slide_timer : float = 0.0
 var is_jumping : bool = false
 var jump_damped : bool = false
 var jumps_available : int = 1
+var tracking_slime: Area2D
+var previous_slime_position : Vector2
 
 var was_grounded : bool
 var move_direction : Vector2
@@ -78,19 +81,20 @@ var inputs := {}
 func _ready():
 	WALL_JUMP_SPEED.x = sqrt(2 * WALL_JUMP_DISTANCE.x * AIR_ACCELERATION)
 	WALL_JUMP_SPEED.y = (GRAVITY * WALL_JUMP_SPEED.x / AIR_ACCELERATION) + (AIR_ACCELERATION * WALL_JUMP_DISTANCE.y * 0.5 / WALL_JUMP_SPEED.x)
-	
+
 	state_machine.add_state(MOVING, moving_update)
 	state_machine.add_state(SLIDING, sliding_update, sliding_enter, sliding_exit)
+	state_machine.add_state(IN_SLIME, in_slime_update)
 	state_machine.add_state(DEAD)
 	state_machine.initialize(MOVING)
-	
+
 	for action in INPUT_ACTIONS:
 		inputs[action] = { "press": null, "hold": null, "released": null }
-	
+
 	visuals.set_outline_color(outline_color)
 	button_recorder.set_listener(encode_inputs)
 	button_recorder.init()
-	
+
 	Debug.kill_player.connect(die)
 
 func encode_inputs() -> PackedByteArray:
@@ -110,7 +114,7 @@ func replay_input(data: PackedByteArray):
 func poll_input():
 	move_direction.x = sign(Input.get_axis("left", "right"))
 	move_direction.y = sign(Input.get_axis("up", "down"))
-	
+
 	for action in INPUT_ACTIONS:
 		inputs[action].press = Input.is_action_just_pressed(action)
 		inputs[action].hold = Input.is_action_pressed(action)
@@ -121,19 +125,19 @@ func _process(_delta):
 		replay_input(button_recorder.get_current_frame())
 	else:
 		poll_input()
-	
+
 	if move_direction.x != 0:
 		last_direction = move_direction.x
-	
+
 	if inputs.jump.press:
 		jump_buffer = JUMP_BUFFER_TIME
-	
+
 	$DebugLabel.text = state_machine.current_state
 
 func _physics_process(delta):
 	var collision = get_last_slide_collision()
 	last_collision = collision if collision else last_collision
-	
+
 	state_machine.update(delta)
 	Globals.player_pos = global_position
 
@@ -142,97 +146,97 @@ func moving_update(delta):
 	hang_timer -= delta
 	coyote_timer -= delta
 	jump_buffer -= delta
-	
+
 	# Update visuals
 	visuals.scale.x = last_direction
 	ears.scale.x = last_direction
 	tail.scale.x = last_direction
-	
+
 	var in_quicksand = is_in_quicksand()
 	z_index = -2 if in_quicksand else 0
-	
+
 	var is_grounded = is_on_floor()
 	if is_grounded:
 		coyote_timer = JUMP_COYOTE_TIME
 		restore_jumps()
-	
+
 	# Land on ground, and manage dust particles
 	if is_grounded and not was_grounded:
 		land()
 	dust_particles.emitting = is_grounded and dust_particles_delay.is_stopped() and move_direction.x != 0
-	
+
 	# Update camera's target position
 	if move_direction.x != 0:
 		camera_target.position = CAMERA_OFFSET * Vector2(move_direction.x, 1)
-	
+
 	# Dampen vertical velocity after releasing jump button
 	if inputs.jump.released and not jump_damped and velocity.y < 0:
 		velocity.y *= JUMP_DAMP_FACTOR
 		hang_timer = 0.0
 		jump_damped = true
-	
+
 	# Can always jump in quicksand
 	if in_quicksand:
 		if inputs.jump.press:
 			jump(QUICKSAND_JUMP_FACTOR)
-	
+
 	# Jump right after leaving a platform (coyote jump)
 	if can_jump():
 		if inputs.jump.press and coyote_timer > 0.0:
 			jump()
-	
+
 	# If has jump buffer, jump immediately when landing on the ground
 	if can_jump():
 		if jump_buffer > 0.0 and inputs.jump.hold and is_grounded:
 			jump()
-	
+
 	# Wall sliding
 	if not is_grounded and not in_quicksand:
 		update_wall_direction()
-		
+
 		# Check wall jump
 		if wall_direction != 0 and jump_buffer > 0.0 and inputs.jump.hold:
 			camera.update(true)
 			wall_jump()
-		
+
 		# Check wall slide
 		if velocity.y > 0:
 			if wall_direction != 0 and move_direction.x == wall_direction:
 				state_machine.change_state(SLIDING)
 				move_and_slide()
 				return
-	
+
 	# Horizontal movement
 	var acceleration = GROUND_ACCELERATION if is_grounded else AIR_ACCELERATION
 	var friction = GROUND_FRICTION if is_grounded else AIR_FRICTION
 	var run_speed = MAX_SPEED
 	var fall_speed = MAX_FALL_SPEED
-	
+
 	if in_quicksand:
 		run_speed = QUICKSAND_MOVE_SPEED
 		fall_speed = QUICKSAND_FALL_SPEED
-	
+
 	if move_direction.x != 0:
 		velocity.x = Utils.approach(velocity.x, run_speed * move_direction.x, acceleration * delta)
 	else:
 		velocity.x = Utils.approach(velocity.x, 0, friction * delta)
-	
+
 	# Vertical movement
 	velocity.y += GRAVITY * delta
 	if velocity.y > fall_speed:
 		velocity.y = fall_speed
-	
+
 	# Manage jump additional time on air (hang time)
 	if hang_timer > 0.0:
 		velocity.y = 0.0
 		if inputs.jump.released:
 			hang_timer = 0.0
-	
+
 	if is_jumping and velocity.y > 0:
 		is_jumping = false
 		if inputs.jump.hold:
 			hang_timer = JUMP_HANG_TIME
-	
+
 	# Edge nudging when jumping
 	if velocity.y < 0:
 		var motion = velocity * delta
@@ -240,20 +244,20 @@ func moving_update(delta):
 			for i in range(1, CORNER_CORRECTION + 1):
 				var left_pos = global_transform.translated(Vector2.LEFT * i)
 				var right_pos = global_transform.translated(Vector2.RIGHT * i)
-				
+
 				if not test_move(left_pos, motion):
 					global_position.x -= i
 					break
 				elif not test_move(right_pos, motion):
 					global_position.x += i
 					break
-	
+
 	# Perform movement
 	move_and_slide()
 	was_grounded = is_grounded
-	
+
 	camera.update(is_grounded)
-	
+
 	# Play animations
 	if is_on_floor():
 		if move_direction.x != 0:
@@ -263,7 +267,7 @@ func moving_update(delta):
 	else:
 		if velocity.y > 0:
 			animation_player.play("fall")
-	
+
 	if stuck_inside_terrain():
 		die()
 
@@ -275,11 +279,20 @@ func stuck_inside_terrain() -> bool:
 			return false
 	return true
 
-func is_in_quicksand() -> bool:
+func get_trigger(trigger_group: String) -> Area2D:
 	for area in trigger.get_overlapping_areas():
-		if area.is_in_group("quicksand"):
-			return true
-	return false
+		if area.is_in_group(trigger_group):
+			return area
+	return null
+
+func is_in_trigger(trigger_group: String) -> bool:
+	return get_trigger(trigger_group) != null
+
+func is_in_quicksand() -> bool:
+	return is_in_trigger("quicksand")
+
+func is_in_slime() -> bool:
+	return is_in_trigger("slime")
 
 func sliding_enter():
 	velocity.y = 0
@@ -291,47 +304,52 @@ func sliding_exit():
 func sliding_update(delta):
 	slide_timer -= delta
 	camera.update(true)
-	
+
 	visuals.scale.x = -wall_direction
 	visuals.slide()
 	if slide_particles_timer.is_stopped() and not slide_particles.emitting:
 		slide_particles.restart()
 		slide_particles.emitting = true
-	
+
+	if is_in_slime():
+		track_slime(get_trigger("slime"))
+		move_and_slide()
+		return
+
 	if is_in_quicksand():
 		state_machine.change_state(MOVING)
 		move_and_slide()
 		return
-	
+
 	# Check for wall jump
 	if inputs.jump.press:
 		wall_jump()
 		state_machine.change_state(MOVING)
 		move_and_slide()
 		return
-	
+
 	# Not touching wall anymore
 	update_wall_direction()
 	if wall_direction == 0:
 		state_machine.change_state(MOVING)
 		return
-	
+
 	# Reset slide timer
 	if move_direction.x == wall_direction:
 		slide_timer = WALL_STICK_TIME
-	
+
 	# Leave wall slide
 	if slide_timer <= 0.0 or (move_direction.y == 1 and move_direction.x == 0) or is_on_floor():
 		state_machine.change_state(MOVING)
 		return
-	
+
 	move_and_slide()
-	
+
 	var collision = get_last_slide_collision()
 	if collision:
 		velocity.x = 10 * wall_direction
 		velocity.y = WALL_SLIDE_SPEED
-	
+
 	animation_player.play("slide")
 
 func update_wall_direction():
@@ -340,17 +358,35 @@ func update_wall_direction():
 		var collision = get_last_slide_collision()
 		var collider = collision.get_collider()
 		var normal = collision.get_normal()
-		
+
 		if collider is StaticBody2D:
 			wall_direction = -normal.x
-		
+
 		elif collider is TileMap:
 			var tile_pos = collision.get_position() - normal
 			if Utils.get_tile_custom_data(tilemap, tile_pos, "can_slide"):
 				wall_direction = -normal.x
-	
+
 	if wall_direction != 0:
 		jump_damped = false
+
+func track_slime(slime: Area2D):
+	tracking_slime = slime
+	previous_slime_position = slime.global_position
+	state_machine.change_state(IN_SLIME)
+
+func in_slime_update(delta):
+	if inputs.jump.press:
+		wall_jump()
+		state_machine.change_state(MOVING)
+		move_and_slide()
+		return
+
+	var slime_movement := tracking_slime.global_position - previous_slime_position
+	global_position += slime_movement
+	previous_slime_position = tracking_slime.global_position
+
+	animation_player.play("slide")
 
 func restore_jumps():
 	jump_damped = false
@@ -364,7 +400,7 @@ func jump(jump_factor := 1.0):
 	is_jumping = true
 	jumps_available = clamp(jumps_available - 1, 0, 1)
 	velocity.y = JUMP_SPEED * jump_factor
-	
+
 	animation_player.play("jump")
 	visuals.spawn_jump_dust()
 	visuals.jump()
@@ -373,7 +409,7 @@ func wall_jump():
 	jump_buffer = 0.0
 	velocity.x = -wall_direction * WALL_JUMP_SPEED.x
 	velocity.y = -WALL_JUMP_SPEED.y
-	
+
 	animation_player.play("jump")
 	visuals.spawn_wall_jump_dust()
 	visuals.jump()
@@ -408,10 +444,10 @@ func respawn(at: Vector2):
 func _on_trigger_area_entered(area):
 	if area.is_in_group("damage_zone"):
 		die.call_deferred()
-	
+
 	if area.is_in_group("checkpoint"):
 		reached_checkpoint.emit(area)
-	
+
 	if area.is_in_group("falling_platform"):
 		# Platform can only fall if player is above it
 		if global_position.y <= area.global_position.y:

@@ -28,7 +28,7 @@ func set_camera_bounds():
 func _process(_delta):
 	# Calculate parallax offset
 	parallax_background.scroll_offset = -current_camera.get_camera_position()
-	
+
 	# Can only pause if player is alive
 	if player.is_alive():
 		if Input.is_action_just_pressed("pause"):
