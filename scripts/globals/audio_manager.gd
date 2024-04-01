@@ -7,3 +7,4 @@ extends Node
 
 # Add the audiostreamplayer references here
 @onready var gem_pickup_sfx: AudioStreamPlayer = $GemPickupSFX
+@onready var fox_jump_sfx: AudioStreamPlayer = $FoxJumpSFX
