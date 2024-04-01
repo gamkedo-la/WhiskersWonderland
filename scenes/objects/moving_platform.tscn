@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7g50tmge5i1m"]
+[gd_scene load_steps=7 format=3 uid="uid://b7g50tmge5i1m"]
 
 [ext_resource type="Script" path="res://scenes/objects/moving_platform.gd" id="1_kps54"]
+[ext_resource type="Texture2D" uid="uid://d1rlpdx552k5s" path="res://assets/sprites/wooden_block.png" id="2_vvc2n"]
 
 [sub_resource type="Curve2D" id="Curve2D_w888p"]
 _data = {
@@ -54,14 +55,13 @@ script = ExtResource("1_kps54")
 collision_mask = 2
 metadata/_edit_lock_ = true
 
-[node name="placeholder" type="Polygon2D" parent="Body"]
-color = Color(0.513726, 0.305882, 0.160784, 1)
-polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vvc2n")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="Body"]
-visible = false
-polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
+polygon = PackedVector2Array(-30, -15, 30, -15, 30, 15, -30, 15)
 metadata/_edit_lock_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
