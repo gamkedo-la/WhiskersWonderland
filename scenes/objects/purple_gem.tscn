@@ -85,12 +85,11 @@ _data = {
 "floating": SubResource("Animation_0w6hr")
 }
 
-[node name="PurpleGem" type="Area2D" node_paths=PackedStringArray("pickup_sfx")]
+[node name="PurpleGem" type="Area2D"]
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("1_q63wt")
-pickup_sfx = NodePath("PickupSFX")
 
 [node name="Sprite" type="Node2D" parent="."]
 scale = Vector2(0.304115, 0.240843)

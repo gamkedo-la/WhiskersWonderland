@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn1aowc70ruco"]
+
+[ext_resource type="Script" path="res://scripts/globals/audio_manager.gd" id="1_bkuff"]
+[ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_3mmdb"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_bkuff")
+
+[node name="GemPickupSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3mmdb")
