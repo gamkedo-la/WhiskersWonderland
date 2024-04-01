@@ -6,9 +6,6 @@ extends Path2D
 @export_range(0.1, 10.0, 0.1) var time_in_seconds : float = 1.0 : set = set_time_in_seconds
 @export var is_solid : bool = true
 
-var previous_pos : Vector2
-var current_pos : Vector2
-
 func _ready():
 	update_speed()
 	update_animation()
@@ -26,9 +23,12 @@ func recalculate_collision_shape():
 	collision_polygon.global_rotation = 0.0
 
 func reparent_child_nodes():
+	var offset = curve.sample_baked(curve.get_baked_length() / 2)
+	
 	for child in get_children():
 		if child != $Body and child != $PathFollow2D and child != $AnimationPlayer:
-			child.reparent($Body)
+			child.reparent($Body, false)
+			child.position -= offset
 
 func _process(_delta):
 	queue_redraw()
@@ -51,11 +51,6 @@ func update_animation():
 		var anim_name = "looped" if loop else "back_and_forth"
 		$AnimationPlayer.play(anim_name)
 
-func set_time_in_seconds(value: float):
-	time_in_seconds = value
-	if Engine.is_editor_hint():
-		update_speed()
-
 func set_paused(value: bool):
 	paused = value
 	if not Engine.is_editor_hint():
@@ -66,3 +61,8 @@ func set_loop(value: bool):
 	loop = value
 	if Engine.is_editor_hint():
 		update_animation()
+
+func set_time_in_seconds(value: float):
+	time_in_seconds = value
+	if Engine.is_editor_hint():
+		update_speed()

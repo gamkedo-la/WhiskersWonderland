@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/objects/moving_platform.gd" id="1_kps54"]
 [ext_resource type="Texture2D" uid="uid://d1rlpdx552k5s" path="res://assets/sprites/wooden_block.png" id="2_vvc2n"]
 
-[sub_resource type="Curve2D" id="Curve2D_w888p"]
+[sub_resource type="Curve2D" id="Curve2D_3soyg"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -64, 0, 0, 0, 0, 0, 64, 0)
 }
@@ -48,19 +48,20 @@ _data = {
 }
 
 [node name="MovingPlatform" type="Path2D"]
-curve = SubResource("Curve2D_w888p")
+curve = SubResource("Curve2D_3soyg")
 script = ExtResource("1_kps54")
 
 [node name="Body" type="AnimatableBody2D" parent="." groups=["moving_platform"]]
 collision_mask = 2
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Body"]
+[node name="Sprite" type="Sprite2D" parent="Body"]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_vvc2n")
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="Body"]
+visible = false
 polygon = PackedVector2Array(-30, -15, 30, -15, 30, 15, -30, 15)
 metadata/_edit_lock_ = true
 

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://x0jpiql4ck8j" path="res://scenes/objects/falling_platform.tscn" id="4_qagil"]
 [ext_resource type="PackedScene" uid="uid://dqv63xk0jh7jo" path="res://scenes/objects/slime.tscn" id="4_rlrmt"]
 [ext_resource type="PackedScene" uid="uid://bsn8dlt5qpeye" path="res://scenes/objects/crumbling_block.tscn" id="5_pw86k"]
-[ext_resource type="PackedScene" path="res://scenes/objects/purple_gem.tscn" id="7_h1rh3"]
+[ext_resource type="PackedScene" uid="uid://bjsehxgp8ac1d" path="res://scenes/objects/purple_gem.tscn" id="7_h1rh3"]
 
 [sub_resource type="Curve2D" id="Curve2D_vh232"]
 _data = {
@@ -26,9 +26,9 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="Curve2D" id="Curve2D_5mi0j"]
+[sub_resource type="Curve2D" id="Curve2D_xy4go"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -104, 0.000671387, 0, 0, 0, 0, 64, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -96, 0, 0, 0, 0, 0, 72, -0.000427246)
 }
 point_count = 2
 
@@ -69,15 +69,15 @@ time_in_seconds = 6.0
 [node name="MovingPlatform4" parent="World/Objects" index="3" instance=ExtResource("2_f7d57")]
 position = Vector2(848, 136)
 rotation = -1.57079
-curve = SubResource("Curve2D_5mi0j")
+curve = SubResource("Curve2D_xy4go")
 time_in_seconds = 3.0
 
 [node name="Spike5" parent="World/Objects/MovingPlatform4" index="3" instance=ExtResource("3_qksng")]
-position = Vector2(32, -0.000193946)
+position = Vector2(18.4133, -0.000108683)
 rotation = 1.57079
 
 [node name="Slime" parent="World/Objects/MovingPlatform4" index="4" instance=ExtResource("4_rlrmt")]
-position = Vector2(0, 13)
+position = Vector2(-11.2099, 13.0036)
 rotation = 1.5708
 
 [node name="MovingPlatform5" parent="World/Objects" index="4" instance=ExtResource("2_f7d57")]
@@ -137,7 +137,7 @@ position = Vector2(592, 144)
 position = Vector2(999, 36)
 
 [node name="PurpleGem5" parent="World/Objects/Gems" index="4" instance=ExtResource("7_h1rh3")]
-position = Vector2(1289, 86)
+position = Vector2(1291.52, 88.5198)
 
 [node name="player" parent="World" index="5"]
 position = Vector2(924.84, 201.354)

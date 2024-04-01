@@ -15,5 +15,3 @@ func _process(_delta: float) -> void:
 
 func _update_size() -> void:
 	collision_shape_2d.shape.size = size
-	#sprite.scale = size
-	#sprite.position = -size / 2.0
