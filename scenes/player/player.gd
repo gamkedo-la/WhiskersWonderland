@@ -130,6 +130,7 @@ func _process(_delta):
 		last_direction = move_direction.x
 
 	if inputs.jump.press:
+		AudioManager.fox_jump_sfx.play()
 		jump_buffer = JUMP_BUFFER_TIME
 
 	$DebugLabel.text = state_machine.current_state
