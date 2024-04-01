@@ -66,5 +66,5 @@ func register_collectible(item: Collectible):
 func _on_item_collected(item: Collectible):
 	if item is PurpleGem:
 		purple_gems_collected += 1
-		# TO REMOVE: Temporary until UI is added to track gems
+		# TODO: Remove this after UI is added to track gems
 		print("Purple gem collected: %s/%s" % [purple_gems_collected, purple_gems_count])

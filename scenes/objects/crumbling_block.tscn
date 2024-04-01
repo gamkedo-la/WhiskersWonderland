@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bsn8dlt5qpeye"]
+[gd_scene load_steps=4 format=3 uid="uid://bsn8dlt5qpeye"]
 
 [ext_resource type="Script" path="res://scenes/objects/crumbling_block.gd" id="1_lo007"]
+[ext_resource type="Texture2D" uid="uid://d3610g5ryd3jl" path="res://assets/sprites/crumbling_block.png" id="2_es685"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nycai"]
 size = Vector2(32, 32)
@@ -9,9 +10,10 @@ size = Vector2(32, 32)
 collision_mask = 2
 script = ExtResource("1_lo007")
 
-[node name="placeholder" type="Polygon2D" parent="."]
-color = Color(0, 0.8, 0.6, 1)
-polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_es685")
+hframes = 4
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

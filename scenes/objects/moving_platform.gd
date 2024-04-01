@@ -6,6 +6,9 @@ extends Path2D
 @export_range(0.1, 10.0, 0.1) var time_in_seconds : float = 1.0 : set = set_time_in_seconds
 @export var is_solid : bool = true
 
+var previous_pos : Vector2
+var current_pos : Vector2
+
 func _ready():
 	update_speed()
 	update_animation()

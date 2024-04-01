@@ -151,7 +151,7 @@ func moving_update(delta):
 	visuals.scale.x = last_direction
 	ears.scale.x = last_direction
 	tail.scale.x = last_direction
-
+	
 	var in_quicksand = is_in_quicksand()
 	z_index = -2 if in_quicksand else 0
 
@@ -375,7 +375,7 @@ func track_slime(slime: Area2D):
 	previous_slime_position = slime.global_position
 	state_machine.change_state(IN_SLIME)
 
-func in_slime_update(delta):
+func in_slime_update(_delta):
 	if inputs.jump.press:
 		wall_jump()
 		state_machine.change_state(MOVING)

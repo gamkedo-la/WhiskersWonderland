@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scenes/objects/moving_platform.gd" id="1_kps54"]
 
-[sub_resource type="Curve2D" id="Curve2D_71gap"]
+[sub_resource type="Curve2D" id="Curve2D_w888p"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -90, 0, 0, 0, 0, 0, 90, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -64, 0, 0, 0, 0, 0, 64, 0)
 }
 point_count = 2
 
@@ -47,10 +47,10 @@ _data = {
 }
 
 [node name="MovingPlatform" type="Path2D"]
-curve = SubResource("Curve2D_71gap")
+curve = SubResource("Curve2D_w888p")
 script = ExtResource("1_kps54")
 
-[node name="Body" type="AnimatableBody2D" parent="."]
+[node name="Body" type="AnimatableBody2D" parent="." groups=["moving_platform"]]
 collision_mask = 2
 metadata/_edit_lock_ = true
 
@@ -65,7 +65,7 @@ polygon = PackedVector2Array(-32, -12, 32, -12, 32, 12, -32, 12)
 metadata/_edit_lock_ = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-progress = 90.0
+progress = 64.0
 rotates = false
 metadata/_edit_lock_ = true
 

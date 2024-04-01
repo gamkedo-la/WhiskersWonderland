@@ -1,27 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjsehxgp8ac1d"]
+[gd_scene load_steps=8 format=3 uid="uid://bjsehxgp8ac1d"]
 
 [ext_resource type="Script" path="res://scenes/objects/purple_gem.gd" id="1_q63wt"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_4lcxs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x52jr"]
-radius = 8.0
-
-[sub_resource type="Animation" id="Animation_be3r3"]
-resource_name = "flip"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.304115, 0.240843), Vector2(-0.304, 0.241), Vector2(0.304115, 0.240843)]
-}
+radius = 16.0
 
 [sub_resource type="Animation" id="Animation_3egkc"]
 length = 0.001
@@ -37,11 +20,69 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0.304115, 0.240843)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_be3r3"]
+resource_name = "flip"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.304115, 0.240843), Vector2(-0.304, 0.241), Vector2(0.304115, 0.240843)]
+}
+
+[sub_resource type="Animation" id="Animation_0w6hr"]
+resource_name = "floating"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.304115, 0.240843)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0cey"]
 _data = {
 "RESET": SubResource("Animation_3egkc"),
-"flip": SubResource("Animation_be3r3")
+"flip": SubResource("Animation_be3r3"),
+"floating": SubResource("Animation_0w6hr")
 }
 
 [node name="PurpleGem" type="Area2D" node_paths=PackedStringArray("pickup_sfx")]
@@ -49,7 +90,7 @@ collision_layer = 0
 collision_mask = 4
 monitorable = false
 script = ExtResource("1_q63wt")
-pickup_sfx = NodePath("AudioStreamPlayer")
+pickup_sfx = NodePath("PickupSFX")
 
 [node name="Sprite" type="Node2D" parent="."]
 scale = Vector2(0.304115, 0.240843)
@@ -78,6 +119,7 @@ color = Color(0.92549, 0.827451, 0.937255, 1)
 polygon = PackedVector2Array(-30.3444, -18.0898, 22.7583, -51.2544, 22.7583, -36.1796, 11.3791, -21.1047, -15.1722, -9.04489, -15.1722, 42.2095, -34.1374, 54.2693, -56.8957, 42.2095)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_x52jr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -86,5 +128,5 @@ libraries = {
 }
 autoplay = "flip"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="PickupSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_4lcxs")
