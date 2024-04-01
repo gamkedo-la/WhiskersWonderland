@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dn1aowc70ruco"]
+[gd_scene load_steps=5 format=3 uid="uid://p4mx467hp5wk"]
 
 [ext_resource type="Script" path="res://scripts/globals/audio_manager.gd" id="1_bkuff"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_3mmdb"]
@@ -15,7 +15,10 @@ script = ExtResource("1_bkuff")
 
 [node name="GemPickupSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_3mmdb")
+bus = &"Sound"
 
 [node name="FoxJumpSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_kmac8")
-volume_db = -2.0
+volume_db = 6.0
+pitch_scale = 0.9
+bus = &"Sound"

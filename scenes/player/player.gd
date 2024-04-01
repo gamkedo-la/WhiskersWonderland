@@ -130,7 +130,6 @@ func _process(_delta):
 		last_direction = move_direction.x
 
 	if inputs.jump.press:
-		AudioManager.fox_jump_sfx.play()
 		jump_buffer = JUMP_BUFFER_TIME
 
 	$DebugLabel.text = state_machine.current_state
@@ -405,6 +404,7 @@ func jump(jump_factor := 1.0):
 	animation_player.play("jump")
 	visuals.spawn_jump_dust()
 	visuals.jump()
+	AudioManager.fox_jump_sfx.play()
 
 func wall_jump():
 	jump_buffer = 0.0
@@ -414,6 +414,7 @@ func wall_jump():
 	animation_player.play("jump")
 	visuals.spawn_wall_jump_dust()
 	visuals.jump()
+	AudioManager.fox_jump_sfx.play()
 
 func land():
 	visuals.land()
