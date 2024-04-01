@@ -21,6 +21,7 @@ Utils="*res://scripts/globals/utils.gd"
 Globals="*res://scripts/globals/globals.gd"
 Debug="*res://scripts/globals/debug.gd"
 DampedSpringSystem="*res://scripts/damped_springs.gd"
+Signals="*res://scripts/globals/signals.gd"
 
 [display]
 

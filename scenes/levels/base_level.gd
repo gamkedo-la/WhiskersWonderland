@@ -1,4 +1,5 @@
 extends Node2D
+class_name BaseLevel
 
 @onready var parallax_background = $World/ParallaxBackground
 @onready var camera_bounds = $World/CameraBounds
@@ -10,11 +11,16 @@ extends Node2D
 var current_checkpoint : Node2D
 var current_camera : Node2D
 
+var purple_gems_count: int = 0
+var purple_gems_collected: int = 0
+
 func _ready():
 	current_checkpoint = null
 	player.tilemap = tilemap
 	current_camera = Globals.camera if Globals.camera != null else get_viewport().get_camera_2d()
 	set_camera_bounds()
+	Signals.level_ready.emit(self)
+	Signals.item_collected.connect(_on_item_collected)
 
 func set_camera_bounds():
 	camera_bounds.visible = false
@@ -52,3 +58,13 @@ func _on_player_reached_checkpoint(checkpoint):
 func _on_player_died():
 	Globals.pause()
 	animation_player.play("player_died")
+
+func register_collectible(item: Collectible):
+	if item is PurpleGem:
+		purple_gems_count += 1
+
+func _on_item_collected(item: Collectible):
+	if item is PurpleGem:
+		purple_gems_collected += 1
+		# TO REMOVE: Temporary until UI is added to track gems
+		print("Purple gem collected: %s/%s" % [purple_gems_collected, purple_gems_count])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxgr32ypkty8c"]
+[gd_scene load_steps=11 format=3 uid="uid://bxgr32ypkty8c"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_68e1g"]
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="2_f7d57"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://x0jpiql4ck8j" path="res://scenes/objects/falling_platform.tscn" id="4_qagil"]
 [ext_resource type="PackedScene" uid="uid://dqv63xk0jh7jo" path="res://scenes/objects/slime.tscn" id="4_rlrmt"]
 [ext_resource type="PackedScene" uid="uid://bsn8dlt5qpeye" path="res://scenes/objects/crumbling_block.tscn" id="5_pw86k"]
+[ext_resource type="PackedScene" uid="uid://bjsehxgp8ac1d" path="res://scenes/objects/purple_gem.tscn" id="7_h1rh3"]
 
 [sub_resource type="Curve2D" id="Curve2D_x1u4v"]
 _data = {
@@ -95,6 +96,27 @@ position = Vector2(-101.946, 178.54)
 
 [node name="CrumblingBlock7" parent="World/Objects" index="14" instance=ExtResource("5_pw86k")]
 position = Vector2(-32, 216)
+
+[node name="Gems" type="Node2D" parent="World/Objects" index="15"]
+
+[node name="PurpleGem" parent="World/Objects/Gems" index="0" instance=ExtResource("7_h1rh3")]
+position = Vector2(-326, 45)
+
+[node name="PurpleGem2" parent="World/Objects/Gems" index="1" node_paths=PackedStringArray("pickup_sfx") instance=ExtResource("7_h1rh3")]
+position = Vector2(137, 121)
+pickup_sfx = NodePath("../PurpleGem/AudioStreamPlayer")
+
+[node name="PurpleGem3" parent="World/Objects/Gems" index="2" node_paths=PackedStringArray("pickup_sfx") instance=ExtResource("7_h1rh3")]
+position = Vector2(592, 144)
+pickup_sfx = NodePath("../PurpleGem/AudioStreamPlayer")
+
+[node name="PurpleGem4" parent="World/Objects/Gems" index="3" node_paths=PackedStringArray("pickup_sfx") instance=ExtResource("7_h1rh3")]
+position = Vector2(999, 36)
+pickup_sfx = NodePath("../PurpleGem/AudioStreamPlayer")
+
+[node name="PurpleGem5" parent="World/Objects/Gems" index="4" node_paths=PackedStringArray("pickup_sfx") instance=ExtResource("7_h1rh3")]
+position = Vector2(1289, 86)
+pickup_sfx = NodePath("../PurpleGem/AudioStreamPlayer")
 
 [node name="player" parent="World" index="5"]
 position = Vector2(879.026, 273.975)
