@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://x0jpiql4ck8j" path="res://scenes/objects/falling_platform.tscn" id="4_qagil"]
 [ext_resource type="PackedScene" uid="uid://dqv63xk0jh7jo" path="res://scenes/objects/slime.tscn" id="4_rlrmt"]
 [ext_resource type="PackedScene" uid="uid://bsn8dlt5qpeye" path="res://scenes/objects/crumbling_block.tscn" id="5_pw86k"]
-[ext_resource type="PackedScene" uid="uid://bjsehxgp8ac1d" path="res://scenes/objects/purple_gem.tscn" id="7_h1rh3"]
+[ext_resource type="PackedScene" path="res://scenes/objects/purple_gem.tscn" id="7_h1rh3"]
 
 [sub_resource type="Curve2D" id="Curve2D_x1u4v"]
 _data = {
@@ -53,13 +53,12 @@ rotation = -1.57079
 time_in_seconds = 3.0
 
 [node name="Spike5" parent="World/Objects/MovingPlatform4" index="3" instance=ExtResource("3_qksng")]
-position = Vector2(32, -0.000183105)
+position = Vector2(30, -0.000183105)
 rotation = 1.57079
 
 [node name="Slime" parent="World/Objects/MovingPlatform4" index="4" instance=ExtResource("4_rlrmt")]
-position = Vector2(2.08165e-12, 8)
+position = Vector2(0, 13)
 rotation = 1.5708
-size = Vector2(16, 40)
 
 [node name="FallingPlatform1" parent="World/Objects" index="4" instance=ExtResource("4_qagil")]
 position = Vector2(935.853, 261.351)
