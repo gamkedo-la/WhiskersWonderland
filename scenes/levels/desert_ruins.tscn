@@ -93,6 +93,7 @@ position = Vector2(984, 272)
 
 [node name="Quicksand1" parent="World/Objects" index="5" instance=ExtResource("7_eggou")]
 position = Vector2(576, 208)
+tile_size = Vector2i(9, 4)
 
 [node name="player" parent="World" index="5"]
 position = Vector2(119.471, 264.4)

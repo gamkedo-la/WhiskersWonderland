@@ -8,6 +8,7 @@ func _process(_delta):
 		queue_free()
 
 func fall():
+	$AnimationPlayer.play("stepped_on")
 	if $Timer.is_stopped():
 		$Timer.start()
 
