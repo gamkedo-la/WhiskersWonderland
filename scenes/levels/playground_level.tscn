@@ -140,7 +140,7 @@ position = Vector2(999, 36)
 position = Vector2(1291.52, 88.5198)
 
 [node name="player" parent="World" index="5"]
-position = Vector2(924.84, 201.354)
+position = Vector2(762.696, 258.372)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(-2.71399, 572.853)

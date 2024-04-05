@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://olgh2e41sixh"]
+[gd_scene load_steps=11 format=3 uid="uid://olgh2e41sixh"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_m4w2p"]
 [ext_resource type="TileSet" uid="uid://bik5n3mn3bvfd" path="res://assets/tilesets/desert_tileset.tres" id="2_p0r6n"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dq4lcxw3wo2p2" path="res://assets/backgrounds/desert-bg4.png" id="5_eaf61"]
 [ext_resource type="PackedScene" uid="uid://b280ii26f55pm" path="res://scenes/objects/spike.tscn" id="7_060r2"]
 [ext_resource type="PackedScene" uid="uid://cy27vsjobtd6q" path="res://scenes/objects/quicksand.tscn" id="7_eggou"]
+[ext_resource type="PackedScene" uid="uid://bsn8dlt5qpeye" path="res://scenes/objects/crumbling_block.tscn" id="9_daetd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8mb2p"]
 size = Vector2(10632, 316.516)
@@ -95,8 +96,17 @@ position = Vector2(984, 272)
 position = Vector2(576, 208)
 tile_size = Vector2i(10, 4)
 
+[node name="CrumblingBlock1" parent="World/Objects" index="6" instance=ExtResource("9_daetd")]
+position = Vector2(856.953, 147.215)
+
+[node name="CrumblingBlock2" parent="World/Objects" index="7" instance=ExtResource("9_daetd")]
+position = Vector2(1028.68, 145.145)
+
+[node name="CrumblingBlock3" parent="World/Objects" index="8" instance=ExtResource("9_daetd")]
+position = Vector2(1206.81, 146.084)
+
 [node name="player" parent="World" index="5"]
-position = Vector2(119.471, 264.4)
+position = Vector2(763.624, 104.421)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(2525.52, 581.492)

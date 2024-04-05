@@ -19,6 +19,4 @@ bus = &"Sound"
 
 [node name="FoxJumpSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_kmac8")
-volume_db = 6.0
-pitch_scale = 0.9
 bus = &"Sound"

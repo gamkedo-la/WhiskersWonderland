@@ -8,7 +8,7 @@ func _ready():
 	# Scrolling animation
 	if not Engine.is_editor_hint():
 		var pos = $Sprite.global_position.x
-		var tween = get_tree().create_tween().set_loops()
+		var tween = create_tween().set_loops()
 		tween.tween_property($Sprite, "global_position:x", pos - 16, 1.0).from(pos)
 		tween.play()
 
