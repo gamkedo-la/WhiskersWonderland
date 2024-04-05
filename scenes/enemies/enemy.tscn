@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5gj4vhu7e00u"]
+[gd_scene load_steps=18 format=3 uid="uid://5gj4vhu7e00u"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_mnmlo"]
 [ext_resource type="Shader" path="res://assets/shaders/player.gdshader" id="2_0apsf"]
@@ -125,6 +125,9 @@ colors = PackedColorArray(0.490196, 0.6, 0.72549, 1, 0.741176, 0.796078, 0.85490
 radius = 11.125
 height = 34.9004
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_butw4"]
+size = Vector2(24.2079, 20.1402)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_njfxq"]
 radius = 11.7045
 
@@ -212,14 +215,26 @@ position = Vector2(13.45, 0)
 target_position = Vector2(0, 32)
 metadata/_edit_lock_ = true
 
-[node name="Hitbox" type="Area2D" parent="." groups=["enemy"]]
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+visible = false
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.172523, 7.87599)
+shape = SubResource("RectangleShape2D_butw4")
+debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["enemy", "hurtbox"]]
 visible = false
 position = Vector2(0, -7.34173)
 collision_layer = 8
 collision_mask = 8
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_njfxq")
 debug_color = Color(0.701961, 0.027451, 0, 0.419608)
 metadata/_edit_lock_ = true

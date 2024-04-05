@@ -13,7 +13,7 @@ var move_direction : int = 1
 func _ready():
 	move_direction = 1
 
-func _process(delta):
+func _process(_delta):
 	visuals.scale.x = move_direction * abs(visuals.scale.x)
 
 func _physics_process(delta):

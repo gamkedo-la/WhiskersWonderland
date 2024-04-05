@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c7ifo3nn7j0rh"]
+[gd_scene load_steps=32 format=3 uid="uid://c7ifo3nn7j0rh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kdwnm"]
 [ext_resource type="Script" path="res://scenes/player/player_visuals.gd" id="2_d2q2l"]
@@ -1279,6 +1279,9 @@ size = Vector2(9.85169, 26.9513)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5sy2"]
 size = Vector2(19.4733, 7.06092)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycrse"]
+size = Vector2(16.6358, 22.0486)
+
 [node name="player" type="CharacterBody2D"]
 process_mode = 1
 collision_layer = 2
@@ -1506,13 +1509,11 @@ editor_draw_drag_margin = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -14.5)
 shape = SubResource("CapsuleShape2D_yyidg")
 metadata/_edit_lock_ = true
 
 [node name="Trigger" type="Area2D" parent="." groups=["player"]]
-visible = false
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_lock_ = true
@@ -1523,15 +1524,27 @@ shape = SubResource("RectangleShape2D_o2u8f")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="StompHitbox" type="Area2D" parent="." groups=["player"]]
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox", "player"]]
 visible = false
 collision_layer = 8
 collision_mask = 8
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StompHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-0.0168095, -0.874834)
 shape = SubResource("RectangleShape2D_t5sy2")
+debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["hurtbox", "player"]]
+visible = false
+collision_layer = 8
+collision_mask = 8
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.0321217, -17.0172)
+shape = SubResource("RectangleShape2D_ycrse")
 debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
 metadata/_edit_lock_ = true
 
@@ -1555,6 +1568,7 @@ script = ExtResource("12_e4xmf")
 script = ExtResource("14_ukcfi")
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
-[connection signal="area_entered" from="StompHitbox" to="." method="stomp"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="replay_ended" from="ButtonRecorder" to="." method="_on_replay_ended"]
 [connection signal="replay_started" from="ButtonRecorder" to="." method="_on_replay_started"]

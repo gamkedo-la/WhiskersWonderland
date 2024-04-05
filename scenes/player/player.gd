@@ -421,14 +421,6 @@ func land():
 	visuals.land()
 	dust_particles_delay.start()
 
-func stomp(area):
-	if area.is_in_group("enemy"):
-		if velocity.y > 0 and not is_on_floor():
-			var entity = area.get_parent()
-			entity.stomp()
-			jump(1.2, false)
-			jump_damped = true
-
 func is_alive() -> bool:
 	return not state_machine.is_current(DEAD)
 
@@ -446,7 +438,7 @@ func respawn(at: Vector2):
 ### Callback functions
 func _on_trigger_area_entered(area):
 	if area.is_in_group("damage_zone"):
-		die.call_deferred()
+		die()
 
 	if area.is_in_group("checkpoint"):
 		reached_checkpoint.emit(area)
@@ -456,6 +448,19 @@ func _on_trigger_area_entered(area):
 		if global_position.y <= area.global_position.y:
 			var entity = area.get_parent()
 			entity.fall()
+
+func _on_hitbox_area_entered(area):
+	# Stomp enemy
+	if area.is_in_group("hurtbox") and area.is_in_group("enemy"):
+		if velocity.y > 0 and not is_on_floor():
+			var entity = area.get_parent()
+			entity.stomp()
+			jump(1.2, false)
+			jump_damped = true
+
+func _on_hurtbox_area_entered(area):
+	if area.is_in_group("hitbox") and not area.is_in_group("player"):
+		die()
 
 func _on_replay_started(data):
 	global_position = data.player_position
