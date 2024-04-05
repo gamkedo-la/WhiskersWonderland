@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da5odjfxwj0s2"
-path="res://.godot/imported/enemy.svg-2b702c0dd47fa4c52fb89004e7f0f942.ctex"
+uid="uid://c56rfxw4l1iqt"
+path="res://.godot/imported/head.png-0ba453fc21ee5dfa5ae6c9756349b7c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/enemy.svg"
-dest_files=["res://.godot/imported/enemy.svg-2b702c0dd47fa4c52fb89004e7f0f942.ctex"]
+source_file="res://assets/sprites/robot/head.png"
+dest_files=["res://.godot/imported/head.png-0ba453fc21ee5dfa5ae6c9756349b7c6.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

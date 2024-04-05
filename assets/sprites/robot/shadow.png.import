@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r3ar5rbcnifr"
-path="res://.godot/imported/circle.png-5d399e40d8f71a91c414653a74d2346b.ctex"
+uid="uid://ce2gv7ogl5kuo"
+path="res://.godot/imported/shadow.png-b2362758c57581841b14aeefb1c239a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/circle.png"
-dest_files=["res://.godot/imported/circle.png-5d399e40d8f71a91c414653a74d2346b.ctex"]
+source_file="res://assets/sprites/robot/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-b2362758c57581841b14aeefb1c239a8.ctex"]
 
 [params]
 

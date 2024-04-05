@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r3ar5rbcnifr"
-path="res://.godot/imported/circle.png-5d399e40d8f71a91c414653a74d2346b.ctex"
+uid="uid://cw4yjus1fbtf6"
+path="res://.godot/imported/arm.png-2850bd2dbd7dd33b6a8e7da67a1d7236.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/circle.png"
-dest_files=["res://.godot/imported/circle.png-5d399e40d8f71a91c414653a74d2346b.ctex"]
+source_file="res://assets/sprites/robot/arm.png"
+dest_files=["res://.godot/imported/arm.png-2850bd2dbd7dd33b6a8e7da67a1d7236.ctex"]
 
 [params]
 

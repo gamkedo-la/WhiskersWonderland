@@ -178,7 +178,7 @@ func moving_update(delta):
 	# Can always jump in quicksand
 	if in_quicksand:
 		if inputs.jump.press:
-			jump(QUICKSAND_JUMP_FACTOR)
+			jump(QUICKSAND_JUMP_FACTOR, false)
 
 	# Jump right after leaving a platform (coyote jump)
 	if can_jump():
@@ -395,14 +395,15 @@ func restore_jumps():
 func can_jump():
 	return jumps_available > 0
 
-func jump(jump_factor := 1.0):
+func jump(jump_factor := 1.0, spawn_dust: bool = true):
 	jump_buffer = 0.0
 	is_jumping = true
 	jumps_available = clamp(jumps_available - 1, 0, 1)
 	velocity.y = JUMP_SPEED * jump_factor
 
 	animation_player.play("jump")
-	visuals.spawn_jump_dust()
+	if spawn_dust:
+		visuals.spawn_jump_dust()
 	visuals.jump()
 	AudioManager.fox_jump_sfx.play()
 
@@ -425,7 +426,7 @@ func stomp(area):
 		if velocity.y > 0 and not is_on_floor():
 			var entity = area.get_parent()
 			entity.stomp()
-			jump(1.2)
+			jump(1.2, false)
 			jump_damped = true
 
 func is_alive() -> bool:
