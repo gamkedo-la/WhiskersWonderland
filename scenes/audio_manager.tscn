@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://p4mx467hp5wk"]
+[gd_scene load_steps=12 format=3 uid="uid://p4mx467hp5wk"]
 
 [ext_resource type="Script" path="res://scripts/globals/audio_manager.gd" id="1_bkuff"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_3mmdb"]
 [ext_resource type="AudioStream" uid="uid://pjkvrily5b45" path="res://assets/sfx/LandOnGrassSFX.wav" id="2_vt7ls"]
 [ext_resource type="AudioStream" uid="uid://b5a5s5520f5gj" path="res://assets/sfx/LandOnPlatformSFX.wav" id="3_er3lm"]
 [ext_resource type="AudioStream" uid="uid://bcdtb2o3r3s0u" path="res://assets/sfx/FoxJumpSFX.wav" id="3_oktq2"]
+[ext_resource type="AudioStream" uid="uid://cfp3qyqmq7n7h" path="res://assets/sfx/RobotDeath.wav" id="5_5pktu"]
 [ext_resource type="AudioStream" uid="uid://1sw7urjv500m" path="res://assets/sfx/FoxDeathSFX.wav" id="5_jyijb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1xtyl"]
@@ -37,13 +38,19 @@ script = ExtResource("1_bkuff")
 [node name="LandOnGrassSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_1xtyl")
 volume_db = 2.0
+bus = &"Sound"
 
 [node name="LandOnPlatformSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_0sbrm")
 volume_db = 2.0
+bus = &"Sound"
 
 [node name="GemPickupSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_3mmdb")
+bus = &"Sound"
+
+[node name="RobotDeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5pktu")
 bus = &"Sound"
 
 [node name="FoxJumpSFX" type="AudioStreamPlayer" parent="."]

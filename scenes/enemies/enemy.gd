@@ -40,5 +40,6 @@ func _physics_process(delta):
 func stomp():
 	visuals.visible = false
 	death_particles.emitting = true
+	AudioManager.robot_death_sfx.play()
 	await Utils.timer(0.5)
 	queue_free()

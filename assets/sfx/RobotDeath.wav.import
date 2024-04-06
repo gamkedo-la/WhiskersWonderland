@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cfp3qyqmq7n7h"
-path="res://.godot/imported/landOnGround.wav-b049877546cb9888ebe876b87ffc4e1b.sample"
+path="res://.godot/imported/RobotDeath.wav-bfad7a7df049128d6c36cad69995e9a9.sample"
 
 [deps]
 
-source_file="res://assets/sfx/landOnGround.wav"
-dest_files=["res://.godot/imported/landOnGround.wav-b049877546cb9888ebe876b87ffc4e1b.sample"]
+source_file="res://assets/sfx/RobotDeath.wav"
+dest_files=["res://.godot/imported/RobotDeath.wav-bfad7a7df049128d6c36cad69995e9a9.sample"]
 
 [params]
 

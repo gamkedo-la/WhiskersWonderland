@@ -11,3 +11,4 @@ extends Node
 @onready var fox_death_sfx: AudioStreamPlayer = $FoxDeathSFX
 @onready var land_on_grass_sfx: AudioStreamPlayer = $LandOnGrassSFX
 @onready var land_on_platform_sfx: AudioStreamPlayer = $LandOnPlatformSFX
+@onready var robot_death_sfx: AudioStreamPlayer = $RobotDeathSFX

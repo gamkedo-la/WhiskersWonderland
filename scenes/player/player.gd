@@ -377,7 +377,7 @@ func track_slime(slime: Area2D):
 
 func in_slime_update(_delta):
 	if inputs.jump.press:
-		wall_jump()
+		wall_jump(false)
 		state_machine.change_state(MOVING)
 		move_and_slide()
 		return
@@ -407,13 +407,14 @@ func jump(jump_factor := 1.0, spawn_dust: bool = true):
 	visuals.jump()
 	AudioManager.fox_jump_sfx.play()
 
-func wall_jump():
+func wall_jump(spawn_dust: bool = true):
 	jump_buffer = 0.0
 	velocity.x = -wall_direction * WALL_JUMP_SPEED.x
 	velocity.y = -WALL_JUMP_SPEED.y
 
 	animation_player.play("jump")
-	visuals.spawn_wall_jump_dust()
+	if spawn_dust:
+		visuals.spawn_wall_jump_dust()
 	visuals.jump()
 	AudioManager.fox_jump_sfx.play()
 
