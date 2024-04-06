@@ -420,6 +420,7 @@ func wall_jump():
 func land():
 	visuals.land()
 	dust_particles_delay.start()
+	AudioManager.land_on_platform_sfx.play()
 
 func is_alive() -> bool:
 	return not state_machine.is_current(DEAD)
