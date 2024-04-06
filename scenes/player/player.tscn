@@ -512,7 +512,7 @@ tracks/39/keys = {
 
 [sub_resource type="Animation" id="Animation_andwn"]
 resource_name = "die"
-length = 0.5
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -520,10 +520,10 @@ tracks/0/path = NodePath("scale:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.0705882, 0.0705882, 0.0705882, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.439216, 0.439216, 0.439216, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1514,6 +1514,7 @@ shape = SubResource("CapsuleShape2D_yyidg")
 metadata/_edit_lock_ = true
 
 [node name="Trigger" type="Area2D" parent="." groups=["player"]]
+visible = false
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_lock_ = true

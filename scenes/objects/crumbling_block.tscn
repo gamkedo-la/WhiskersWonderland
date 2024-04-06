@@ -191,7 +191,7 @@ debug_color = Color(0.317647, 0.623529, 0, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="CrumbleTimer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.5
 one_shot = true
 
 [node name="RestartTimer" type="Timer" parent="."]
