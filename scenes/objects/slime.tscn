@@ -1,22 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqv63xk0jh7jo"]
 
 [ext_resource type="Script" path="res://scenes/objects/slime.gd" id="1_xgkn2"]
-[ext_resource type="Texture2D" uid="uid://phhhx7dxt6pc" path="res://assets/sprites/slime.png" id="2_iu1gg"]
+[ext_resource type="Texture2D" uid="uid://dgv77locqi1hs" path="res://assets/sprites/SlimeSurface.png" id="2_t767o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e40gv"]
-size = Vector2(20, 50)
+size = Vector2(20, 54)
 
 [node name="Slime" type="Area2D" groups=["slime"]]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_xgkn2")
-size = Vector2(20, 50)
+size = Vector2(20, 54)
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(-1.43051e-06, 0)
-scale = Vector2(0.384615, 0.310559)
-texture = ExtResource("2_iu1gg")
+position = Vector2(-2, 0)
+scale = Vector2(0.363636, 0.298343)
+texture = ExtResource("2_t767o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, 0)
+position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_e40gv")
