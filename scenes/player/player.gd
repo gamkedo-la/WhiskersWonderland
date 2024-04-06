@@ -429,6 +429,7 @@ func die():
 	animation_player.play("die")
 	state_machine.change_state(DEAD)
 	died.emit()
+	AudioManager.fox_death_sfx.play()
 
 func respawn(at: Vector2):
 	process_mode = Node.PROCESS_MODE_PAUSABLE

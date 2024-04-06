@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://p4mx467hp5wk"]
+[gd_scene load_steps=8 format=3 uid="uid://p4mx467hp5wk"]
 
 [ext_resource type="Script" path="res://scripts/globals/audio_manager.gd" id="1_bkuff"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_3mmdb"]
 [ext_resource type="AudioStream" uid="uid://cfp3qyqmq7n7h" path="res://assets/sfx/landOnGround.wav" id="2_8cvxh"]
 [ext_resource type="AudioStream" uid="uid://bcdtb2o3r3s0u" path="res://assets/sfx/FoxJumpSFX.wav" id="3_oktq2"]
+[ext_resource type="AudioStream" uid="uid://1sw7urjv500m" path="res://assets/sfx/FoxDeathSFX.wav" id="5_jyijb"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kmac8"]
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("3_oktq2")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yia5a"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("5_jyijb")
 stream_0/weight = 1.0
 
 [node name="AudioManager" type="Node"]
@@ -23,4 +30,10 @@ bus = &"Sound"
 
 [node name="FoxJumpSFX" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_kmac8")
+bus = &"Sound"
+
+[node name="FoxDeathSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_yia5a")
+volume_db = -5.0
+pitch_scale = 1.1
 bus = &"Sound"
