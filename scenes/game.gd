@@ -21,4 +21,3 @@ func load_level(level_key):
 	var level_scene = LEVEL_SCENES[level_key].instantiate()
 	add_child(level_scene)
 
-# i am doing a practice commit! don't mind me hahahahahoohoohoo :- ) like and subscribe
