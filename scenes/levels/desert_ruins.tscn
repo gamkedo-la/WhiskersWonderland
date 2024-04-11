@@ -128,7 +128,7 @@ position = Vector2(-0.463493, -12.2423)
 rotation = -1.57079
 
 [node name="player" parent="World" index="5"]
-position = Vector2(100.556, 262.517)
+position = Vector2(1364.45, 159.25)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(2525.52, 581.492)

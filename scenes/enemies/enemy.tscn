@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btdef2j5gap77" path="res://assets/sprites/robot/body.png" id="5_qq8fw"]
 [ext_resource type="Texture2D" uid="uid://c56rfxw4l1iqt" path="res://assets/sprites/robot/head.png" id="6_jhmf4"]
 [ext_resource type="Texture2D" uid="uid://ce2gv7ogl5kuo" path="res://assets/sprites/robot/shadow.png" id="6_yki42"]
-[ext_resource type="Texture2D" uid="uid://r3ar5rbcnifr" path="res://assets/sprites/circle.png" id="7_lmdlg"]
+[ext_resource type="Texture2D" uid="uid://brvqnxh0bidka" path="res://assets/sprites/diamond.png" id="7_4x1gn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_at4a4"]
 shader = ExtResource("2_0apsf")
@@ -115,7 +115,7 @@ _data = [Vector2(0, 1), 0.0, -0.377632, 0, 0, Vector2(1, 0.292472), -1.29626, 0.
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_buogw"]
-offsets = PackedFloat32Array(0, 0.660969, 1)
+offsets = PackedFloat32Array(0, 0.763533, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_3hn56"]
@@ -182,7 +182,7 @@ emitting = false
 lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
-texture = ExtResource("7_lmdlg")
+texture = ExtResource("7_4x1gn")
 emission_shape = 1
 emission_sphere_radius = 4.0
 spread = 180.0
