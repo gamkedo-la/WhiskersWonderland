@@ -139,7 +139,7 @@ position = Vector2(999, 36)
 [node name="PurpleGem5" parent="World/Objects/Gems" index="4" instance=ExtResource("7_h1rh3")]
 position = Vector2(1291.52, 88.5198)
 
-[node name="player" parent="World" index="5"]
+[node name="player" parent="World" index="6"]
 position = Vector2(762.696, 258.372)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]

@@ -156,7 +156,7 @@ position = Vector2(1112, 288)
 [node name="Spike10" parent="World/Objects" index="15" instance=ExtResource("9_7lp47")]
 position = Vector2(1128, 288)
 
-[node name="player" parent="World" index="5"]
+[node name="player" parent="World" index="6"]
 position = Vector2(113.314, 294)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]

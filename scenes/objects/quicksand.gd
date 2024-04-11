@@ -13,6 +13,8 @@ func _ready():
 		tween.play()
 
 func set_tile_size(value):
+	$CollisionShape.shape = $CollisionShape.shape.duplicate()
+	
 	# Update collider and sprite sizes
 	tile_size = value
 	tile_size.x = clampi(tile_size.x, 2, 40)
