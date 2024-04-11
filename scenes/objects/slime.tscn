@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqv63xk0jh7jo"]
+[gd_scene load_steps=8 format=3 uid="uid://dqv63xk0jh7jo"]
 
 [ext_resource type="Script" path="res://scenes/objects/slime.gd" id="1_xgkn2"]
 [ext_resource type="Texture2D" uid="uid://dgv77locqi1hs" path="res://assets/sprites/SlimeSurface.png" id="2_t767o"]
+[ext_resource type="Texture2D" uid="uid://r3ar5rbcnifr" path="res://assets/sprites/circle.png" id="3_xsocn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e40gv"]
 size = Vector2(20, 54)
+
+[sub_resource type="Curve" id="Curve_3rx60"]
+_data = [Vector2(0, 1), 0.0, -0.047285, 0, 0, Vector2(1, 0), -1.92113, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_xd50e"]
+offsets = PackedFloat32Array(0, 0.746439, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_y2sxa"]
+colors = PackedColorArray(0.698039, 0.968627, 0.470588, 1, 0.380392, 0.835294, 0.211765, 1)
 
 [node name="Slime" type="Area2D" groups=["slime"]]
 collision_layer = 4
@@ -16,7 +28,29 @@ size = Vector2(20, 54)
 position = Vector2(-2, 0)
 scale = Vector2(0.363636, 0.298343)
 texture = ExtResource("2_t767o")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, 0)
 shape = SubResource("RectangleShape2D_e40gv")
+metadata/_edit_lock_ = true
+
+[node name="SplashParticles" type="CPUParticles2D" parent="."]
+z_index = 1
+emitting = false
+lifetime = 0.75
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("3_xsocn")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 10)
+spread = 60.0
+gravity = Vector2(0, 300)
+initial_velocity_min = 50.0
+initial_velocity_max = 75.0
+scale_amount_min = 0.1
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_3rx60")
+color_ramp = SubResource("Gradient_xd50e")
+color_initial_ramp = SubResource("Gradient_y2sxa")
+metadata/_edit_lock_ = true

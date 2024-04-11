@@ -372,10 +372,13 @@ func update_wall_direction():
 
 func track_slime(slime: Area2D):
 	tracking_slime = slime
+	tracking_slime.splash(global_position.y)
 	previous_slime_position = slime.global_position
 	state_machine.change_state(IN_SLIME)
 
 func in_slime_update(_delta):
+	z_index = -2
+	
 	if inputs.jump.press:
 		wall_jump(false)
 		state_machine.change_state(MOVING)
