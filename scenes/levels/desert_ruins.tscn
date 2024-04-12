@@ -106,176 +106,66 @@ layer_1/tile_data = PackedInt32Array(1376268, 131072, 2, 1310732, 131072, 1, 124
 [node name="Quicksand1" parent="World/Objects" index="0" instance=ExtResource("7_eggou")]
 position = Vector2(688, 240)
 tile_size = Vector2i(18, 2)
+metadata/_edit_lock_ = true
 
 [node name="Quicksand2" parent="World/Objects" index="1" instance=ExtResource("7_eggou")]
 position = Vector2(2448, 224)
 tile_size = Vector2i(17, 4)
+metadata/_edit_lock_ = true
 
 [node name="Quicksand3" parent="World/Objects" index="2" instance=ExtResource("7_eggou")]
 position = Vector2(2944, 320)
 tile_size = Vector2i(16, 5)
+metadata/_edit_lock_ = true
 
 [node name="Slime1" parent="World/Objects" index="3" instance=ExtResource("13_yrbt1")]
 position = Vector2(2048, -48)
 
 [node name="Spike1" parent="World/Objects" index="4" instance=ExtResource("7_060r2")]
-position = Vector2(1616, 272)
-rotation = -1.57079
+position = Vector2(1128, 224)
+size = 5
 
 [node name="Spike2" parent="World/Objects" index="5" instance=ExtResource("7_060r2")]
-position = Vector2(1616, 256)
-rotation = -1.57079
-
-[node name="Spike3" parent="World/Objects" index="6" instance=ExtResource("7_060r2")]
 position = Vector2(1616, 240)
 rotation = -1.57079
+size = 6
+
+[node name="Spike3" parent="World/Objects" index="6" instance=ExtResource("7_060r2")]
+position = Vector2(1992, 288)
+size = 13
 
 [node name="Spike4" parent="World/Objects" index="7" instance=ExtResource("7_060r2")]
-position = Vector2(1616, 224)
-rotation = -1.57079
+position = Vector2(2584, 288)
+size = 17
 
 [node name="Spike5" parent="World/Objects" index="8" instance=ExtResource("7_060r2")]
-position = Vector2(1616, 208)
+position = Vector2(3200, 280)
 rotation = -1.57079
+size = 5
 
-[node name="Spike6" parent="World/Objects" index="9" instance=ExtResource("7_060r2")]
-position = Vector2(1904, 288)
-
-[node name="Spike7" parent="World/Objects" index="10" instance=ExtResource("7_060r2")]
-position = Vector2(1920, 288)
-
-[node name="Spike8" parent="World/Objects" index="11" instance=ExtResource("7_060r2")]
-position = Vector2(1936, 288)
-
-[node name="Spike9" parent="World/Objects" index="12" instance=ExtResource("7_060r2")]
-position = Vector2(1952, 288)
-
-[node name="Spike10" parent="World/Objects" index="13" instance=ExtResource("7_060r2")]
-position = Vector2(1968, 288)
-
-[node name="Spike11" parent="World/Objects" index="14" instance=ExtResource("7_060r2")]
-position = Vector2(1984, 288)
-
-[node name="Spike12" parent="World/Objects" index="15" instance=ExtResource("7_060r2")]
-position = Vector2(2000, 288)
-
-[node name="Spike13" parent="World/Objects" index="16" instance=ExtResource("7_060r2")]
-position = Vector2(2016, 288)
-
-[node name="Spike14" parent="World/Objects" index="17" instance=ExtResource("7_060r2")]
-position = Vector2(2032, 288)
-
-[node name="Spike15" parent="World/Objects" index="18" instance=ExtResource("7_060r2")]
-position = Vector2(2048, 288)
-
-[node name="Spike16" parent="World/Objects" index="19" instance=ExtResource("7_060r2")]
-position = Vector2(2064, 288)
-
-[node name="Spike17" parent="World/Objects" index="20" instance=ExtResource("7_060r2")]
-position = Vector2(2080, 288)
-
-[node name="Spike18" parent="World/Objects" index="21" instance=ExtResource("7_060r2")]
-position = Vector2(1104, 224)
-
-[node name="Spike19" parent="World/Objects" index="22" instance=ExtResource("7_060r2")]
-position = Vector2(1120, 224)
-
-[node name="Spike20" parent="World/Objects" index="23" instance=ExtResource("7_060r2")]
-position = Vector2(1136, 224)
-
-[node name="Spike21" parent="World/Objects" index="24" instance=ExtResource("7_060r2")]
-position = Vector2(1152, 224)
-
-[node name="Spike22" parent="World/Objects" index="25" instance=ExtResource("7_060r2")]
-position = Vector2(2464, 288)
-
-[node name="Spike23" parent="World/Objects" index="26" instance=ExtResource("7_060r2")]
-position = Vector2(2480, 288)
-
-[node name="Spike24" parent="World/Objects" index="27" instance=ExtResource("7_060r2")]
-position = Vector2(2496, 288)
-
-[node name="Spike25" parent="World/Objects" index="28" instance=ExtResource("7_060r2")]
-position = Vector2(2512, 288)
-
-[node name="Spike26" parent="World/Objects" index="29" instance=ExtResource("7_060r2")]
-position = Vector2(2528, 288)
-
-[node name="Spike27" parent="World/Objects" index="30" instance=ExtResource("7_060r2")]
-position = Vector2(2544, 288)
-
-[node name="Spike28" parent="World/Objects" index="31" instance=ExtResource("7_060r2")]
-position = Vector2(2560, 288)
-
-[node name="Spike29" parent="World/Objects" index="32" instance=ExtResource("7_060r2")]
-position = Vector2(2576, 288)
-
-[node name="Spike30" parent="World/Objects" index="33" instance=ExtResource("7_060r2")]
-position = Vector2(2592, 288)
-
-[node name="Spike31" parent="World/Objects" index="34" instance=ExtResource("7_060r2")]
-position = Vector2(2608, 288)
-
-[node name="Spike32" parent="World/Objects" index="35" instance=ExtResource("7_060r2")]
-position = Vector2(2624, 288)
-
-[node name="Spike33" parent="World/Objects" index="36" instance=ExtResource("7_060r2")]
-position = Vector2(2640, 288)
-
-[node name="Spike34" parent="World/Objects" index="37" instance=ExtResource("7_060r2")]
-position = Vector2(2656, 288)
-
-[node name="Spike35" parent="World/Objects" index="38" instance=ExtResource("7_060r2")]
-position = Vector2(2672, 288)
-
-[node name="Spike36" parent="World/Objects" index="39" instance=ExtResource("7_060r2")]
-position = Vector2(2688, 288)
-
-[node name="Spike37" parent="World/Objects" index="40" instance=ExtResource("7_060r2")]
-position = Vector2(2704, 288)
-
-[node name="Spike38" parent="World/Objects" index="41" instance=ExtResource("7_060r2")]
-position = Vector2(3200, 304)
-rotation = -1.57079
-
-[node name="Spike39" parent="World/Objects" index="42" instance=ExtResource("7_060r2")]
-position = Vector2(3200, 288)
-rotation = -1.57079
-
-[node name="Spike40" parent="World/Objects" index="43" instance=ExtResource("7_060r2")]
-position = Vector2(3200, 272)
-rotation = -1.57079
-
-[node name="Spike41" parent="World/Objects" index="44" instance=ExtResource("7_060r2")]
-position = Vector2(3200, 256)
-rotation = -1.57079
-
-[node name="MovingPlatform1" parent="World/Objects" index="45" instance=ExtResource("12_alkoh")]
+[node name="MovingPlatform1" parent="World/Objects" index="9" instance=ExtResource("12_alkoh")]
 position = Vector2(1440, 192)
 curve = SubResource("Curve2D_uiejf")
 time_in_seconds = 2.5
 
-[node name="MovingPlatform2" parent="World/Objects" index="46" instance=ExtResource("12_alkoh")]
+[node name="MovingPlatform2" parent="World/Objects" index="10" instance=ExtResource("12_alkoh")]
 position = Vector2(1984, 128)
 rotation = 1.57079
 curve = SubResource("Curve2D_fmty3")
 time_in_seconds = 2.5
 
-[node name="MovingPlatform3" parent="World/Objects" index="47" instance=ExtResource("12_alkoh")]
+[node name="MovingPlatform3" parent="World/Objects" index="11" instance=ExtResource("12_alkoh")]
 position = Vector2(3072, 224)
 rotation = 1.57079
 curve = SubResource("Curve2D_6u8c1")
 time_in_seconds = 2.5
 
-[node name="Spike1" parent="World/Objects/MovingPlatform3" index="3" instance=ExtResource("7_060r2")]
-position = Vector2(0, 15)
+[node name="Spike6" parent="World/Objects/MovingPlatform3" index="3" instance=ExtResource("7_060r2")]
+position = Vector2(7.99991, 14.9999)
 rotation = -3.14159
+size = 3
 
-[node name="Spike2" parent="World/Objects/MovingPlatform3" index="4" instance=ExtResource("7_060r2")]
-position = Vector2(16, 15)
-rotation = -3.14159
-
-[node name="Spike3" parent="World/Objects/MovingPlatform3" index="5" instance=ExtResource("7_060r2")]
+[node name="Spike7" parent="World/Objects/MovingPlatform3" index="4" instance=ExtResource("7_060r2")]
 position = Vector2(-22, 0)
 rotation = -1.57079
 
@@ -310,7 +200,7 @@ debug_color = Color(0.627451, 0.34902, 1, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="player" parent="World" index="6"]
-position = Vector2(96, 256)
+position = Vector2(96, 264)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(2525.52, 581.492)
