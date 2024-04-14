@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://p4mx467hp5wk"]
+[gd_scene load_steps=14 format=3 uid="uid://p4mx467hp5wk"]
 
 [ext_resource type="Script" path="res://scripts/globals/audio_manager.gd" id="1_bkuff"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_3mmdb"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bcdtb2o3r3s0u" path="res://assets/sfx/FoxJumpSFX.wav" id="3_oktq2"]
 [ext_resource type="AudioStream" uid="uid://cfp3qyqmq7n7h" path="res://assets/sfx/RobotDeath.wav" id="5_5pktu"]
 [ext_resource type="AudioStream" uid="uid://1sw7urjv500m" path="res://assets/sfx/FoxDeathSFX.wav" id="5_jyijb"]
+[ext_resource type="AudioStream" uid="uid://d3ked4vrggvp2" path="res://assets/sfx/Crumbling Block Sfx.wav" id="8_t8v3g"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1xtyl"]
 random_pitch = 1.1
@@ -30,6 +31,12 @@ stream_0/weight = 1.0
 random_pitch = 1.05
 streams_count = 1
 stream_0/stream = ExtResource("5_jyijb")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_axk7e"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_t8v3g")
 stream_0/weight = 1.0
 
 [node name="AudioManager" type="Node"]
@@ -61,4 +68,10 @@ bus = &"Sound"
 stream = SubResource("AudioStreamRandomizer_yia5a")
 volume_db = -5.0
 pitch_scale = 1.1
+bus = &"Sound"
+
+[node name="CrumblingBlockSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_axk7e")
+volume_db = -5.0
+pitch_scale = 1.4
 bus = &"Sound"

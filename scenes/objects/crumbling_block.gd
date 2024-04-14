@@ -14,6 +14,7 @@ func _on_trigger_entered(area):
 func _on_crumble():
 	collision_shape.set_deferred("disabled", true)
 	animation_player.play("destroy")
+	AudioManager.crumbling_block_sfx.play()
 	restart_timer.start()
 
 func _on_restart():
