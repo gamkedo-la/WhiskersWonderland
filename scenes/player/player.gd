@@ -26,7 +26,9 @@ const DEAD = 'dead'
 
 @onready var CAMERA_OFFSET = camera_target.position
 
-@export var MAX_SPEED : float = 200.0
+@export var is_demo : bool = false
+
+@export var MAX_SPEED : float = 180.0
 
 @export var GROUND_ACCELERATION : float = MAX_SPEED / 0.1
 @export var GROUND_FRICTION : float = MAX_SPEED / 0.1
@@ -40,7 +42,7 @@ const DEAD = 'dead'
 @onready var JUMP_SPEED : float = -2*JUMP_HEIGHT/JUMP_TIME
 @onready var GRAVITY : float = 2*JUMP_HEIGHT/(JUMP_TIME*JUMP_TIME)
 @onready var MAX_FALL_SPEED : float = abs(JUMP_SPEED)
-@export var WALL_SLIDE_SPEED : float = 80.0
+@export var WALL_SLIDE_SPEED : float = 60.0
 
 @export var QUICKSAND_MOVE_SPEED : float = 120.0
 @export var QUICKSAND_FALL_SPEED : float = 40.0
@@ -92,10 +94,13 @@ func _ready():
 		inputs[action] = { "press": null, "hold": null, "released": null }
 
 	visuals.set_outline_color(outline_color)
+	Debug.kill_player.connect(die)
+	
+	if is_demo:
+		button_recorder.mode = ButtonRecorder.ButtonRecorderMode.REPLAY
+		button_recorder.replay_file_path = "res://scenes/levels/demo.replay"
 	button_recorder.set_listener(encode_inputs)
 	button_recorder.init()
-
-	Debug.kill_player.connect(die)
 
 func encode_inputs() -> PackedByteArray:
 	return PackedByteArray([
@@ -123,7 +128,7 @@ func poll_input():
 func _process(_delta):
 	if button_recorder.is_replaying():
 		replay_input(button_recorder.get_current_frame())
-	else:
+	elif not is_demo:
 		poll_input()
 
 	if move_direction.x != 0:

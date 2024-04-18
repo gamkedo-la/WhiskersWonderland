@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3rkiiu8mj38t"]
+
+[ext_resource type="Script" path="res://title_screen.gd" id="1_jvo25"]
+[ext_resource type="PackedScene" uid="uid://bj0304n05vafl" path="res://scenes/levels/title_level.tscn" id="1_tdcgb"]
+
+[sub_resource type="Animation" id="Animation_45t6a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/PressEnter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tr1g4"]
+resource_name = "default"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/PressEnter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0lb6i"]
+_data = {
+"RESET": SubResource("Animation_45t6a"),
+"default": SubResource("Animation_tr1g4")
+}
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_jvo25")
+metadata/_edit_lock_ = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 2
+
+[node name="TitleLabel" type="Label" parent="HUD"]
+offset_top = 26.421
+offset_right = 640.0
+offset_bottom = 81.421
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.94902, 0.94902, 0.94902, 1)
+theme_override_colors/font_outline_color = Color(0.172549, 0.172549, 0.172549, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 40
+text = "Whisker's Wonderland"
+horizontal_alignment = 1
+
+[node name="PressEnter" type="Label" parent="HUD"]
+offset_top = 117.479
+offset_right = 640.0
+offset_bottom = 189.479
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.172549, 0.172549, 0.172549, 1)
+theme_override_font_sizes/font_size = 16
+text = "Press Enter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLevel" parent="." instance=ExtResource("1_tdcgb")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0lb6i")
+}
+autoplay = "default"
