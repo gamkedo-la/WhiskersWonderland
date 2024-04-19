@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://pjkvrily5b45"
-path="res://.godot/imported/LandOnGrassSFX.wav-015fcfd2332c505d830b3b1abe05bed3.sample"
+path="res://.godot/imported/LandOnGrassSFX.wav-9aa23fa64b1916065a28f404f3470a8e.sample"
 
 [deps]
 
-source_file="res://assets/sfx/LandOnGrassSFX.wav"
-dest_files=["res://.godot/imported/LandOnGrassSFX.wav-015fcfd2332c505d830b3b1abe05bed3.sample"]
+source_file="res://assets/sfx/fox/LandOnGrassSFX.wav"
+dest_files=["res://.godot/imported/LandOnGrassSFX.wav-9aa23fa64b1916065a28f404f3470a8e.sample"]
 
 [params]
 
