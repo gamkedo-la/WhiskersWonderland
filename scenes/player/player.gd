@@ -45,8 +45,8 @@ const DEAD = 'dead'
 @export var WALL_SLIDE_SPEED : float = 60.0
 
 @export var QUICKSAND_MOVE_SPEED : float = 120.0
-@export var QUICKSAND_FALL_SPEED : float = 40.0
-@export var QUICKSAND_JUMP_FACTOR : float = 0.6
+@export var QUICKSAND_FALL_SPEED : float = 60.0
+@export var QUICKSAND_JUMP_FACTOR : float = 0.5
 
 @export var WALL_JUMP_DISTANCE := Vector2(25, 72)
 var WALL_JUMP_SPEED : Vector2
@@ -54,8 +54,8 @@ var WALL_JUMP_SPEED : Vector2
 @export var CORNER_CORRECTION : int = 12 # Up to 12 pixels
 
 @export var JUMP_DAMP_FACTOR : float = 0.1
-@export var JUMP_HANG_TIME : float = 0.033
-@export var JUMP_COYOTE_TIME : float = 0.1
+@export var JUMP_HANG_TIME : float = 0.016
+@export var JUMP_COYOTE_TIME : float = 0.066
 @export var JUMP_BUFFER_TIME : float = 0.1
 
 @export var outline_color : Color = Color("#000000")

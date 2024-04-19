@@ -203,7 +203,7 @@ script = ExtResource("7_bbrr5")
 metadata/_edit_lock_ = true
 
 [node name="player" parent="World" instance=ExtResource("8_icxtm")]
-position = Vector2(33.5462, -124.812)
+position = Vector2(33.5462, -10.0158)
 is_demo = true
 
 [node name="Enemy" parent="World" instance=ExtResource("9_4vklp")]

@@ -8,6 +8,7 @@ resource_local_to_scene = true
 size = Vector2(8, 8)
 
 [node name="Spike" type="Area2D" groups=["damage_zone"]]
+show_behind_parent = true
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_mbxbb")
