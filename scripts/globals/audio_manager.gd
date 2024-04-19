@@ -6,10 +6,18 @@ extends Node
 # You can simple play any sound from here by using `AudioManager.audio_stream_name.play()`
 
 # Add the audiostreamplayer references here
-@onready var gem_pickup_sfx: AudioStreamPlayer = $GemPickupSFX
-@onready var fox_jump_sfx: AudioStreamPlayer = $FoxJumpSFX
-@onready var fox_death_sfx: AudioStreamPlayer = $FoxDeathSFX
-@onready var land_on_grass_sfx: AudioStreamPlayer = $LandOnGrassSFX
-@onready var land_on_platform_sfx: AudioStreamPlayer = $LandOnPlatformSFX
-@onready var robot_death_sfx: AudioStreamPlayer = $RobotDeathSFX
-@onready var crumbling_block_sfx: AudioStreamPlayer = $CrumblingBlockSFX
+
+@export_group("Fox Sounds")
+@export var fox_jump_sfx: AudioStreamPlayer
+@export var fox_death_sfx: AudioStreamPlayer
+@export var land_on_platform_sfx: AudioStreamPlayer
+@export var stick_to_slime_sfx: AudioStreamPlayer
+@export var land_on_grass_sfx: AudioStreamPlayer
+
+@export_group("World Sounds")
+@export var crumbling_block_sfx: AudioStreamPlayer
+
+@export_group("Other Sounds")
+@export var robot_death_sfx: AudioStreamPlayer
+@export var gem_pickup_sfx: AudioStreamPlayer
+
