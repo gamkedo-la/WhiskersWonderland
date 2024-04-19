@@ -35,6 +35,7 @@ func _physics_process(_delta):
 		if data.has_replay_ended():
 			print("Replay ended")
 			replay_ended.emit(data)
+			Signals.replay_ended.emit()
 			mode = ButtonRecorderMode.NONE
 	
 	if mode != ButtonRecorderMode.RECORDING or listener.is_null():
