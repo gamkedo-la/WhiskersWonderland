@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjsehxgp8ac1d"]
+[gd_scene load_steps=11 format=3 uid="uid://bjsehxgp8ac1d"]
 
 [ext_resource type="Script" path="res://scenes/objects/purple_gem.gd" id="1_q63wt"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_4lcxs"]
+[ext_resource type="Texture2D" uid="uid://byvreprbmy82d" path="res://assets/sprites/star.png" id="2_eny25"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x52jr"]
 radius = 16.0
+
+[sub_resource type="Curve" id="Curve_6hf5w"]
+_data = [Vector2(0, 1), 0.0, -0.432087, 0, 0, Vector2(1, 0), -2.06797, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Animation" id="Animation_3egkc"]
 length = 0.001
@@ -31,6 +36,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_be3r3"]
@@ -78,9 +95,52 @@ tracks/1/keys = {
 "values": [Vector2(0.304115, 0.240843)]
 }
 
+[sub_resource type="Animation" id="Animation_isha2"]
+resource_name = "collect"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StarParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0cey"]
 _data = {
 "RESET": SubResource("Animation_3egkc"),
+"collect": SubResource("Animation_isha2"),
 "flip": SubResource("Animation_be3r3"),
 "floating": SubResource("Animation_0w6hr")
 }
@@ -120,6 +180,28 @@ polygon = PackedVector2Array(-30.3444, -18.0898, 22.7583, -51.2544, 22.7583, -36
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_x52jr")
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 6
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.95
+randomness = 0.1
+texture = ExtResource("2_eny25")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 12)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+angle_max = 359.0
+scale_amount_min = 0.12
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_6hf5w")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

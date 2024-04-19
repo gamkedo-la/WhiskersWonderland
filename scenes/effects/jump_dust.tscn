@@ -12,7 +12,6 @@ script = ExtResource("1_nu6u2")
 particles = NodePath("Particles")
 
 [node name="Particles" type="CPUParticles2D" parent="."]
-modulate = Color(1, 1, 1, 0.898039)
 position = Vector2(0, 4)
 emitting = false
 amount = 1
@@ -31,5 +30,5 @@ initial_velocity_max = 40.0
 scale_amount_min = 0.12
 scale_amount_max = 0.15
 scale_amount_curve = SubResource("Curve_f15jo")
-color = Color(0.913725, 0.913725, 0.913725, 0.913725)
+color = Color(1, 1, 1, 0.913725)
 metadata/_edit_lock_ = true

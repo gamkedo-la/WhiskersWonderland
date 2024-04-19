@@ -11,7 +11,6 @@ func on_area_entered(area: Area2D) -> void:
 		collect()
 
 func collect() -> void:
-	visible = false
+	$AnimationPlayer.play("collect")
 	Signals.item_collected.emit(self)
 	AudioManager.gem_pickup_sfx.play()
-	queue_free()

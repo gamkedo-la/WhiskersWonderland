@@ -3,6 +3,57 @@
 [ext_resource type="Script" path="res://scenes/effects/effect.gd" id="1_hd4lt"]
 [ext_resource type="Texture2D" uid="uid://dpqbmsd1gyr8s" path="res://assets/sprites/dust.png" id="2_pie4o"]
 
+[sub_resource type="Animation" id="Animation_he8pf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-10, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("right:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("left:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1, 0.1)]
+}
+
 [sub_resource type="Animation" id="Animation_1isgw"]
 resource_name = "default"
 length = 0.4
@@ -55,57 +106,6 @@ tracks/3/keys = {
 "values": [Vector2(0.08, 0.08), Vector2(1e-05, 1e-05)]
 }
 
-[sub_resource type="Animation" id="Animation_he8pf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("left:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-10, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("right:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(10, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("right:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.1, 0.1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("left:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.1, 0.1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5sitp"]
 _data = {
 "RESET": SubResource("Animation_he8pf"),
@@ -117,14 +117,12 @@ script = ExtResource("1_hd4lt")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="left" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.709804)
 position = Vector2(-10, 0)
 rotation = 0.10472
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_pie4o")
 
 [node name="right" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.709804)
 position = Vector2(10, 0)
 rotation = -0.10472
 scale = Vector2(0.1, 0.1)

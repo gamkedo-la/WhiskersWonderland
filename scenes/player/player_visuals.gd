@@ -2,6 +2,7 @@ extends Node2D
 
 const JUMP_DUST_EFFECT = preload("res://scenes/effects/jump_dust.tscn")
 const LAND_DUST_EFFECT = preload("res://scenes/effects/land_dust.tscn")
+const IMPACT_EFFECT = preload("res://scenes/effects/impact.tscn")
 
 @onready var player = get_parent()
 @onready var root = $scale/root
@@ -63,6 +64,11 @@ func land():
 	scale_tween = get_tree().create_tween()
 	scale_tween.tween_property(root, "scale", Vector2.ONE, 0.1)
 	scale_tween.play()
+
+func spawn_impact_effect(at):
+	var effect = IMPACT_EFFECT.instantiate()
+	player.get_parent().add_child(effect)
+	effect.global_position = at
 
 func spawn_jump_dust():
 	var effect = JUMP_DUST_EFFECT.instantiate()

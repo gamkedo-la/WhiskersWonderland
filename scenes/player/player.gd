@@ -466,6 +466,7 @@ func _on_hitbox_area_entered(area):
 		if velocity.y > 0 and not is_on_floor():
 			var entity = area.get_parent()
 			entity.stomp()
+			visuals.spawn_impact_effect(global_position)
 			jump(1.2, false)
 			jump_damped = true
 
