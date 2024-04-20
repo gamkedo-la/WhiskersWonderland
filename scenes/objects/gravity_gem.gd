@@ -1,0 +1,2 @@
+extends Collectible
+class_name GravityGem

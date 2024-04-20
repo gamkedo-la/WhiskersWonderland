@@ -14,12 +14,12 @@ func _ready():
 
 func set_tile_size(value):
 	$CollisionShape.shape = $CollisionShape.shape.duplicate()
-	
+
 	# Update collider and sprite sizes
 	tile_size = value
 	tile_size.x = clampi(tile_size.x, 2, 40)
 	tile_size.y = clampi(tile_size.y, 2, 24)
-	
+
 	$CollisionShape.position = tile_size * 8 + Vector2i(0, 4)
 	$CollisionShape.shape.size = tile_size * 16 - Vector2i(0, 8)
 

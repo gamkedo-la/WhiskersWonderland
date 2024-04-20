@@ -13,27 +13,27 @@ func _ready():
 func _process(_delta):
 	var is_running_in_editor = OS.has_feature("editor")
 	var is_debug_build = OS.is_debug_build()
-	
+
 	# Debug controls
 	if is_running_in_editor or is_debug_build:
 		if Input.is_action_just_pressed("debug_exit"):
 			quit()
-		
+
 		if Input.is_action_just_pressed("debug_reload"):
 			reload_scene()
-		
+
 		if Input.is_action_just_pressed("debug_user_folder"):
 			Globals.pause()
 			OS.shell_open(ProjectSettings.globalize_path("user://"))
-		
+
 		if Input.is_action_just_pressed("debug_slow"):
 			Engine.time_scale = clamp(Engine.time_scale - 0.25, 0.25, 4.0)
 			print('Slowed down (%s)' % [Engine.time_scale])
-		
+
 		if Input.is_action_just_pressed("debug_fast"):
 			Engine.time_scale = clamp(Engine.time_scale + 0.25, 0.25, 4.0)
 			print('Speed up (%s)' % [Engine.time_scale])
-		
+
 		if Input.is_action_just_pressed("debug_die"):
 			print('Killed player')
 			kill_player.emit()

@@ -1309,10 +1309,11 @@ vertical_alignment = 1
 metadata/_edit_lock_ = true
 
 [node name="Visuals" type="Node2D" parent="."]
+position = Vector2(2.08165e-12, -14.5)
 script = ExtResource("2_d2q2l")
-metadata/_edit_lock_ = true
 
 [node name="Particles" type="Node2D" parent="Visuals"]
+position = Vector2(-2.08165e-12, 14.5)
 metadata/_edit_lock_ = true
 
 [node name="Dust" type="CPUParticles2D" parent="Visuals/Particles"]
@@ -1364,6 +1365,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="scale" type="Node2D" parent="Visuals"]
+position = Vector2(-2.08165e-12, 14.5)
 scale = Vector2(0.037, 0.037)
 metadata/_edit_lock_ = true
 
@@ -1479,6 +1481,9 @@ libraries = {
 "": SubResource("AnimationLibrary_iu5c0")
 }
 
+[node name="TailAnchor" type="Node2D" parent="Visuals"]
+position = Vector2(-2.08165e-12, 14.5)
+
 [node name="CameraTarget" type="Node2D" parent="."]
 position = Vector2(0, -16)
 metadata/_edit_lock_ = true
@@ -1513,37 +1518,40 @@ position = Vector2(0, -14.5)
 shape = SubResource("CapsuleShape2D_yyidg")
 metadata/_edit_lock_ = true
 
-[node name="Trigger" type="Area2D" parent="." groups=["player"]]
-visible = false
+[node name="Areas" type="Node2D" parent="."]
+position = Vector2(2.08165e-12, -14.5)
+
+[node name="Trigger" type="Area2D" parent="Areas" groups=["player"]]
+position = Vector2(-2.08165e-12, 14.5)
 collision_layer = 4
 collision_mask = 4
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Trigger"]
 position = Vector2(-0.0833864, -13.2195)
 shape = SubResource("RectangleShape2D_o2u8f")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Hitbox" type="Area2D" parent="." groups=["hitbox", "player"]]
-visible = false
+[node name="Hitbox" type="Area2D" parent="Areas" groups=["hitbox", "player"]]
+position = Vector2(-2.08165e-12, 14.5)
 collision_layer = 8
 collision_mask = 8
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hitbox"]
 position = Vector2(-0.0168095, -0.874834)
 shape = SubResource("RectangleShape2D_t5sy2")
 debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
 metadata/_edit_lock_ = true
 
-[node name="Hurtbox" type="Area2D" parent="." groups=["hurtbox", "player"]]
-visible = false
+[node name="Hurtbox" type="Area2D" parent="Areas" groups=["hurtbox", "player"]]
+position = Vector2(-2.08165e-12, 14.5)
 collision_layer = 8
 collision_mask = 8
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hurtbox"]
 position = Vector2(0.0321217, -17.0172)
 shape = SubResource("RectangleShape2D_ycrse")
 debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
@@ -1556,10 +1564,10 @@ visible = false
 z_index = 2
 points = PackedVector2Array(0, -6.65851, -5.60312, -4.43314, -11.1719, -2.61859, -17.9087, -1.70089)
 width = 3.0
-default_color = Color(1, 0, 0.0666667, 0.509804)
+default_color = Color(0.344603, 0.0556484, 0.373515, 0.509804)
 antialiased = true
 script = ExtResource("19_cyrvb")
-anchor_node = NodePath("../..")
+anchor_node = NodePath("../../Visuals/TailAnchor")
 sprites = NodePath("../../Visuals/scale/root/CanvasGroup/Body/Tail")
 
 [node name="StateMachine" type="Node" parent="."]
@@ -1568,8 +1576,8 @@ script = ExtResource("12_e4xmf")
 [node name="ButtonRecorder" type="Node" parent="."]
 script = ExtResource("14_ukcfi")
 
-[connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="area_entered" from="Areas/Trigger" to="." method="_on_trigger_area_entered"]
+[connection signal="area_entered" from="Areas/Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="replay_ended" from="ButtonRecorder" to="." method="_on_replay_ended"]
 [connection signal="replay_started" from="ButtonRecorder" to="." method="_on_replay_started"]

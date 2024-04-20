@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
-signal reached_checkpoint(checkpoint)
-signal died
-
-const INPUT_ACTIONS = ['jump']
+const INPUT_ACTIONS = ['jump', 'use_gem']
 
 const MOVING = 'moving'
 const SLIDING = 'sliding'
@@ -17,9 +14,11 @@ const DEAD = 'dead'
 @onready var slide_particles_timer = $Visuals/Particles/Slide/DelayTimer
 @onready var ears = $Visuals/scale/root/CanvasGroup/Body/Head/Ears
 @onready var tail = $Visuals/scale/root/CanvasGroup/Body/Tail
+@onready var tail_points: PointChain2D = $Node/TailPoints
 @onready var camera_target = $CameraTarget
 @onready var camera = $CameraTarget/Camera
-@onready var trigger = $Trigger
+@onready var areas: Node2D = $Areas
+@onready var trigger = $Areas/Trigger
 @onready var animation_player = $Visuals/AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var button_recorder = $ButtonRecorder
@@ -73,12 +72,21 @@ var jump_damped : bool = false
 var jumps_available : int = 1
 var tracking_slime: Area2D
 var previous_slime_position : Vector2
+var gravity_charges := 0
+var gravity_flipped := false
 
 var was_grounded : bool
 var move_direction : Vector2
 var last_direction : int = 1
 var wall_direction : int = 0
 var inputs := {}
+
+var is_falling: bool:
+	get:
+		return (velocity.y > 0) if up_direction == Vector2.UP else (velocity.y < 0)
+var is_raising: bool:
+	get:
+		return (velocity.y < 0) if up_direction == Vector2.UP else (velocity.y > 0)
 
 func _ready():
 	WALL_JUMP_SPEED.x = sqrt(2 * WALL_JUMP_DISTANCE.x * AIR_ACCELERATION)
@@ -95,12 +103,14 @@ func _ready():
 
 	visuals.set_outline_color(outline_color)
 	Debug.kill_player.connect(die)
-	
+
 	if is_demo:
 		button_recorder.mode = ButtonRecorder.ButtonRecorderMode.REPLAY
 		button_recorder.replay_file_path = "res://scenes/levels/demo.replay"
 	button_recorder.set_listener(encode_inputs)
 	button_recorder.init()
+
+	Signals.item_collected.connect(_on_item_collected)
 
 func encode_inputs() -> PackedByteArray:
 	return PackedByteArray([
@@ -152,11 +162,16 @@ func moving_update(delta):
 	coyote_timer -= delta
 	jump_buffer -= delta
 
+	var reset_y_velocity := false
+
+	if inputs.use_gem.press:
+		reset_y_velocity = _flip_gravity()
+
 	# Update visuals
-	visuals.scale.x = last_direction
+	visuals.scale.x = last_direction * -up_direction.y
 	ears.scale.x = last_direction
 	tail.scale.x = last_direction
-	
+
 	var in_quicksand = is_in_quicksand()
 	z_index = -2 if in_quicksand else 0
 
@@ -175,7 +190,7 @@ func moving_update(delta):
 		camera_target.position = CAMERA_OFFSET * Vector2(move_direction.x, 1)
 
 	# Dampen vertical velocity after releasing jump button
-	if inputs.jump.released and not jump_damped and velocity.y < 0:
+	if inputs.jump.released and not jump_damped and is_raising:
 		velocity.y *= JUMP_DAMP_FACTOR
 		hang_timer = 0.0
 		jump_damped = true
@@ -205,7 +220,7 @@ func moving_update(delta):
 			wall_jump()
 
 		# Check wall slide
-		if velocity.y > 0:
+		if is_falling:
 			if wall_direction != 0 and move_direction.x == wall_direction:
 				state_machine.change_state(SLIDING)
 				move_and_slide()
@@ -221,14 +236,18 @@ func moving_update(delta):
 		run_speed = QUICKSAND_MOVE_SPEED
 		fall_speed = QUICKSAND_FALL_SPEED
 
+	fall_speed *= -up_direction.y
+
 	if move_direction.x != 0:
 		velocity.x = Utils.approach(velocity.x, run_speed * move_direction.x, acceleration * delta)
 	else:
 		velocity.x = Utils.approach(velocity.x, 0, friction * delta)
 
 	# Vertical movement
-	velocity.y += GRAVITY * delta
-	if velocity.y > fall_speed:
+	if reset_y_velocity:
+		velocity.y = 0
+	velocity.y += GRAVITY * delta * -up_direction.y
+	if sign(velocity.y) == sign(fall_speed) and abs(velocity.y) > abs(fall_speed):
 		velocity.y = fall_speed
 
 	# Manage jump additional time on air (hang time)
@@ -237,13 +256,13 @@ func moving_update(delta):
 		if inputs.jump.released:
 			hang_timer = 0.0
 
-	if is_jumping and velocity.y > 0:
+	if is_jumping and is_falling:
 		is_jumping = false
 		if inputs.jump.hold:
 			hang_timer = JUMP_HANG_TIME
 
 	# Edge nudging when jumping
-	if velocity.y < 0:
+	if is_raising:
 		var motion = velocity * delta
 		if test_move(global_transform, motion):
 			for i in range(1, CORNER_CORRECTION + 1):
@@ -270,7 +289,7 @@ func moving_update(delta):
 		else:
 			animation_player.play("idle")
 	else:
-		if velocity.y > 0:
+		if is_falling:
 			animation_player.play("fall")
 
 	if stuck_inside_terrain():
@@ -310,7 +329,7 @@ func sliding_update(delta):
 	slide_timer -= delta
 	camera.update(true)
 
-	visuals.scale.x = -wall_direction
+	visuals.scale.x = -wall_direction * -up_direction.y
 	visuals.slide()
 	if slide_particles_timer.is_stopped() and not slide_particles.emitting:
 		slide_particles.restart()
@@ -353,7 +372,7 @@ func sliding_update(delta):
 	var collision = get_last_slide_collision()
 	if collision:
 		velocity.x = 10 * wall_direction
-		velocity.y = WALL_SLIDE_SPEED
+		velocity.y = WALL_SLIDE_SPEED * -up_direction.y
 
 	animation_player.play("slide")
 
@@ -383,7 +402,7 @@ func track_slime(slime: Area2D):
 
 func in_slime_update(_delta):
 	z_index = -2
-	
+
 	if inputs.jump.press:
 		wall_jump(false)
 		state_machine.change_state(MOVING)
@@ -407,7 +426,7 @@ func jump(jump_factor := 1.0, spawn_dust: bool = true):
 	jump_buffer = 0.0
 	is_jumping = true
 	jumps_available = clamp(jumps_available - 1, 0, 1)
-	velocity.y = JUMP_SPEED * jump_factor
+	velocity.y = JUMP_SPEED * jump_factor * -up_direction.y
 
 	animation_player.play("jump")
 	if spawn_dust:
@@ -418,7 +437,7 @@ func jump(jump_factor := 1.0, spawn_dust: bool = true):
 func wall_jump(spawn_dust: bool = true):
 	jump_buffer = 0.0
 	velocity.x = -wall_direction * WALL_JUMP_SPEED.x
-	velocity.y = -WALL_JUMP_SPEED.y
+	velocity.y = -WALL_JUMP_SPEED.y * -up_direction.y
 
 	animation_player.play("jump")
 	if spawn_dust:
@@ -435,16 +454,21 @@ func is_alive() -> bool:
 	return not state_machine.is_current(DEAD)
 
 func die():
+	gravity_charges = 0
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	animation_player.play("die")
 	state_machine.change_state(DEAD)
-	died.emit()
+	Signals.player_died.emit()
 	AudioManager.fox_death_sfx.play()
 
 func respawn(at: Vector2):
+	Signals.player_respawn.emit()
 	process_mode = Node.PROCESS_MODE_PAUSABLE
 	global_position = at
 	state_machine.change_state(MOVING)
+	if gravity_flipped:
+		gravity_charges = 1
+		_flip_gravity()
 
 ### Callback functions
 func _on_trigger_area_entered(area):
@@ -452,18 +476,21 @@ func _on_trigger_area_entered(area):
 		die()
 
 	if area.is_in_group("checkpoint"):
-		reached_checkpoint.emit(area)
+		Signals.player_reached_checkpoint.emit(area)
 
 	if area.is_in_group("falling_platform"):
 		# Platform can only fall if player is above it
-		if global_position.y <= area.global_position.y:
+		if (
+			(up_direction == Vector2.UP and global_position.y < area.global_position.y)
+			or (up_direction == Vector2.DOWN and global_position.y > area.global_position.y)
+		):
 			var entity = area.get_parent()
-			entity.fall()
+			entity.fall(up_direction)
 
 func _on_hitbox_area_entered(area):
 	# Stomp enemy
 	if area.is_in_group("hurtbox") and area.is_in_group("enemy"):
-		if velocity.y > 0 and not is_on_floor():
+		if is_falling and not is_on_floor():
 			var entity = area.get_parent()
 			entity.stomp()
 			visuals.spawn_impact_effect(global_position)
@@ -483,3 +510,20 @@ func _on_replay_ended(_data):
 	print("Player stopped at %s" % [str(global_position)])
 	if recolor_outline_on_replay:
 		visuals.set_outline_color(outline_color)
+
+func _on_item_collected(item: Collectible) -> void:
+	if item is GravityGem:
+		gravity_charges += 1
+
+func _flip_gravity(force: bool = false) -> bool:
+	if not gravity_charges:
+		return false
+
+	gravity_flipped = not gravity_flipped
+	gravity_charges -= 1
+	visuals.rotation += PI
+	visuals.scale.x *= -1.0
+	up_direction *= -1.0
+	tail_points.y_rotated = not tail_points.y_rotated
+	areas.rotation += PI
+	return true

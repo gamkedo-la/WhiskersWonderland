@@ -83,4 +83,7 @@ libraries = {
 "": SubResource("AnimationLibrary_3bq3q")
 }
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-35, -15, 70, 30)
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
