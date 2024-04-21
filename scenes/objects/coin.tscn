@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://dt0p4eccwnu0m"]
+
+[ext_resource type="Texture2D" uid="uid://7kqrtmgx3e3o" path="res://assets/sprites/coin.png" id="1_a3ncw"]
+[ext_resource type="Script" path="res://scenes/objects/collectible.gd" id="1_jqc85"]
+[ext_resource type="Texture2D" uid="uid://byvreprbmy82d" path="res://assets/sprites/star.png" id="3_p3y4n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qnei8"]
+radius = 16.0
+
+[sub_resource type="Curve" id="Curve_26d43"]
+_data = [Vector2(0, 1), 0.0, -0.432087, 0, 0, Vector2(1, 0), -2.06797, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_q3yao"]
+resource_name = "floating"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_h3gid"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xlqvc"]
+resource_name = "collect"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StarParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uep6a"]
+_data = {
+"RESET": SubResource("Animation_h3gid"),
+"collect": SubResource("Animation_xlqvc"),
+"floating": SubResource("Animation_q3yao")
+}
+
+[node name="Coin" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_jqc85")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_a3ncw")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_qnei8")
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.95
+randomness = 0.1
+texture = ExtResource("3_p3y4n")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 12)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+angle_max = 359.0
+scale_amount_min = 0.12
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_26d43")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_uep6a")
+}
+autoplay = "floating"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://olgh2e41sixh"]
+[gd_scene load_steps=20 format=3 uid="uid://olgh2e41sixh"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_m4w2p"]
 [ext_resource type="TileSet" uid="uid://bik5n3mn3bvfd" path="res://assets/tilesets/desert_tileset.tres" id="2_p0r6n"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b280ii26f55pm" path="res://scenes/objects/spike.tscn" id="7_060r2"]
 [ext_resource type="PackedScene" uid="uid://5gj4vhu7e00u" path="res://scenes/enemies/enemy.tscn" id="7_csn6c"]
 [ext_resource type="PackedScene" uid="uid://cy27vsjobtd6q" path="res://scenes/objects/quicksand.tscn" id="7_eggou"]
+[ext_resource type="PackedScene" uid="uid://dt0p4eccwnu0m" path="res://scenes/objects/coin.tscn" id="8_7fj8p"]
 [ext_resource type="PackedScene" uid="uid://blsxeqp4v2k1j" path="res://scenes/objects/checkpoint.tscn" id="11_r1ebb"]
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="12_alkoh"]
 [ext_resource type="PackedScene" uid="uid://dqv63xk0jh7jo" path="res://scenes/objects/slime.tscn" id="13_yrbt1"]
@@ -107,58 +108,67 @@ layer_1/tile_data = PackedInt32Array(1376268, 131072, 2, 1310732, 131072, 1, 124
 [node name="Enemy" parent="World/Entities" index="0" instance=ExtResource("7_csn6c")]
 position = Vector2(499.088, 171.365)
 
-[node name="Quicksand1" parent="World/Objects" index="0" instance=ExtResource("7_eggou")]
+[node name="Coin1" parent="World/Objects" index="0" instance=ExtResource("8_7fj8p")]
+position = Vector2(230.943, 197)
+
+[node name="Coin2" parent="World/Objects" index="1" instance=ExtResource("8_7fj8p")]
+position = Vector2(254.943, 197)
+
+[node name="Coin3" parent="World/Objects" index="2" instance=ExtResource("8_7fj8p")]
+position = Vector2(278.943, 197)
+
+[node name="Quicksand1" parent="World/Objects" index="3" instance=ExtResource("7_eggou")]
 position = Vector2(688, 240)
 tile_size = Vector2i(18, 2)
 metadata/_edit_lock_ = true
 
-[node name="Quicksand2" parent="World/Objects" index="1" instance=ExtResource("7_eggou")]
+[node name="Quicksand2" parent="World/Objects" index="4" instance=ExtResource("7_eggou")]
 position = Vector2(2448, 224)
 tile_size = Vector2i(17, 4)
 metadata/_edit_lock_ = true
 
-[node name="Quicksand3" parent="World/Objects" index="2" instance=ExtResource("7_eggou")]
+[node name="Quicksand3" parent="World/Objects" index="5" instance=ExtResource("7_eggou")]
 position = Vector2(2944, 320)
 tile_size = Vector2i(16, 5)
 metadata/_edit_lock_ = true
 
-[node name="Slime1" parent="World/Objects" index="3" instance=ExtResource("13_yrbt1")]
+[node name="Slime1" parent="World/Objects" index="6" instance=ExtResource("13_yrbt1")]
 position = Vector2(2048, -48)
 
-[node name="Spike1" parent="World/Objects" index="4" instance=ExtResource("7_060r2")]
+[node name="Spike1" parent="World/Objects" index="7" instance=ExtResource("7_060r2")]
 position = Vector2(1136, 224)
 size = 6
 
-[node name="Spike2" parent="World/Objects" index="5" instance=ExtResource("7_060r2")]
+[node name="Spike2" parent="World/Objects" index="8" instance=ExtResource("7_060r2")]
 position = Vector2(1617, 240)
 rotation = -1.57079
 size = 6
 
-[node name="Spike3" parent="World/Objects" index="6" instance=ExtResource("7_060r2")]
+[node name="Spike3" parent="World/Objects" index="9" instance=ExtResource("7_060r2")]
 position = Vector2(1984, 304)
 size = 12
 
-[node name="Spike4" parent="World/Objects" index="7" instance=ExtResource("7_060r2")]
+[node name="Spike4" parent="World/Objects" index="10" instance=ExtResource("7_060r2")]
 position = Vector2(2584, 288)
 size = 17
 
-[node name="Spike5" parent="World/Objects" index="8" instance=ExtResource("7_060r2")]
+[node name="Spike5" parent="World/Objects" index="11" instance=ExtResource("7_060r2")]
 position = Vector2(3200, 280)
 rotation = -1.57079
 size = 5
 
-[node name="MovingPlatform1" parent="World/Objects" index="9" instance=ExtResource("12_alkoh")]
+[node name="MovingPlatform1" parent="World/Objects" index="12" instance=ExtResource("12_alkoh")]
 position = Vector2(1440, 192)
 curve = SubResource("Curve2D_uiejf")
 time_in_seconds = 2.5
 
-[node name="MovingPlatform2" parent="World/Objects" index="10" instance=ExtResource("12_alkoh")]
+[node name="MovingPlatform2" parent="World/Objects" index="13" instance=ExtResource("12_alkoh")]
 position = Vector2(1984, 128)
 rotation = 1.57079
 curve = SubResource("Curve2D_14sum")
 time_in_seconds = 2.0
 
-[node name="MovingPlatform3" parent="World/Objects" index="11" instance=ExtResource("12_alkoh")]
+[node name="MovingPlatform3" parent="World/Objects" index="14" instance=ExtResource("12_alkoh")]
 position = Vector2(3072, 224)
 rotation = 1.57079
 curve = SubResource("Curve2D_ydjd4")
