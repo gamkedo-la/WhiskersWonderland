@@ -4,5 +4,5 @@
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_qlrpi")
-current_level = 2
+current_level = 1
 metadata/_edit_lock_ = true

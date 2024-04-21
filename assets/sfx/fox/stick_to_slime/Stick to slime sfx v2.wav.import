@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5ttcc54vsc2b"
+path="res://.godot/imported/Stick to slime sfx v2.wav-7cf00ab2a5209857d0dd6ac4b7b5688e.sample"
+
+[deps]
+
+source_file="res://assets/sfx/fox/stick_to_slime/Stick to slime sfx v2.wav"
+dest_files=["res://.godot/imported/Stick to slime sfx v2.wav-7cf00ab2a5209857d0dd6ac4b7b5688e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

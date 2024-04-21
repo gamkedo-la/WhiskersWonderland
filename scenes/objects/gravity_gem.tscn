@@ -1,0 +1,209 @@
+[gd_scene load_steps=10 format=3 uid="uid://boefxuuqrmkha"]
+
+[ext_resource type="Script" path="res://scenes/objects/gravity_gem.gd" id="1_3lcd6"]
+[ext_resource type="Texture2D" uid="uid://byvreprbmy82d" path="res://assets/sprites/star.png" id="2_2dlkv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x52jr"]
+radius = 16.0
+
+[sub_resource type="Curve" id="Curve_6hf5w"]
+_data = [Vector2(0, 1), 0.0, -0.432087, 0, 0, Vector2(1, 0), -2.06797, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_3egkc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.304115, 0.240843)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_isha2"]
+resource_name = "collect"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StarParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_be3r3"]
+resource_name = "flip"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.304115, 0.240843), Vector2(-0.304, 0.241), Vector2(0.304115, 0.240843)]
+}
+
+[sub_resource type="Animation" id="Animation_0w6hr"]
+resource_name = "floating"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.304115, 0.240843)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0cey"]
+_data = {
+"RESET": SubResource("Animation_3egkc"),
+"collect": SubResource("Animation_isha2"),
+"flip": SubResource("Animation_be3r3"),
+"floating": SubResource("Animation_0w6hr")
+}
+
+[node name="GravityGem" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_3lcd6")
+
+[node name="Sprite" type="Node2D" parent="."]
+scale = Vector2(0.304115, 0.240843)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D4" type="Polygon2D" parent="Sprite"]
+position = Vector2(-1.42327, -0.600628)
+scale = Vector2(1.06855, 1.06855)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-15, -23, 1, -35, 17, -22, 24, -1, 17, 23, 1, 33, -16, 23, -23, -1)
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite"]
+position = Vector2(-1.42327, -0.600628)
+color = Color(0.413439, 0.746829, 0.63972, 1)
+polygon = PackedVector2Array(-15, -23, 1, -35, 17, -22, 24, -1, 17, 23, 1, 33, -16, 23, -23, -1)
+
+[node name="Polygon2D3" type="Polygon2D" parent="Sprite"]
+position = Vector2(-1.42327, -0.600628)
+color = Color(0.194272, 0.414997, 0.347327, 1)
+polygon = PackedVector2Array(1, -35, 17, -22, 24, -1, 17, 23, 1, 33)
+
+[node name="Polygon2D2" type="Polygon2D" parent="Sprite"]
+position = Vector2(-7.42327, -16.6006)
+scale = Vector2(0.26364, 0.331679)
+color = Color(0.727835, 0.941894, 0.865485, 1)
+polygon = PackedVector2Array(-30.3444, -18.0898, 22.7583, -51.2544, 22.7583, -36.1796, 11.3791, -21.1047, -15.1722, -9.04489, -15.1722, 42.2095, -34.1374, 54.2693, -56.8957, 42.2095)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_x52jr")
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 6
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.95
+randomness = 0.1
+texture = ExtResource("2_2dlkv")
+emission_shape = 3
+emission_rect_extents = Vector2(10, 12)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+angle_max = 359.0
+scale_amount_min = 0.12
+scale_amount_max = 0.2
+scale_amount_curve = SubResource("Curve_6hf5w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t0cey")
+}
+autoplay = "floating"

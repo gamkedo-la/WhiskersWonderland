@@ -20,3 +20,4 @@ func _update_size() -> void:
 func splash(at_y: float):
 	splash_particles.global_position.y = at_y
 	splash_particles.emitting = true
+	AudioManager.stick_to_slime_sfx.play()

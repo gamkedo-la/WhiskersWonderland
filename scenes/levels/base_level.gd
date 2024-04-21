@@ -21,6 +21,8 @@ func _ready():
 	set_camera_bounds()
 	Signals.level_ready.emit(self)
 	Signals.item_collected.connect(_on_item_collected)
+	Signals.player_died.connect(_on_player_died)
+	Signals.player_reached_checkpoint.connect(_on_player_reached_checkpoint)
 
 func set_camera_bounds():
 	camera_bounds.visible = false

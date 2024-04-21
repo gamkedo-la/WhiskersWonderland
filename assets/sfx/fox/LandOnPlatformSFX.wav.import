@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b5a5s5520f5gj"
-path="res://.godot/imported/LandOnPlatformSFX.wav-cddf32443261bcf9765ce0943ed8be11.sample"
+path="res://.godot/imported/LandOnPlatformSFX.wav-19148b0179513dc626543e94bd6e6f63.sample"
 
 [deps]
 
-source_file="res://assets/sfx/LandOnPlatformSFX.wav"
-dest_files=["res://.godot/imported/LandOnPlatformSFX.wav-cddf32443261bcf9765ce0943ed8be11.sample"]
+source_file="res://assets/sfx/fox/LandOnPlatformSFX.wav"
+dest_files=["res://.godot/imported/LandOnPlatformSFX.wav-19148b0179513dc626543e94bd6e6f63.sample"]
 
 [params]
 

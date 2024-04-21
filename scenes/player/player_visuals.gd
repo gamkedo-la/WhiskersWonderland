@@ -27,7 +27,7 @@ func _process(_delta):
 func _physics_process(_delta):
 	var velocity = player.velocity
 	var move_direction = player.move_direction
-	
+
 	# Apply movement when running
 	if move_direction.x != 0 and player.is_on_floor():
 		earL_spring.velocity = -3 * sign(velocity.x)
@@ -43,7 +43,7 @@ func jump():
 	# Bounce ears
 	earL_spring.position = -0.3
 	earR_spring.position = 0.3
-	
+
 	# Stretch sprite when jumping
 	root.scale = Vector2(0.75, 1.25)
 	if scale_tween: scale_tween.stop()
@@ -53,11 +53,11 @@ func jump():
 
 func land():
 	spawn_land_dust()
-	
+
 	# Bounce ears
 	earL_spring.position = 0.3
 	earR_spring.position = -0.3
-	
+
 	# Squash sprite when landing
 	root.scale = Vector2(1.25, 0.75)
 	if scale_tween: scale_tween.stop()
