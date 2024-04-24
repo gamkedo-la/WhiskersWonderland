@@ -139,7 +139,7 @@ metadata/_edit_lock_ = true
 
 [node name="World" type="Node2D" parent="."]
 process_mode = 1
-modulate = Color(0.909804, 0.909804, 0.909804, 1)
+modulate = Color(0.827451, 0.827451, 0.827451, 1)
 metadata/_edit_lock_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="World"]

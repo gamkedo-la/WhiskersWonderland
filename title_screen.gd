@@ -8,7 +8,6 @@ const TITLE_LEVEL = preload("res://scenes/levels/title_level.tscn")
 var title_level
 
 func _ready():
-	animation_player.play("default")
 	load_title_level()
 	Signals.replay_ended.connect(_on_replay_ended)
 

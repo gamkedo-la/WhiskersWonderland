@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bxgr32ypkty8c"]
+[gd_scene load_steps=16 format=3 uid="uid://bxgr32ypkty8c"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_68e1g"]
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="2_f7d57"]
@@ -31,15 +31,9 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_xy4go"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -150, 1.00092, 0, 0, 0, 0, -19, 0.00012207, 0, 0, 0, 0, 72, -0.000427246)
+"points": PackedVector2Array(0, 0, 0, 0, -112, 0.000701904, 0, 0, 0, 0, -19, 0.00012207, 0, 0, 0, 0, 48, -0.000305176)
 }
 point_count = 3
-
-[sub_resource type="Curve2D" id="Curve2D_es06h"]
-_data = {
-"points": PackedVector2Array(-2.61156, -0.145858, 2.61156, 0.145858, -152, 0, 0, 0, 0, 0, 456, 0)
-}
-point_count = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nehvq"]
 size = Vector2(5734.72, 333.795)
@@ -70,190 +64,173 @@ loop = true
 time_in_seconds = 6.0
 
 [node name="MovingPlatform4" parent="World/Objects" index="3" instance=ExtResource("2_f7d57")]
-position = Vector2(848, 136)
+position = Vector2(-272, 144)
 rotation = -1.57079
 curve = SubResource("Curve2D_xy4go")
-time_in_seconds = 3.0
+time_in_seconds = 1.5
 
 [node name="Spike5" parent="World/Objects/MovingPlatform4" index="3" instance=ExtResource("3_qksng")]
-position = Vector2(-11, -0.999924)
+position = Vector2(-3.22182, -0.999973)
 rotation = 1.57079
 
 [node name="Spike7" parent="World/Objects/MovingPlatform4" index="4" instance=ExtResource("3_qksng")]
-position = Vector2(-12, 7.00008)
+position = Vector2(-4.22182, 7.00003)
 rotation = 1.81238
 
 [node name="Spike6" parent="World/Objects/MovingPlatform4" index="5" instance=ExtResource("3_qksng")]
-position = Vector2(-12, -6.99992)
+position = Vector2(-4.22182, -6.99997)
 rotation = 1.25499
 
 [node name="Slime" parent="World/Objects/MovingPlatform4" index="6" instance=ExtResource("4_rlrmt")]
-position = Vector2(-38.9999, 14.0002)
+position = Vector2(-31.2217, 14.0002)
 rotation = 1.5708
 
-[node name="MovingPlatform5" parent="World/Objects" index="4" instance=ExtResource("2_f7d57")]
-position = Vector2(-616, 256)
-curve = SubResource("Curve2D_es06h")
-time_in_seconds = 10.0
-
-[node name="Spawner" parent="World/Objects" index="5" instance=ExtResource("7_lu0qn")]
+[node name="Spawner" parent="World/Objects" index="4" instance=ExtResource("7_lu0qn")]
 position = Vector2(935.853, 268)
 metadata/_edit_group_ = true
 
 [node name="FallingPlatform1" parent="World/Objects/Spawner" index="0" instance=ExtResource("4_qagil")]
 
-[node name="Spawner2" parent="World/Objects" index="6" instance=ExtResource("7_lu0qn")]
+[node name="Spawner2" parent="World/Objects" index="5" instance=ExtResource("7_lu0qn")]
 position = Vector2(1012.56, 224.486)
 metadata/_edit_group_ = true
 
 [node name="FallingPlatform2" parent="World/Objects/Spawner2" index="0" instance=ExtResource("4_qagil")]
 
-[node name="Spawner3" parent="World/Objects" index="7" instance=ExtResource("7_lu0qn")]
+[node name="Spawner3" parent="World/Objects" index="6" instance=ExtResource("7_lu0qn")]
 position = Vector2(1084.5, 182.269)
 metadata/_edit_group_ = true
 
 [node name="FallingPlatform3" parent="World/Objects/Spawner3" index="0" instance=ExtResource("4_qagil")]
 
-[node name="Spawner4" parent="World/Objects" index="8" instance=ExtResource("7_lu0qn")]
+[node name="Spawner4" parent="World/Objects" index="7" instance=ExtResource("7_lu0qn")]
 position = Vector2(1356, 98)
 metadata/_edit_group_ = true
 
 [node name="FallingPlatform4" parent="World/Objects/Spawner4" index="0" instance=ExtResource("4_qagil")]
 
-[node name="Spike1" parent="World/Objects" index="9" instance=ExtResource("3_qksng")]
+[node name="Spike1" parent="World/Objects" index="8" instance=ExtResource("3_qksng")]
 position = Vector2(1124, 209)
 rotation = -1.5708
 
-[node name="Spike2" parent="World/Objects" index="10" instance=ExtResource("3_qksng")]
+[node name="Spike2" parent="World/Objects" index="9" instance=ExtResource("3_qksng")]
 position = Vector2(1124, 225)
 rotation = -1.5708
 
-[node name="Spike3" parent="World/Objects" index="11" instance=ExtResource("3_qksng")]
+[node name="Spike3" parent="World/Objects" index="10" instance=ExtResource("3_qksng")]
 position = Vector2(1124, 241)
 rotation = -1.5708
 
-[node name="Spike7" parent="World/Objects" index="12" instance=ExtResource("3_qksng")]
+[node name="Spike7" parent="World/Objects" index="11" instance=ExtResource("3_qksng")]
 position = Vector2(1244, 181)
 rotation = 1.57079
 
-[node name="Spike8" parent="World/Objects" index="13" instance=ExtResource("3_qksng")]
+[node name="Spike8" parent="World/Objects" index="12" instance=ExtResource("3_qksng")]
 position = Vector2(1244, 197)
 rotation = 1.57079
 
-[node name="Spike9" parent="World/Objects" index="14" instance=ExtResource("3_qksng")]
+[node name="Spike9" parent="World/Objects" index="13" instance=ExtResource("3_qksng")]
 position = Vector2(1244, 213)
 rotation = 1.57079
 
-[node name="Spike10" parent="World/Objects" index="15" instance=ExtResource("3_qksng")]
+[node name="Spike10" parent="World/Objects" index="14" instance=ExtResource("3_qksng")]
 position = Vector2(1257, 47)
 rotation = 3.14159
 
-[node name="Spike11" parent="World/Objects" index="16" instance=ExtResource("3_qksng")]
+[node name="Spike11" parent="World/Objects" index="15" instance=ExtResource("3_qksng")]
 position = Vector2(1273, 47)
 rotation = 3.14159
 
-[node name="Spike12" parent="World/Objects" index="17" instance=ExtResource("3_qksng")]
+[node name="Spike12" parent="World/Objects" index="16" instance=ExtResource("3_qksng")]
 position = Vector2(1289, 47)
 rotation = 3.14159
 
-[node name="Spike13" parent="World/Objects" index="18" instance=ExtResource("3_qksng")]
+[node name="Spike13" parent="World/Objects" index="17" instance=ExtResource("3_qksng")]
 position = Vector2(1305, 47)
 rotation = 3.14159
 
-[node name="Spike14" parent="World/Objects" index="19" instance=ExtResource("3_qksng")]
+[node name="Spike14" parent="World/Objects" index="18" instance=ExtResource("3_qksng")]
 position = Vector2(1321, 47)
 rotation = 3.14159
 
-[node name="Spike15" parent="World/Objects" index="20" instance=ExtResource("3_qksng")]
+[node name="Spike15" parent="World/Objects" index="19" instance=ExtResource("3_qksng")]
 position = Vector2(1337, 47)
 rotation = 3.14159
 
-[node name="Spike16" parent="World/Objects" index="21" instance=ExtResource("3_qksng")]
+[node name="Spike16" parent="World/Objects" index="20" instance=ExtResource("3_qksng")]
 position = Vector2(1353, 47)
 rotation = 3.14159
 
-[node name="Spike17" parent="World/Objects" index="22" instance=ExtResource("3_qksng")]
+[node name="Spike17" parent="World/Objects" index="21" instance=ExtResource("3_qksng")]
 position = Vector2(1369, 47)
 rotation = 3.14159
 
-[node name="Spike18" parent="World/Objects" index="23" instance=ExtResource("3_qksng")]
+[node name="Spike18" parent="World/Objects" index="22" instance=ExtResource("3_qksng")]
 position = Vector2(1385, 47)
 rotation = 3.14159
 
-[node name="Spike4" parent="World/Objects" index="24" instance=ExtResource("3_qksng")]
+[node name="Spike4" parent="World/Objects" index="23" instance=ExtResource("3_qksng")]
 position = Vector2(-1539, 182)
 rotation = -4.71238
 
-[node name="Spike5" parent="World/Objects" index="25" instance=ExtResource("3_qksng")]
+[node name="Spike5" parent="World/Objects" index="24" instance=ExtResource("3_qksng")]
 position = Vector2(-1539, 198)
 rotation = -4.71238
 
-[node name="Spike6" parent="World/Objects" index="26" instance=ExtResource("3_qksng")]
+[node name="Spike6" parent="World/Objects" index="25" instance=ExtResource("3_qksng")]
 position = Vector2(-1539, 214)
 rotation = -4.71238
 
-[node name="CrumblingBlock1" parent="World/Objects" index="27" instance=ExtResource("5_pw86k")]
-position = Vector2(-282, 127)
+[node name="CrumblingBlock5" parent="World/Objects" index="26" instance=ExtResource("5_pw86k")]
+position = Vector2(-744.5, 176.5)
 
-[node name="CrumblingBlock2" parent="World/Objects" index="28" instance=ExtResource("5_pw86k")]
-position = Vector2(-181, 150)
+[node name="CrumblingBlock6" parent="World/Objects" index="27" instance=ExtResource("5_pw86k")]
+position = Vector2(-652.5, 176)
 
-[node name="CrumblingBlock3" parent="World/Objects" index="29" instance=ExtResource("5_pw86k")]
-position = Vector2(-93, 201)
+[node name="CrumblingBlock7" parent="World/Objects" index="28" instance=ExtResource("5_pw86k")]
+position = Vector2(-540.5, 171)
 
-[node name="CrumblingBlock4" parent="World/Objects" index="30" instance=ExtResource("5_pw86k")]
-position = Vector2(-6, 245)
+[node name="CrumblingBlock8" parent="World/Objects" index="29" instance=ExtResource("5_pw86k")]
+position = Vector2(-425, 139.5)
 
-[node name="Gems" type="Node2D" parent="World/Objects" index="31"]
+[node name="Gems" type="Node2D" parent="World/Objects" index="30"]
 metadata/_edit_lock_ = true
 
-[node name="Spawner" parent="World/Objects/Gems" index="0" instance=ExtResource("7_lu0qn")]
-position = Vector2(-967, 168)
-metadata/_edit_group_ = true
-
-[node name="GravityGem" parent="World/Objects/Gems/Spawner" index="0" instance=ExtResource("7_35aeq")]
-
-[node name="Spawner2" parent="World/Objects/Gems" index="1" instance=ExtResource("7_lu0qn")]
-position = Vector2(-1599, 80)
+[node name="Spawner2" parent="World/Objects/Gems" index="0" instance=ExtResource("7_lu0qn")]
+position = Vector2(-6.59541, 280.818)
 metadata/_edit_group_ = true
 
 [node name="GravityGem2" parent="World/Objects/Gems/Spawner2" index="0" instance=ExtResource("7_35aeq")]
 
-[node name="Spawner3" parent="World/Objects/Gems" index="2" instance=ExtResource("7_lu0qn")]
+[node name="Spawner3" parent="World/Objects/Gems" index="1" instance=ExtResource("7_lu0qn")]
 position = Vector2(1442, 284)
 metadata/_edit_group_ = true
 
 [node name="GravityGem3" parent="World/Objects/Gems/Spawner3" index="0" instance=ExtResource("7_35aeq")]
 
-[node name="Spawner4" parent="World/Objects/Gems" index="3" instance=ExtResource("7_lu0qn")]
+[node name="Spawner4" parent="World/Objects/Gems" index="2" instance=ExtResource("7_lu0qn")]
 position = Vector2(708, 69)
 metadata/_edit_group_ = true
 
 [node name="GravityGem4" parent="World/Objects/Gems/Spawner4" index="0" instance=ExtResource("7_35aeq")]
 
-[node name="PurpleGem1" parent="World/Objects/Gems" index="4" instance=ExtResource("7_h1rh3")]
-position = Vector2(-283, 70)
-
-[node name="PurpleGem2" parent="World/Objects/Gems" index="5" instance=ExtResource("7_h1rh3")]
+[node name="PurpleGem2" parent="World/Objects/Gems" index="3" instance=ExtResource("7_h1rh3")]
 position = Vector2(153, 124)
 
-[node name="PurpleGem3" parent="World/Objects/Gems" index="6" instance=ExtResource("7_h1rh3")]
+[node name="PurpleGem3" parent="World/Objects/Gems" index="4" instance=ExtResource("7_h1rh3")]
 position = Vector2(580, 162)
 
-[node name="PurpleGem4" parent="World/Objects/Gems" index="7" instance=ExtResource("7_h1rh3")]
+[node name="PurpleGem4" parent="World/Objects/Gems" index="5" instance=ExtResource("7_h1rh3")]
 position = Vector2(999, 66)
 
-[node name="PurpleGem5" parent="World/Objects/Gems" index="8" instance=ExtResource("7_h1rh3")]
+[node name="PurpleGem5" parent="World/Objects/Gems" index="6" instance=ExtResource("7_h1rh3")]
 position = Vector2(1266, 284)
 
-[node name="PurpleGem6" parent="World/Objects/Gems" index="9" instance=ExtResource("7_h1rh3")]
-position = Vector2(-1561, 141)
-
-[node name="ArrowTrap" parent="World/Objects" index="32" instance=ExtResource("8_8ym3t")]
-position = Vector2(-1488, 272)
+[node name="ArrowTrap" parent="World/Objects" index="31" instance=ExtResource("8_8ym3t")]
+position = Vector2(-1472, 288)
 
 [node name="player" parent="World" index="6"]
-position = Vector2(768, 208)
+position = Vector2(-1600.39, 94.1558)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(-2.71399, 572.853)

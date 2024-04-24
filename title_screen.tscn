@@ -1,37 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3rkiiu8mj38t"]
+[gd_scene load_steps=5 format=3 uid="uid://c3rkiiu8mj38t"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_jvo25"]
 
 [sub_resource type="Animation" id="Animation_45t6a"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/PressEnter:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_tr1g4"]
-resource_name = "default"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HUD/PressEnter:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
 [sub_resource type="Animation" id="Animation_4nl86"]
 resource_name = "transition"
@@ -65,7 +37,6 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0lb6i"]
 _data = {
 "RESET": SubResource("Animation_45t6a"),
-"default": SubResource("Animation_tr1g4"),
 "transition": SubResource("Animation_4nl86")
 }
 
@@ -90,17 +61,14 @@ text = "Whisker's Wonderland"
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="PressEnter" type="Label" parent="HUD"]
-offset_top = 117.479
-offset_right = 640.0
-offset_bottom = 189.479
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+[node name="PressEnter" type="RichTextLabel" parent="HUD"]
+offset_left = 275.0
+offset_top = 117.0
+offset_right = 365.0
+offset_bottom = 189.0
 theme_override_colors/font_outline_color = Color(0.172549, 0.172549, 0.172549, 1)
-theme_override_font_sizes/font_size = 16
-text = "Press Enter"
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_lock_ = true
+bbcode_enabled = true
+text = "[wave amp=50.0 freq=5.0 connected=1]Press Enter[/wave]"
 
 [node name="Overlay" type="ColorRect" parent="HUD"]
 anchors_preset = 15
@@ -115,4 +83,3 @@ metadata/_edit_lock_ = true
 libraries = {
 "": SubResource("AnimationLibrary_0lb6i")
 }
-autoplay = "default"
