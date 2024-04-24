@@ -38,7 +38,7 @@ func _process(_delta):
 	parallax_background.scroll_offset = -current_camera.get_camera_position()
 
 	# Can only pause if player is alive
-	if player.is_alive():
+	if player.is_alive() and not player.is_demo:
 		if Input.is_action_just_pressed("pause"):
 			if Globals.is_paused():
 				Globals.resume()

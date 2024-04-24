@@ -20,6 +20,7 @@ const DEAD = 'dead'
 @onready var areas: Node2D = $Areas
 @onready var trigger = $Areas/Trigger
 @onready var animation_player = $Visuals/AnimationPlayer
+@onready var wall_jump_timer = $Timers/WallJumpTimer
 @onready var state_machine = $StateMachine
 @onready var button_recorder = $ButtonRecorder
 
@@ -70,6 +71,7 @@ var slide_timer : float = 0.0
 var is_jumping : bool = false
 var jump_damped : bool = false
 var jumps_available : int = 1
+
 var tracking_slime: Area2D
 var previous_slime_position : Vector2
 var gravity_charges := 0
@@ -188,6 +190,9 @@ func moving_update(delta):
 	# Update camera's target position
 	if move_direction.x != 0:
 		camera_target.position = CAMERA_OFFSET * Vector2(move_direction.x, 1)
+	
+	if is_grounded:
+		camera.platforming_mode()
 
 	# Dampen vertical velocity after releasing jump button
 	if inputs.jump.released and not jump_damped and is_raising:
@@ -438,6 +443,8 @@ func wall_jump(spawn_dust: bool = true):
 	jump_buffer = 0.0
 	velocity.x = -wall_direction * WALL_JUMP_SPEED.x
 	velocity.y = -WALL_JUMP_SPEED.y * -up_direction.y
+	camera.climbing_mode()
+	wall_jump_timer.start()
 
 	animation_player.play("jump")
 	if spawn_dust:
@@ -510,6 +517,9 @@ func _on_replay_ended(_data):
 	print("Player stopped at %s" % [str(global_position)])
 	if recolor_outline_on_replay:
 		visuals.set_outline_color(outline_color)
+
+func _on_wall_jump_timer_timeout():
+	camera.move_on_x = true
 
 func _on_item_collected(item: Collectible) -> void:
 	if item is GravityGem:

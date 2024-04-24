@@ -1497,6 +1497,7 @@ smoothing_down = 12.0
 limit_left = 0.0
 limit_right = 2560.0
 limit_bottom = 360.0
+debug_mode = false
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="CameraTarget"]
@@ -1571,6 +1572,12 @@ script = ExtResource("19_cyrvb")
 anchor_node = NodePath("../../Visuals/TailAnchor")
 sprites = NodePath("../../Visuals/scale/root/CanvasGroup/Body/Tail")
 
+[node name="Timers" type="Node" parent="."]
+
+[node name="WallJumpTimer" type="Timer" parent="Timers"]
+wait_time = 0.35
+one_shot = true
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("12_e4xmf")
 
@@ -1580,5 +1587,6 @@ script = ExtResource("14_ukcfi")
 [connection signal="area_entered" from="Areas/Trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="area_entered" from="Areas/Hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="area_entered" from="Areas/Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timers/WallJumpTimer" to="." method="_on_wall_jump_timer_timeout"]
 [connection signal="replay_ended" from="ButtonRecorder" to="." method="_on_replay_ended"]
 [connection signal="replay_started" from="ButtonRecorder" to="." method="_on_replay_started"]

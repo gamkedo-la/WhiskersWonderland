@@ -16,7 +16,10 @@ extends Node2D
 @export var limit_top : float = -10000000
 @export var limit_bottom : float = 10000000
 
-@export var debug_mode : bool = false
+@export var debug_mode : bool = true
+
+enum CAMERA_MODE { PLATFORMING, CLIMBING }
+var mode := CAMERA_MODE.PLATFORMING
 
 var target : Vector2
 @onready var viewport = get_viewport()
@@ -30,7 +33,22 @@ func _ready():
 
 func _draw():
 	if debug_mode:
+		draw_circle(to_local(target), 2.0, Color.RED)
 		draw_circle(to_local(to_global_space(viewport.canvas_transform.origin)), 2.0, Color.BLUE)
+
+func update(catchup: bool):
+	if mode == CAMERA_MODE.PLATFORMING:
+		smoothing_up = smoothing_up_copy if catchup else 0.0
+	elif mode == CAMERA_MODE.CLIMBING:
+		smoothing_up = 2.0
+
+func platforming_mode():
+	mode = CAMERA_MODE.PLATFORMING
+	move_on_x = true
+
+func climbing_mode():
+	mode = CAMERA_MODE.CLIMBING
+	move_on_x = false
 
 func _process(delta):
 	if not enabled:
@@ -56,9 +74,6 @@ func _process(delta):
 
 func get_camera_position():
 	return to_global_space(viewport.canvas_transform.origin)
-
-func update(catchup: bool):
-	smoothing_up = smoothing_up_copy if catchup else 0.0
 
 func to_camera_space(pos: Vector2):
 	return screen_size/2 - pos
