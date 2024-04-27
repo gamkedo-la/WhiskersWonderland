@@ -323,6 +323,9 @@ func is_in_quicksand() -> bool:
 func is_in_slime() -> bool:
 	return is_in_trigger("slime")
 
+func is_on_sand():
+	pass
+
 func sliding_enter():
 	velocity.y = 0
 	slide_particles_timer.start()
@@ -476,6 +479,9 @@ func respawn(at: Vector2):
 	if gravity_flipped:
 		gravity_charges = 1
 		_flip_gravity()
+
+func play_walk_on_sand_sfx():
+	AudioManager.walk_on_sand_sfx.play()
 
 ### Callback functions
 func _on_trigger_area_entered(area):

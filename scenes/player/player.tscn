@@ -1133,6 +1133,23 @@ tracks/11/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("..")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.125, 0.375),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_walk_on_sand_sfx"
+}, {
+"args": [],
+"method": &"play_walk_on_sand_sfx"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_dkw01"]
 resource_name = "slide"
