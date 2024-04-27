@@ -6,10 +6,10 @@
 [ext_resource type="AudioStream" uid="uid://b5a5s5520f5gj" path="res://assets/sfx/fox/LandOnPlatformSFX.wav" id="3_er3lm"]
 [ext_resource type="AudioStream" uid="uid://bcdtb2o3r3s0u" path="res://assets/sfx/fox/FoxJumpSFX.wav" id="3_oktq2"]
 [ext_resource type="AudioStream" uid="uid://rmke5ca3v87s" path="res://assets/sfx/fox/stick_to_slime/Stick to slime sfx v1.wav" id="3_pvbc7"]
+[ext_resource type="AudioStream" uid="uid://ddtcxyj4fl1u" path="res://assets/sfx/fox/Walk On Sand.wav" id="4_ebvi5"]
 [ext_resource type="AudioStream" uid="uid://c5ttcc54vsc2b" path="res://assets/sfx/fox/stick_to_slime/Stick to slime sfx v2.wav" id="4_wcuow"]
 [ext_resource type="AudioStream" uid="uid://cfp3qyqmq7n7h" path="res://assets/sfx/RobotDeath.wav" id="5_5pktu"]
 [ext_resource type="AudioStream" uid="uid://1sw7urjv500m" path="res://assets/sfx/fox/FoxDeathSFX.wav" id="5_jyijb"]
-[ext_resource type="AudioStream" uid="uid://d3ked4vrggvp2" path="res://assets/sfx/Crumbling Block Sfx.wav" id="8_t8v3g"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kmac8"]
 random_pitch = 1.1
@@ -21,6 +21,12 @@ stream_0/weight = 1.0
 random_pitch = 1.05
 streams_count = 1
 stream_0/stream = ExtResource("5_jyijb")
+stream_0/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_axk7e"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_ebvi5")
 stream_0/weight = 1.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_t0iy0"]
@@ -44,19 +50,14 @@ streams_count = 1
 stream_0/stream = ExtResource("3_er3lm")
 stream_0/weight = 1.0
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_axk7e"]
-random_pitch = 1.1
-streams_count = 1
-stream_0/stream = ExtResource("8_t8v3g")
-stream_0/weight = 1.0
-
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("fox_jump_sfx", "fox_death_sfx", "land_on_platform_sfx", "stick_to_slime_sfx", "land_on_grass_sfx", "crumbling_block_sfx", "robot_death_sfx", "gem_pickup_sfx")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("fox_jump_sfx", "fox_death_sfx", "land_on_platform_sfx", "stick_to_slime_sfx", "land_on_grass_sfx", "walk_on_sand_sfx", "crumbling_block_sfx", "robot_death_sfx", "gem_pickup_sfx")]
 script = ExtResource("1_bkuff")
 fox_jump_sfx = NodePath("FoxSounds/FoxJumpSFX")
 fox_death_sfx = NodePath("FoxSounds/FoxDeathSFX")
 land_on_platform_sfx = NodePath("FoxSounds/LandOnPlatformSFX")
 stick_to_slime_sfx = NodePath("FoxSounds/StickToSlimeSFX")
 land_on_grass_sfx = NodePath("FoxSounds/LandOnGrassSFX")
+walk_on_sand_sfx = NodePath("FoxSounds/WalkOnSandSFX")
 crumbling_block_sfx = NodePath("WorldSounds/CrumblingBlockSFX")
 robot_death_sfx = NodePath("OtherSounds/RobotDeathSFX")
 gem_pickup_sfx = NodePath("OtherSounds/GemPickupSFX")
@@ -71,6 +72,12 @@ bus = &"Sound"
 stream = SubResource("AudioStreamRandomizer_yia5a")
 volume_db = -5.0
 pitch_scale = 1.1
+bus = &"Sound"
+
+[node name="WalkOnSandSFX" type="AudioStreamPlayer" parent="FoxSounds"]
+stream = SubResource("AudioStreamRandomizer_axk7e")
+volume_db = -6.0
+pitch_scale = 1.3
 bus = &"Sound"
 
 [node name="StickToSlimeSFX" type="AudioStreamPlayer" parent="FoxSounds"]

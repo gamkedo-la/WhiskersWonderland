@@ -13,6 +13,7 @@ extends Node
 @export var land_on_platform_sfx: AudioStreamPlayer
 @export var stick_to_slime_sfx: AudioStreamPlayer
 @export var land_on_grass_sfx: AudioStreamPlayer
+@export var walk_on_sand_sfx: AudioStreamPlayer
 
 @export_group("World Sounds")
 @export var crumbling_block_sfx: AudioStreamPlayer
@@ -20,4 +21,3 @@ extends Node
 @export_group("Other Sounds")
 @export var robot_death_sfx: AudioStreamPlayer
 @export var gem_pickup_sfx: AudioStreamPlayer
-
