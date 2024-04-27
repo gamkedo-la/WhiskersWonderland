@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://byvreprbmy82d" path="res://assets/sprites/star.png" id="2_eny25"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_x52jr"]
-radius = 16.0
+radius = 7.32605
 
 [sub_resource type="Curve" id="Curve_6hf5w"]
 _data = [Vector2(0, 1), 0.0, -0.432087, 0, 0, Vector2(1, 0), -2.06797, 0.0, 0, 0]
@@ -182,6 +182,8 @@ visible = false
 shape = SubResource("CircleShape2D_x52jr")
 
 [node name="StarParticles" type="CPUParticles2D" parent="."]
+z_index = 1
+z_as_relative = false
 emitting = false
 amount = 6
 lifetime = 0.5
