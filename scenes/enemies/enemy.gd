@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MOVE_SPEED : float = 80.0
+const MOVE_SPEED : float = 60.0
 const GRAVITY : float = 400.0
 
 @onready var visuals = $Visuals

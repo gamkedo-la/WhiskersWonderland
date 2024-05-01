@@ -46,8 +46,8 @@ const DEAD = 'dead'
 @export var WALL_SLIDE_SPEED : float = 60.0
 
 @export var QUICKSAND_MOVE_SPEED : float = 120.0
-@export var QUICKSAND_FALL_SPEED : float = 60.0
-@export var QUICKSAND_JUMP_FACTOR : float = 0.5
+@export var QUICKSAND_FALL_SPEED : float = 40.0
+@export var QUICKSAND_JUMP_FACTOR : float = 0.6
 
 @export var WALL_JUMP_DISTANCE := Vector2(25, 72)
 var WALL_JUMP_SPEED : Vector2

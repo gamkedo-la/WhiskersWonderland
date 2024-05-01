@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1rlpdx552k5s" path="res://assets/sprites/wooden_block.png" id="2_vvc2n"]
 
 [sub_resource type="Curve2D" id="Curve2D_3soyg"]
+resource_local_to_scene = true
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -96, 0, 0, 0, 0, 0, 128, 0)
 }
