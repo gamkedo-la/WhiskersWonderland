@@ -17,6 +17,7 @@ const DEAD = 'dead'
 @onready var tail_points: PointChain2D = $Node/TailPoints
 @onready var camera_target = $CameraTarget
 @onready var camera = $CameraTarget/Camera
+@onready var ground_raycast = $GroundRaycast
 @onready var areas: Node2D = $Areas
 @onready var trigger = $Areas/Trigger
 @onready var animation_player = $Visuals/AnimationPlayer
@@ -480,8 +481,18 @@ func respawn(at: Vector2):
 		gravity_charges = 1
 		_flip_gravity()
 
-func play_walk_on_sand_sfx():
-	AudioManager.walk_on_sand_sfx.play()
+func play_step_sfx():
+	if ground_raycast.is_colliding():
+		var at = ground_raycast.get_collision_point()
+		var terrain_type = Utils.get_tile_custom_data(tilemap, at, "terrain_type")
+		
+		match terrain_type:
+			"sand":
+				AudioManager.walk_on_sand_sfx.play()
+			#"grass":
+				#break
+			#"stone":
+				#break
 
 ### Callback functions
 func _on_trigger_area_entered(area):

@@ -108,8 +108,10 @@ bus = &"Sound"
 
 [node name="GemPickupSFX" type="AudioStreamPlayer" parent="OtherSounds"]
 stream = ExtResource("2_3mmdb")
+volume_db = -6.0
 bus = &"Sound"
 
 [node name="RobotDeathSFX" type="AudioStreamPlayer" parent="OtherSounds"]
 stream = ExtResource("5_5pktu")
+volume_db = -6.0
 bus = &"Sound"

@@ -122,11 +122,11 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 colors = PackedColorArray(0.490196, 0.6, 0.72549, 1, 0.741176, 0.796078, 0.854902, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mpja"]
-radius = 11.125
+radius = 7.29934
 height = 34.9004
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_butw4"]
-size = Vector2(24.2079, 20.1402)
+size = Vector2(17, 16.668)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_njfxq"]
 radius = 11.7045
@@ -217,19 +217,17 @@ target_position = Vector2(0, 32)
 metadata/_edit_lock_ = true
 
 [node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
-visible = false
 collision_layer = 8
 collision_mask = 8
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-0.172523, 7.87599)
+position = Vector2(0, 9.612)
 shape = SubResource("RectangleShape2D_butw4")
 debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["enemy", "hurtbox"]]
-visible = false
 position = Vector2(0, -7.34173)
 collision_layer = 8
 collision_mask = 8
