@@ -9,11 +9,11 @@ resource_local_to_scene = true
 size = Vector2(20, 54)
 
 [sub_resource type="Curve" id="Curve_3rx60"]
-_data = [Vector2(0, 1), 0.0, -0.047285, 0, 0, Vector2(1, 0), -1.92113, 0.0, 0, 0]
+_data = [Vector2(0, 0.894201), 0.0, -0.047285, 0, 0, Vector2(1, 0.180061), -1.92113, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_xd50e"]
-offsets = PackedFloat32Array(0, 0.746439, 1)
+offsets = PackedFloat32Array(0, 0.928775, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_y2sxa"]
@@ -39,19 +39,23 @@ metadata/_edit_lock_ = true
 [node name="SplashParticles" type="CPUParticles2D" parent="."]
 z_index = 1
 emitting = false
-lifetime = 0.75
+lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 texture = ExtResource("3_xsocn")
 emission_shape = 3
 emission_rect_extents = Vector2(1, 10)
+particle_flag_align_y = true
 spread = 60.0
-gravity = Vector2(0, 300)
-initial_velocity_min = 50.0
-initial_velocity_max = 75.0
-scale_amount_min = 0.1
-scale_amount_max = 0.15
+gravity = Vector2(0, 600)
+initial_velocity_min = 75.0
+initial_velocity_max = 100.0
+scale_amount_min = 0.06
+scale_amount_max = 0.1
 scale_amount_curve = SubResource("Curve_3rx60")
+split_scale = true
+scale_curve_x = SubResource("Curve_3rx60")
+scale_curve_y = null
 color_ramp = SubResource("Gradient_xd50e")
 color_initial_ramp = SubResource("Gradient_y2sxa")
 metadata/_edit_lock_ = true
