@@ -1,5 +1,6 @@
 extends Node2D
 
+const QUICKSAND_SPLASH_EFFECT = preload("res://scenes/effects/quicksand_splash.tscn")
 const JUMP_DUST_EFFECT = preload("res://scenes/effects/jump_dust.tscn")
 const LAND_DUST_EFFECT = preload("res://scenes/effects/land_dust.tscn")
 const IMPACT_EFFECT = preload("res://scenes/effects/impact.tscn")
@@ -83,6 +84,11 @@ func spawn_wall_jump_dust():
 func spawn_land_dust():
 	var effect = LAND_DUST_EFFECT.instantiate()
 	player.last_collision.get_collider().add_child(effect)
+	effect.global_position = player.global_position
+
+func spawn_quicksand_splash():
+	var effect = QUICKSAND_SPLASH_EFFECT.instantiate()
+	player.get_parent().add_child(effect)
 	effect.global_position = player.global_position
 
 func set_outline_color(color: Color):

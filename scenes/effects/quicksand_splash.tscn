@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdtqt8ei31fgn"]
+
+[ext_resource type="Script" path="res://scenes/effects/effect.gd" id="1_w6kj2"]
+[ext_resource type="Texture2D" uid="uid://r3ar5rbcnifr" path="res://assets/sprites/circle.png" id="2_tai4m"]
+
+[sub_resource type="Curve" id="Curve_03ccm"]
+_data = [Vector2(0, 0.859666), 0.0, -0.20458, 0, 0, Vector2(1, 0.298332), -1.19857, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_p1awx"]
+colors = PackedColorArray(0.827451, 0.505882, 0.145098, 1, 0.709804, 0.443137, 0.235294, 1)
+
+[node name="QuicksandSplash" type="Node2D" node_paths=PackedStringArray("particles")]
+z_index = -3
+script = ExtResource("1_w6kj2")
+particles = NodePath("Particles")
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0, 8)
+emitting = false
+amount = 6
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("2_tai4m")
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 60.0
+gravity = Vector2(0, 700)
+initial_velocity_min = 175.0
+initial_velocity_max = 200.0
+scale_amount_min = 0.06
+scale_amount_max = 0.1
+split_scale = true
+scale_curve_x = SubResource("Curve_03ccm")
+scale_curve_y = null
+color_initial_ramp = SubResource("Gradient_p1awx")
+metadata/_edit_lock_ = true

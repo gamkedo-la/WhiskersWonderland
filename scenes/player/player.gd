@@ -78,6 +78,7 @@ var previous_slime_position : Vector2
 var gravity_charges := 0
 var gravity_flipped := false
 
+var was_in_quicksand : bool
 var was_grounded : bool
 var move_direction : Vector2
 var last_direction : int = 1
@@ -177,6 +178,9 @@ func moving_update(delta):
 
 	var in_quicksand = is_in_quicksand()
 	z_index = -2 if in_quicksand else 0
+	
+	if was_in_quicksand != in_quicksand:
+		visuals.spawn_quicksand_splash()
 
 	var is_grounded = is_on_floor()
 	if is_grounded:
@@ -285,6 +289,7 @@ func moving_update(delta):
 	# Perform movement
 	move_and_slide()
 	was_grounded = is_grounded
+	was_in_quicksand = is_in_quicksand()
 
 	camera.update(is_grounded)
 
