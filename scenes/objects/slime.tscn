@@ -9,15 +9,15 @@ resource_local_to_scene = true
 size = Vector2(20, 54)
 
 [sub_resource type="Curve" id="Curve_3rx60"]
-_data = [Vector2(0, 0.894201), 0.0, -0.047285, 0, 0, Vector2(1, 0.180061), -1.92113, 0.0, 0, 0]
+_data = [Vector2(0, 0.894201), 0.0, -0.047285, 0, 0, Vector2(1, 0.299084), -1.79007, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_xd50e"]
-offsets = PackedFloat32Array(0, 0.928775, 1)
+offsets = PackedFloat32Array(0, 0.774929, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="Gradient" id="Gradient_y2sxa"]
-colors = PackedColorArray(0.698039, 0.968627, 0.470588, 1, 0.380392, 0.835294, 0.211765, 1)
+colors = PackedColorArray(0.470588, 0.870588, 0.286275, 1, 0.3645, 0.81, 0.2025, 1)
 
 [node name="Slime" type="Area2D" groups=["slime"]]
 collision_layer = 4

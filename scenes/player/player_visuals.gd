@@ -66,6 +66,10 @@ func land():
 	scale_tween.tween_property(root, "scale", Vector2.ONE, 0.1)
 	scale_tween.play()
 
+func on_death():
+	if scale_tween: scale_tween.stop()
+	root.scale = Vector2(1, 1)
+
 func spawn_impact_effect(at):
 	var effect = IMPACT_EFFECT.instantiate()
 	player.get_parent().add_child(effect)

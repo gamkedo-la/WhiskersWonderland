@@ -7,6 +7,7 @@ const SLIDING = 'sliding'
 const IN_SLIME = 'in_slime'
 const DEAD = 'dead'
 
+@onready var hud = $HUD
 @onready var visuals = $Visuals
 @onready var dust_particles = $Visuals/Particles/Dust
 @onready var dust_particles_delay = $Visuals/Particles/Dust/DelayTimer
@@ -61,6 +62,8 @@ var WALL_JUMP_SPEED : Vector2
 
 @export var outline_color : Color = Color("#000000")
 var recolor_outline_on_replay : bool = true
+
+@onready var coins : int = 0
 
 var tilemap : TileMap
 var last_collision : KinematicCollision2D
@@ -410,7 +413,7 @@ func update_wall_direction():
 
 func track_slime(slime: Area2D):
 	tracking_slime = slime
-	tracking_slime.splash(global_position.y)
+	tracking_slime.splash(global_position.y - 14.5)
 	previous_slime_position = slime.global_position
 	state_machine.change_state(IN_SLIME)
 
@@ -472,6 +475,7 @@ func is_alive() -> bool:
 func die():
 	gravity_charges = 0
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	visuals.on_death()
 	animation_player.play("die")
 	state_machine.change_state(DEAD)
 	Signals.player_died.emit()
@@ -546,6 +550,9 @@ func _on_wall_jump_timer_timeout():
 func _on_item_collected(item: Collectible) -> void:
 	if item is GravityGem:
 		gravity_charges += 1
+	if item is Coin:
+		coins += 1
+		hud.update_coins(coins)
 
 func _flip_gravity(force: bool = false) -> bool:
 	if not gravity_charges:

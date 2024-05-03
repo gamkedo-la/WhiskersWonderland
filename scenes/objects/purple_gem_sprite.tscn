@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bvvkvc416ccwd"]
+
+[node name="Sprite" type="Node2D"]
+scale = Vector2(0.304115, 0.240843)
+metadata/_edit_group_ = true
+
+[node name="Polygon2D4" type="Polygon2D" parent="."]
+position = Vector2(-1.42327, -0.600628)
+scale = Vector2(1.15, 1.15)
+color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+polygon = PackedVector2Array(-15, -23, 1, -35, 17, -22, 24, -1, 17, 23, 1, 33, -16, 23, -23, -1)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-1.42327, -0.600628)
+color = Color(0.619608, 0.337255, 0.658824, 1)
+polygon = PackedVector2Array(-15, -23, 1, -35, 17, -22, 24, -1, 17, 23, 1, 33, -16, 23, -23, -1)
+
+[node name="Polygon2D3" type="Polygon2D" parent="."]
+position = Vector2(-1.42327, -0.600628)
+color = Color(0.447059, 0.219608, 0.478431, 1)
+polygon = PackedVector2Array(1, -35, 17, -22, 24, -1, 17, 23, 1, 33)
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2(-7.42327, -16.6006)
+scale = Vector2(0.26364, 0.331679)
+color = Color(0.92549, 0.827451, 0.937255, 1)
+polygon = PackedVector2Array(-30.3444, -18.0898, 22.7583, -51.2544, 22.7583, -36.1796, 11.3791, -21.1047, -15.1722, -9.04489, -15.1722, 42.2095, -34.1374, 54.2693, -56.8957, 42.2095)

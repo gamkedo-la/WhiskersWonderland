@@ -68,5 +68,4 @@ func register_collectible(item: Collectible):
 func _on_item_collected(item: Collectible):
 	if item is PurpleGem:
 		purple_gems_collected += 1
-		# TODO: Remove this after UI is added to track gems
-		print("Purple gem collected: %s/%s" % [purple_gems_collected, purple_gems_count])
+		player.hud.update_gems(purple_gems_collected, item)

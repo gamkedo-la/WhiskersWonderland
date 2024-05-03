@@ -1,8 +1,11 @@
-[gd_scene load_steps=32 format=3 uid="uid://c7ifo3nn7j0rh"]
+[gd_scene load_steps=35 format=3 uid="uid://c7ifo3nn7j0rh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kdwnm"]
 [ext_resource type="Script" path="res://scenes/player/player_visuals.gd" id="2_d2q2l"]
+[ext_resource type="Texture2D" uid="uid://7kqrtmgx3e3o" path="res://assets/sprites/coin.png" id="2_i7mor"]
+[ext_resource type="Script" path="res://scenes/player/player_hud.gd" id="2_tebbt"]
 [ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="3_7o83m"]
+[ext_resource type="PackedScene" uid="uid://bvvkvc416ccwd" path="res://scenes/objects/purple_gem_sprite.tscn" id="3_xe434"]
 [ext_resource type="Texture2D" uid="uid://dpqbmsd1gyr8s" path="res://assets/sprites/dust.png" id="4_2xxth"]
 [ext_resource type="Shader" path="res://assets/shaders/player.gdshader" id="4_tl4wn"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="12_e4xmf"]
@@ -1311,6 +1314,56 @@ platform_wall_layers = 1
 safe_margin = 0.1
 script = ExtResource("1_kdwnm")
 
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_tebbt")
+
+[node name="Coin" type="Node2D" parent="HUD"]
+position = Vector2(24, 24)
+metadata/_edit_lock_ = true
+
+[node name="Sprite" type="Sprite2D" parent="HUD/Coin"]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_i7mor")
+metadata/_edit_lock_ = true
+
+[node name="CoinLabel" type="Label" parent="HUD"]
+offset_left = 29.1531
+offset_top = 19.5868
+offset_right = 48.1531
+offset_bottom = 42.5868
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "00"
+metadata/_edit_lock_ = true
+
+[node name="PurpleGem" type="Node2D" parent="HUD"]
+position = Vector2(72, 24.377)
+metadata/_edit_lock_ = true
+
+[node name="Sprite" parent="HUD/PurpleGem" instance=ExtResource("3_xe434")]
+scale = Vector2(0.35, 0.277)
+metadata/_edit_lock_ = true
+
+[node name="PurpleGemLabel" type="Label" parent="HUD"]
+offset_left = 77.5593
+offset_top = 19.5868
+offset_right = 96.5593
+offset_bottom = 42.5868
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 16
+text = "0"
+metadata/_edit_lock_ = true
+
+[node name="AnimatedGem" type="Node2D" parent="HUD"]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Sprite" parent="HUD/AnimatedGem" instance=ExtResource("3_xe434")]
+scale = Vector2(0.35, 0.277)
+metadata/_edit_lock_ = true
+
 [node name="DebugLabel" type="Label" parent="."]
 visible = false
 offset_left = -25.0
@@ -1374,7 +1427,7 @@ angle_max = 30.0
 scale_amount_min = 0.06
 scale_amount_max = 0.07
 scale_amount_curve = SubResource("Curve_f15jo")
-color = Color(0.85098, 0.85098, 0.85098, 0.847059)
+color = Color(0.913725, 0.913725, 0.913725, 0.847059)
 metadata/_edit_lock_ = true
 
 [node name="DelayTimer" type="Timer" parent="Visuals/Particles/Slide"]
@@ -1500,6 +1553,7 @@ libraries = {
 
 [node name="TailAnchor" type="Node2D" parent="Visuals"]
 position = Vector2(-2.08165e-12, 14.5)
+metadata/_edit_lock_ = true
 
 [node name="CameraTarget" type="Node2D" parent="."]
 position = Vector2(0, -16)

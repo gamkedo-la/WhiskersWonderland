@@ -30,16 +30,6 @@ func reparent_child_nodes():
 			child.reparent($Body, false)
 			child.position -= offset
 
-func _process(_delta):
-	queue_redraw()
-
-func _draw():
-	var points = curve.get_baked_points()
-	for i in points.size():
-		var p1 = points[i]
-		var p2 = points[(i+1)%points.size()]
-		draw_line(p1, p2, Color.DIM_GRAY, 0.5, true)
-
 func update_speed():
 	$AnimationPlayer.speed_scale = 1.0 / time_in_seconds
 

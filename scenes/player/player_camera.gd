@@ -58,6 +58,9 @@ func _process(delta):
 	target = global_position
 	var disp = target - current
 	
+	if debug_mode:
+		print(current)
+	
 	if move_on_x:
 		var speed = smoothing_left if disp.x < 0 else smoothing_right
 		current.x += disp.x * speed * delta

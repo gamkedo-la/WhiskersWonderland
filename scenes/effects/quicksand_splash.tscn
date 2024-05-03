@@ -11,7 +11,7 @@ point_count = 2
 colors = PackedColorArray(0.827451, 0.505882, 0.145098, 1, 0.709804, 0.443137, 0.235294, 1)
 
 [node name="QuicksandSplash" type="Node2D" node_paths=PackedStringArray("particles")]
-z_index = -3
+z_index = -2
 script = ExtResource("1_w6kj2")
 particles = NodePath("Particles")
 
