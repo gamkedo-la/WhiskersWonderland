@@ -1,17 +1,18 @@
-[gd_scene load_steps=18 format=3 uid="uid://5gj4vhu7e00u"]
+[gd_scene load_steps=19 format=3 uid="uid://5gj4vhu7e00u"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_mnmlo"]
-[ext_resource type="Shader" path="res://assets/shaders/player.gdshader" id="2_0apsf"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="2_hpl4t"]
 [ext_resource type="Texture2D" uid="uid://cw4yjus1fbtf6" path="res://assets/sprites/robot/arm.png" id="4_pk6xt"]
 [ext_resource type="Texture2D" uid="uid://btdef2j5gap77" path="res://assets/sprites/robot/body.png" id="5_qq8fw"]
+[ext_resource type="Script" path="res://scenes/enemies/flying_sprite.gd" id="5_vrqmy"]
 [ext_resource type="Texture2D" uid="uid://c56rfxw4l1iqt" path="res://assets/sprites/robot/head.png" id="6_jhmf4"]
 [ext_resource type="Texture2D" uid="uid://ce2gv7ogl5kuo" path="res://assets/sprites/robot/shadow.png" id="6_yki42"]
 [ext_resource type="Texture2D" uid="uid://brvqnxh0bidka" path="res://assets/sprites/diamond.png" id="7_4x1gn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_at4a4"]
-shader = ExtResource("2_0apsf")
+shader = ExtResource("2_hpl4t")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_size = 2.0
+shader_parameter/outline_size = 3.0
 
 [sub_resource type="Animation" id="Animation_a2ag0"]
 length = 0.001
@@ -139,30 +140,37 @@ script = ExtResource("1_mnmlo")
 metadata/_edit_lock_ = true
 
 [node name="Sprite" type="CanvasGroup" parent="Visuals"]
-material = SubResource("ShaderMaterial_at4a4")
 scale = Vector2(0.3, 0.3)
 metadata/_edit_lock_ = true
 
 [node name="Body" type="Sprite2D" parent="Visuals/Sprite"]
+material = SubResource("ShaderMaterial_at4a4")
 position = Vector2(-0.0142927, 30.2276)
 texture = ExtResource("5_qq8fw")
+script = ExtResource("5_vrqmy")
 metadata/_edit_lock_ = true
 
 [node name="ArmL" type="Sprite2D" parent="Visuals/Sprite/Body"]
+material = SubResource("ShaderMaterial_at4a4")
 position = Vector2(-44.1895, 21.9203)
 texture = ExtResource("4_pk6xt")
+script = ExtResource("5_vrqmy")
 metadata/_edit_lock_ = true
 
 [node name="ArmR" type="Sprite2D" parent="Visuals/Sprite/Body"]
+material = SubResource("ShaderMaterial_at4a4")
 position = Vector2(44.19, 21.92)
 rotation = 3.14159
 scale = Vector2(1, -1)
 texture = ExtResource("4_pk6xt")
+script = ExtResource("5_vrqmy")
 metadata/_edit_lock_ = true
 
 [node name="Head" type="Sprite2D" parent="Visuals/Sprite/Body"]
+material = SubResource("ShaderMaterial_at4a4")
 position = Vector2(-2.11455, -69.3006)
 texture = ExtResource("6_jhmf4")
+script = ExtResource("5_vrqmy")
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visuals/Sprite"]

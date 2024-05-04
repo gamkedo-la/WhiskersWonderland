@@ -284,7 +284,6 @@ rotation = 1.57079
 [node name="Spike1" parent="World/Objects/MovingPlatform5" index="4" instance=ExtResource("7_060r2")]
 position = Vector2(-28.107, 6.25281)
 rotation = -1.79448
-scale = Vector2(1, 1)
 
 [node name="Spike2" parent="World/Objects/MovingPlatform5" index="5" instance=ExtResource("7_060r2")]
 position = Vector2(-27.4739, -6.23743)
@@ -303,7 +302,6 @@ rotation = 1.57079
 [node name="Spike1" parent="World/Objects/MovingPlatform6" index="4" instance=ExtResource("7_060r2")]
 position = Vector2(26.5416, -6.31017)
 rotation = 1.34711
-scale = Vector2(1, 1)
 
 [node name="Spike2" parent="World/Objects/MovingPlatform6" index="5" instance=ExtResource("7_060r2")]
 position = Vector2(25.9086, 6.18008)
@@ -390,7 +388,7 @@ debug_color = Color(0.627451, 0.34902, 1, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="player" parent="World" index="6"]
-position = Vector2(3342.12, 133.681)
+position = Vector2(131.664, 263.196)
 
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(2525.52, 581.492)

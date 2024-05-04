@@ -4,6 +4,7 @@ const MOVE_SPEED : float = 60.0
 const GRAVITY : float = 400.0
 
 @onready var visuals = $Visuals
+@onready var body = $Visuals/Sprite/Body
 @onready var death_particles = $DeathParticles
 @onready var left_ray = $Raycasts/Left
 @onready var right_ray = $Raycasts/Right
@@ -41,5 +42,8 @@ func stomp():
 	visuals.visible = false
 	death_particles.emitting = true
 	AudioManager.robot_death_sfx.play()
-	await Utils.timer(0.5)
+	
+	for sprite in body.get_children():
+		sprite.fly(get_parent())
+	body.fly(get_parent())
 	queue_free()
