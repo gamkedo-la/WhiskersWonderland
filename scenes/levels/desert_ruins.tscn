@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://olgh2e41sixh"]
+[gd_scene load_steps=29 format=3 uid="uid://olgh2e41sixh"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_m4w2p"]
 [ext_resource type="TileSet" uid="uid://bik5n3mn3bvfd" path="res://assets/tilesets/desert_tileset.tres" id="2_p0r6n"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bymyxcllu2bih" path="res://assets/backgrounds/desert-bg2.png" id="3_6uuit"]
 [ext_resource type="Texture2D" uid="uid://biwddihvc6yo5" path="res://assets/backgrounds/desert-bg3.png" id="4_6iwlf"]
 [ext_resource type="Texture2D" uid="uid://dq4lcxw3wo2p2" path="res://assets/backgrounds/desert-bg4.png" id="5_eaf61"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="6_1w3el"]
+[ext_resource type="Texture2D" uid="uid://dfqxbn0ga33or" path="res://icon.svg" id="7_7hn8p"]
 [ext_resource type="PackedScene" uid="uid://b280ii26f55pm" path="res://scenes/objects/spike.tscn" id="7_060r2"]
 [ext_resource type="PackedScene" uid="uid://5gj4vhu7e00u" path="res://scenes/enemies/enemy.tscn" id="7_csn6c"]
 [ext_resource type="PackedScene" uid="uid://cy27vsjobtd6q" path="res://scenes/objects/quicksand.tscn" id="7_eggou"]
@@ -14,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://blsxeqp4v2k1j" path="res://scenes/objects/checkpoint.tscn" id="11_r1ebb"]
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="12_alkoh"]
 [ext_resource type="PackedScene" uid="uid://dqv63xk0jh7jo" path="res://scenes/objects/slime.tscn" id="13_yrbt1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rskbu"]
+shader = ExtResource("6_1w3el")
+shader_parameter/lod = 0.5
 
 [sub_resource type="Curve2D" id="Curve2D_4f33n"]
 _data = {
@@ -113,6 +119,13 @@ metadata/_edit_lock_ = true
 [node name="sprite" type="Sprite2D" parent="World/ParallaxBackground/4" index="0"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("5_eaf61")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Blur" type="Sprite2D" parent="World/ParallaxBackground" index="4"]
+material = SubResource("ShaderMaterial_rskbu")
+scale = Vector2(5, 2.8125)
+texture = ExtResource("7_7hn8p")
 centered = false
 metadata/_edit_lock_ = true
 
