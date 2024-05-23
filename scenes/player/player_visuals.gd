@@ -46,7 +46,7 @@ func jump():
 	earR_spring.position = 0.3
 
 	# Stretch sprite when jumping
-	root.scale = Vector2(0.75, 1.25)
+	root.scale = Vector2(0.5, 1.5)
 	if scale_tween: scale_tween.stop()
 	scale_tween = get_tree().create_tween()
 	scale_tween.tween_property(root, "scale", Vector2.ONE, 0.2)

@@ -19,7 +19,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rskbu"]
 shader = ExtResource("6_1w3el")
-shader_parameter/lod = 0.5
+shader_parameter/lod = 0.75
 
 [sub_resource type="Curve2D" id="Curve2D_4f33n"]
 _data = {

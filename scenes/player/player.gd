@@ -510,6 +510,13 @@ func _on_trigger_area_entered(area):
 
 	if area.is_in_group("checkpoint"):
 		Signals.player_reached_checkpoint.emit(area)
+	
+	if area.is_in_group("bouncy_mushroom"):
+		if is_falling and not is_on_floor():
+			jump(1.75, false)
+			jump_damped = true
+			area.bounce()
+			camera.climbing_mode()
 
 	if area.is_in_group("falling_platform"):
 		# Platform can only fall if player is above it

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://6nojsvxdbdy8"]
+
+[ext_resource type="Script" path="res://scenes/objects/bouncy_mushroom.gd" id="1_y6121"]
+[ext_resource type="Texture2D" uid="uid://rtsatsf0eeg3" path="res://assets/sprites/mushroom.png" id="2_31qii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5tqh"]
+size = Vector2(47.1967, 16)
+
+[node name="BouncyMushroom" type="Area2D" groups=["bouncy_mushroom"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_y6121")
+
+[node name="Visuals" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Visuals"]
+scale = Vector2(0.27, 0.27)
+texture = ExtResource("2_31qii")
+offset = Vector2(-2.92997, -87.1)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.238852, -36.5352)
+shape = SubResource("RectangleShape2D_m5tqh")
+metadata/_edit_lock_ = true
