@@ -14,6 +14,7 @@ extends Node
 @export var stick_to_slime_sfx: AudioStreamPlayer
 @export var land_on_grass_sfx: AudioStreamPlayer
 @export var walk_on_sand_sfx: AudioStreamPlayer
+@export var bounce_sfx: AudioStreamPlayer
 
 @export_group("World Sounds")
 @export var crumbling_block_sfx: AudioStreamPlayer

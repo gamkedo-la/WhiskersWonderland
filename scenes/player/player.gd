@@ -513,6 +513,7 @@ func _on_trigger_area_entered(area):
 	
 	if area.is_in_group("bouncy_mushroom"):
 		if is_falling and not is_on_floor():
+			AudioManager.bounce_sfx.play()
 			jump(1.75, false)
 			jump_damped = true
 			area.bounce()
