@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://rtsatsf0eeg3" path="res://assets/sprites/mushroom.png" id="2_31qii"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5tqh"]
-size = Vector2(47.1967, 16)
+size = Vector2(47.1967, 12.5402)
 
 [node name="BouncyMushroom" type="Area2D" groups=["bouncy_mushroom"]]
 collision_layer = 4
@@ -21,6 +21,6 @@ offset = Vector2(-2.92997, -87.1)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.238852, -36.5352)
+position = Vector2(-0.238852, -34.8053)
 shape = SubResource("RectangleShape2D_m5tqh")
 metadata/_edit_lock_ = true
