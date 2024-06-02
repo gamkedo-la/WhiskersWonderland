@@ -184,6 +184,8 @@ func moving_update(delta):
 	
 	if was_in_quicksand != in_quicksand:
 		visuals.spawn_quicksand_splash()
+		if in_quicksand:
+			AudioManager.quicksand_splash_sfx.play()
 
 	var is_grounded = is_on_floor()
 	if is_grounded:

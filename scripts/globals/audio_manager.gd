@@ -21,5 +21,6 @@ extends Node
 @export var crumbling_block_sfx: AudioStreamPlayer
 
 @export_group("Other Sounds")
+@export var quicksand_splash_sfx: AudioStreamPlayer
 @export var robot_death_sfx: AudioStreamPlayer
 @export var gem_pickup_sfx: AudioStreamPlayer
