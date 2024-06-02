@@ -60,9 +60,6 @@ var WALL_JUMP_SPEED : Vector2
 @export var JUMP_COYOTE_TIME : float = 0.066
 @export var JUMP_BUFFER_TIME : float = 0.1
 
-@export var outline_color : Color = Color("#000000")
-var recolor_outline_on_replay : bool = true
-
 @onready var coins : int = 0
 
 var tilemap : TileMap
@@ -108,10 +105,11 @@ func _ready():
 	for action in INPUT_ACTIONS:
 		inputs[action] = { "press": null, "hold": null, "released": null }
 
-	visuals.set_outline_color(outline_color)
+	visuals.set_outline_color(Color.BLACK)
 	Debug.kill_player.connect(die)
 
 	if is_demo:
+		hud.visible = false
 		button_recorder.mode = ButtonRecorder.ButtonRecorderMode.REPLAY
 		button_recorder.replay_file_path = "res://scenes/levels/demo.replay"
 	button_recorder.set_listener(encode_inputs)
@@ -547,13 +545,9 @@ func _on_hurtbox_area_entered(area):
 
 func _on_replay_started(data):
 	global_position = data.player_position
-	if recolor_outline_on_replay:
-		visuals.set_outline_color(Color("#d00000"))
 
 func _on_replay_ended(_data):
 	print("Player stopped at %s" % [str(global_position)])
-	if recolor_outline_on_replay:
-		visuals.set_outline_color(outline_color)
 
 func _on_wall_jump_timer_timeout():
 	camera.move_on_x = true

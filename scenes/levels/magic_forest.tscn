@@ -36,7 +36,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="sunrays (far)" type="ParallaxLayer" parent="World/ParallaxBackground" index="1"]
-motion_scale = Vector2(0.25, 0)
+motion_scale = Vector2(0.4, 0)
 motion_mirroring = Vector2(640, 0)
 metadata/_edit_lock_ = true
 
@@ -49,7 +49,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="2" type="ParallaxLayer" parent="World/ParallaxBackground" index="2"]
-motion_scale = Vector2(0.25, 0)
+motion_scale = Vector2(0.4, 0)
 motion_mirroring = Vector2(640, 0)
 metadata/_edit_lock_ = true
 
@@ -61,7 +61,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="sunrays (mid)" type="ParallaxLayer" parent="World/ParallaxBackground" index="3"]
-motion_scale = Vector2(0.4, 0)
+motion_scale = Vector2(0.5, 0)
 motion_mirroring = Vector2(640, 0)
 metadata/_edit_lock_ = true
 
@@ -73,7 +73,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="3" type="ParallaxLayer" parent="World/ParallaxBackground" index="4"]
-motion_scale = Vector2(0.4, 0)
+motion_scale = Vector2(0.5, 0)
 motion_mirroring = Vector2(640, 0)
 metadata/_edit_lock_ = true
 
@@ -85,7 +85,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="sunrays (closest)" type="ParallaxLayer" parent="World/ParallaxBackground" index="5"]
-motion_scale = Vector2(0.55, 0)
+motion_scale = Vector2(0.65, 0)
 motion_mirroring = Vector2(640, 0)
 metadata/_edit_lock_ = true
 
@@ -98,7 +98,7 @@ centered = false
 metadata/_edit_lock_ = true
 
 [node name="4" type="ParallaxLayer" parent="World/ParallaxBackground" index="6"]
-motion_scale = Vector2(0.55, 0)
+motion_scale = Vector2(0.65, 0)
 motion_mirroring = Vector2(640, 0)
 metadata/_edit_lock_ = true
 
