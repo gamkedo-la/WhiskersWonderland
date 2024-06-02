@@ -489,6 +489,7 @@ func respawn(at: Vector2):
 	if gravity_flipped:
 		gravity_charges = 1
 		_flip_gravity()
+	AudioManager.fox_respawn_sfx.play()
 
 func play_step_sfx():
 	if ground_raycast.is_colliding():
