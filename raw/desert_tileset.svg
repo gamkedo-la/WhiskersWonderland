@@ -28,9 +28,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="228.57227"
-     inkscape:cy="459.44263"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="158.74547"
+     inkscape:cy="273.29677"
      inkscape:window-width="2560"
      inkscape:window-height="1017"
      inkscape:window-x="1912"
@@ -781,7 +781,8 @@
          inkscape:transform-center-y="0.050497652" /></g><g
        id="g31"
        inkscape:label="cliff"><g
-         id="g44"><rect
+         id="g44"
+         style="display:inline"><rect
            style="display:inline;fill:#926030;fill-opacity:1;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;paint-order:markers stroke fill"
            id="rect33"
            width="6.3161325"

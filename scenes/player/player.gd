@@ -499,8 +499,8 @@ func play_step_sfx():
 		match terrain_type:
 			"sand":
 				AudioManager.walk_on_sand_sfx.play()
-			#"grass":
-				#break
+			"grass":
+				AudioManager.walk_on_sand_sfx.play()
 			#"stone":
 				#break
 
