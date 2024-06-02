@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cyedyn8yg40d1"
+path="res://.godot/imported/02 staticky drone and beatbox.ogg-5cd74813d41bec6f9e7727510224ec54.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/desert theme proposals/02 staticky drone and beatbox.ogg"
+dest_files=["res://.godot/imported/02 staticky drone and beatbox.ogg-5cd74813d41bec6f9e7727510224ec54.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
