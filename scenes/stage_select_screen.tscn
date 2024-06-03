@@ -1,0 +1,137 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp8vwn6lbfrb"]
+
+[ext_resource type="Script" path="res://scenes/stage_select_screen.gd" id="1_tsksi"]
+[ext_resource type="Texture2D" uid="uid://c0c130am8qoaf" path="res://assets/screenshots/Screenshot 2024-06-03 154006.png" id="2_7a54w"]
+[ext_resource type="Texture2D" uid="uid://rwkoar2kb5r2" path="res://assets/screenshots/Screenshot 2024-06-03 154154.png" id="3_icb8q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_br1h6"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="StageSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tsksi")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -94.0
+offset_right = 323.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+
+[node name="LevelListContainer" type="HBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="MagicForest" type="VBoxContainer" parent="ScrollContainer/LevelListContainer"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Image" type="Control" parent="ScrollContainer/LevelListContainer/MagicForest"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MagicForest" type="Panel" parent="ScrollContainer/LevelListContainer/MagicForest/Image"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -72.0
+offset_right = 52.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_br1h6")
+
+[node name="MagicForest" type="TextureButton" parent="ScrollContainer/LevelListContainer/MagicForest/Image/MagicForest"]
+layout_mode = 0
+offset_left = -91.5
+offset_top = -41.5
+offset_right = 239.5
+offset_bottom = 145.5
+texture_normal = ExtResource("2_7a54w")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/MagicForest"]
+layout_mode = 2
+text = "Magic Forest"
+horizontal_alignment = 1
+
+[node name="DesertRuins" type="VBoxContainer" parent="ScrollContainer/LevelListContainer"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="Image" type="Control" parent="ScrollContainer/LevelListContainer/DesertRuins"]
+custom_minimum_size = Vector2(105, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MagicForest" type="Panel" parent="ScrollContainer/LevelListContainer/DesertRuins/Image"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -72.0
+offset_right = 52.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_br1h6")
+
+[node name="DesertRuins" type="TextureButton" parent="ScrollContainer/LevelListContainer/DesertRuins/Image/MagicForest"]
+layout_mode = 0
+offset_left = -91.5
+offset_top = -41.5
+offset_right = 239.5
+offset_bottom = 145.5
+texture_normal = ExtResource("3_icb8q")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/DesertRuins"]
+layout_mode = 2
+text = "Desert Ruins"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 310.0
+offset_right = 118.0
+offset_bottom = 347.0
+text = "Back"
+
+[connection signal="pressed" from="ScrollContainer/LevelListContainer/MagicForest/Image/MagicForest/MagicForest" to="." method="_on_magic_forest_pressed"]
+[connection signal="pressed" from="ScrollContainer/LevelListContainer/DesertRuins/Image/MagicForest/DesertRuins" to="." method="_on_desert_ruins_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

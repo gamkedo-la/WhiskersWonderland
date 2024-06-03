@@ -1,6 +1,7 @@
 extends Node2D
 
 const GAME_SCENE = preload("res://scenes/game.tscn")
+const STAGE_SELECT = preload("res://scenes/stage_select_screen.tscn")
 const TITLE_LEVEL = preload("res://scenes/levels/title_level.tscn")
 
 @onready var animation_player = $AnimationPlayer
@@ -13,7 +14,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("start"):
-		get_tree().change_scene_to_packed(GAME_SCENE)
+		get_tree().change_scene_to_packed(STAGE_SELECT)
 
 func load_title_level():
 	if title_level:

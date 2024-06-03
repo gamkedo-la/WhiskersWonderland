@@ -1315,6 +1315,7 @@ safe_margin = 0.1
 script = ExtResource("1_kdwnm")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("2_tebbt")
 
 [node name="Coin" type="Node2D" parent="HUD"]
