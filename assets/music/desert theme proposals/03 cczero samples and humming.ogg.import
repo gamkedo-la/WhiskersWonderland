@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mdsp0m1tjcst"
+path="res://.godot/imported/03 cczero samples and humming.ogg-d8679f38c3d251fd86f328506fb865cf.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/desert theme proposals/03 cczero samples and humming.ogg"
+dest_files=["res://.godot/imported/03 cczero samples and humming.ogg-d8679f38c3d251fd86f328506fb865cf.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
