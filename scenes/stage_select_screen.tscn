@@ -15,7 +15,9 @@ corner_radius_bottom_left = 8
 font = ExtResource("3_pofyr")
 font_size = 18
 
-[node name="StageSelectScreen" type="Control"]
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="StageSelectScreen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,7 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tsksi")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="StageSelectScreen"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 vertical_scroll_mode = 0
 
-[node name="LevelListContainer" type="HBoxContainer" parent="ScrollContainer"]
+[node name="LevelListContainer" type="HBoxContainer" parent="StageSelectScreen/ScrollContainer"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -47,11 +49,11 @@ size_flags_vertical = 3
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="MagicForest" type="VBoxContainer" parent="ScrollContainer/LevelListContainer"]
+[node name="MagicForest" type="VBoxContainer" parent="StageSelectScreen/ScrollContainer/LevelListContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MagicForest" type="Panel" parent="ScrollContainer/LevelListContainer/MagicForest"]
+[node name="MagicForest" type="Panel" parent="StageSelectScreen/ScrollContainer/LevelListContainer/MagicForest"]
 clip_contents = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
@@ -59,7 +61,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ahu4s")
 
-[node name="MagicForest" type="TextureButton" parent="ScrollContainer/LevelListContainer/MagicForest/MagicForest"]
+[node name="MagicForest" type="TextureButton" parent="StageSelectScreen/ScrollContainer/LevelListContainer/MagicForest/MagicForest"]
 layout_mode = 0
 offset_left = -64.0
 offset_top = -46.0
@@ -69,17 +71,17 @@ texture_normal = ExtResource("2_7a54w")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/MagicForest"]
+[node name="LevelName" type="Label" parent="StageSelectScreen/ScrollContainer/LevelListContainer/MagicForest"]
 layout_mode = 2
 text = "Magic Forest"
 label_settings = SubResource("LabelSettings_rqoje")
 horizontal_alignment = 1
 
-[node name="DesertRuins" type="VBoxContainer" parent="ScrollContainer/LevelListContainer"]
+[node name="DesertRuins" type="VBoxContainer" parent="StageSelectScreen/ScrollContainer/LevelListContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="DesertRuins" type="Panel" parent="ScrollContainer/LevelListContainer/DesertRuins"]
+[node name="DesertRuins" type="Panel" parent="StageSelectScreen/ScrollContainer/LevelListContainer/DesertRuins"]
 clip_contents = true
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
@@ -87,7 +89,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_ahu4s")
 
-[node name="DesertRuins" type="TextureButton" parent="ScrollContainer/LevelListContainer/DesertRuins/DesertRuins"]
+[node name="DesertRuins" type="TextureButton" parent="StageSelectScreen/ScrollContainer/LevelListContainer/DesertRuins/DesertRuins"]
 layout_mode = 0
 offset_left = -124.0
 offset_top = -83.0
@@ -97,22 +99,22 @@ texture_normal = ExtResource("3_icb8q")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/DesertRuins"]
+[node name="LevelName" type="Label" parent="StageSelectScreen/ScrollContainer/LevelListContainer/DesertRuins"]
 layout_mode = 2
 text = "Desert Ruins"
 label_settings = SubResource("LabelSettings_rqoje")
 horizontal_alignment = 1
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="StageSelectScreen"]
 layout_mode = 0
-offset_left = 14.0
+offset_left = 12.0
 offset_top = 310.0
-offset_right = 105.0
+offset_right = 103.0
 offset_bottom = 347.0
 theme_override_fonts/font = ExtResource("3_pofyr")
 theme_override_font_sizes/font_size = 18
 text = "Back"
 
-[connection signal="pressed" from="ScrollContainer/LevelListContainer/MagicForest/MagicForest/MagicForest" to="." method="_on_magic_forest_pressed"]
-[connection signal="pressed" from="ScrollContainer/LevelListContainer/DesertRuins/DesertRuins/DesertRuins" to="." method="_on_desert_ruins_pressed"]
-[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="StageSelectScreen/ScrollContainer/LevelListContainer/MagicForest/MagicForest/MagicForest" to="StageSelectScreen" method="_on_magic_forest_pressed"]
+[connection signal="pressed" from="StageSelectScreen/ScrollContainer/LevelListContainer/DesertRuins/DesertRuins/DesertRuins" to="StageSelectScreen" method="_on_desert_ruins_pressed"]
+[connection signal="pressed" from="StageSelectScreen/BackButton" to="StageSelectScreen" method="_on_back_button_pressed"]

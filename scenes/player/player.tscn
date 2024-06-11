@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c7ifo3nn7j0rh"]
+[gd_scene load_steps=38 format=3 uid="uid://c7ifo3nn7j0rh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kdwnm"]
 [ext_resource type="Script" path="res://scenes/player/player_visuals.gd" id="2_d2q2l"]
@@ -23,6 +23,10 @@
 [ext_resource type="Texture2D" uid="uid://vjib2srih6eq" path="res://assets/sprites/fox/tail3.svg" id="21_88jl7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e4i8h"]
+font = ExtResource("4_5rlrk")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_jr4jn"]
 font = ExtResource("4_5rlrk")
 font_size = 18
 
@@ -1381,6 +1385,7 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 12
 text = "DEBUG TEXT"
+label_settings = SubResource("LabelSettings_jr4jn")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
