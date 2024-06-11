@@ -55,13 +55,18 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ahu4s")
 
 [node name="MagicForest" type="TextureButton" parent="ScrollContainer/LevelListContainer/MagicForest/MagicForest"]
 layout_mode = 0
-offset_left = -101.0
-offset_top = -56.0
-offset_right = 322.0
-offset_bottom = 183.0
+offset_left = -64.0
+offset_top = -46.0
+offset_right = 269.0
+offset_bottom = 142.0
 texture_normal = ExtResource("2_7a54w")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/MagicForest"]
+layout_mode = 2
+text = "Magic Forest"
+horizontal_alignment = 1
 
 [node name="DesertRuins" type="VBoxContainer" parent="ScrollContainer/LevelListContainer"]
 layout_mode = 2
@@ -78,12 +83,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_ahu4s")
 [node name="DesertRuins" type="TextureButton" parent="ScrollContainer/LevelListContainer/DesertRuins/DesertRuins"]
 layout_mode = 0
 offset_left = -124.0
-offset_top = -56.0
+offset_top = -83.0
 offset_right = 299.0
-offset_bottom = 183.0
+offset_bottom = 156.0
 texture_normal = ExtResource("3_icb8q")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/DesertRuins"]
+layout_mode = 2
+text = "Desert Ruins"
+horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
