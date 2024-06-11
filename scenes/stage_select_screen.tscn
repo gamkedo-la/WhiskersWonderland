@@ -1,14 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp8vwn6lbfrb"]
+[gd_scene load_steps=7 format=3 uid="uid://dp8vwn6lbfrb"]
 
 [ext_resource type="Script" path="res://scenes/stage_select_screen.gd" id="1_tsksi"]
 [ext_resource type="Texture2D" uid="uid://c0c130am8qoaf" path="res://assets/screenshots/Screenshot 2024-06-03 154006.png" id="2_7a54w"]
 [ext_resource type="Texture2D" uid="uid://rwkoar2kb5r2" path="res://assets/screenshots/Screenshot 2024-06-03 154154.png" id="3_icb8q"]
+[ext_resource type="FontFile" uid="uid://ccwaavtkpgt3j" path="res://assets/fonts/Dosis/Dosis-SemiBold.ttf" id="3_pofyr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahu4s"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_rqoje"]
+font = ExtResource("3_pofyr")
+font_size = 18
 
 [node name="StageSelectScreen" type="Control"]
 layout_mode = 3
@@ -35,6 +40,7 @@ grow_vertical = 2
 vertical_scroll_mode = 0
 
 [node name="LevelListContainer" type="HBoxContainer" parent="ScrollContainer"]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -66,6 +72,7 @@ stretch_mode = 4
 [node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/MagicForest"]
 layout_mode = 2
 text = "Magic Forest"
+label_settings = SubResource("LabelSettings_rqoje")
 horizontal_alignment = 1
 
 [node name="DesertRuins" type="VBoxContainer" parent="ScrollContainer/LevelListContainer"]
@@ -93,14 +100,17 @@ stretch_mode = 4
 [node name="LevelName" type="Label" parent="ScrollContainer/LevelListContainer/DesertRuins"]
 layout_mode = 2
 text = "Desert Ruins"
+label_settings = SubResource("LabelSettings_rqoje")
 horizontal_alignment = 1
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 14.0
 offset_top = 310.0
-offset_right = 118.0
+offset_right = 105.0
 offset_bottom = 347.0
+theme_override_fonts/font = ExtResource("3_pofyr")
+theme_override_font_sizes/font_size = 18
 text = "Back"
 
 [connection signal="pressed" from="ScrollContainer/LevelListContainer/MagicForest/MagicForest/MagicForest" to="." method="_on_magic_forest_pressed"]

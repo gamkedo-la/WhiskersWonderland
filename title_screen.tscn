@@ -1,6 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3rkiiu8mj38t"]
+[gd_scene load_steps=8 format=3 uid="uid://c3rkiiu8mj38t"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_jvo25"]
+[ext_resource type="FontFile" uid="uid://c34klx1f0dnbg" path="res://assets/fonts/Dosis/Dosis-Bold.ttf" id="2_cu6gl"]
+[ext_resource type="FontFile" uid="uid://cukaxamd6g0ja" path="res://assets/fonts/Dosis/Dosis-Medium.ttf" id="3_2w07c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6u0uq"]
+font = ExtResource("2_cu6gl")
+font_size = 54
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="Animation" id="Animation_45t6a"]
 length = 0.001
@@ -58,16 +69,25 @@ theme_override_colors/font_outline_color = Color(0.172549, 0.172549, 0.172549, 1
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 40
 text = "Whisker's Wonderland"
+label_settings = SubResource("LabelSettings_6u0uq")
 horizontal_alignment = 1
 metadata/_edit_lock_ = true
 
 [node name="PressEnter" type="RichTextLabel" parent="HUD"]
-offset_left = 267.0
-offset_top = 100.0
-offset_right = 365.0
-offset_bottom = 166.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -70.0
+offset_right = 41.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
+theme_override_fonts/normal_font = ExtResource("3_2w07c")
 bbcode_enabled = true
 text = "
  [wave amp=30.0 freq=3.0 connected=1]Press Enter[/wave]"
