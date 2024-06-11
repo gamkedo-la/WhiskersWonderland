@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6fa0a52bilxx"]
+[gd_scene load_steps=5 format=3 uid="uid://c6fa0a52bilxx"]
 
 [ext_resource type="AudioStream" uid="uid://c3nsxlgyoqtj" path="res://assets/music/HoppyHolidayLoop_20240601_1436.mp3" id="1_bl2ev"]
 [ext_resource type="Script" path="res://scenes/credits_screen.gd" id="1_trca0"]
+[ext_resource type="FontFile" uid="uid://ccwaavtkpgt3j" path="res://assets/fonts/Dosis/Dosis-SemiBold.ttf" id="2_783wn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dkc3a"]
+font = ExtResource("2_783wn")
+font_size = 18
 
 [node name="CreditsScreen" type="Node2D"]
 script = ExtResource("1_trca0")
@@ -47,6 +52,7 @@ In et porttitor lorem. Nullam id viverra orci, vitae varius nibh. In ut elementu
 
 
 Thanks for playing!"
+label_settings = SubResource("LabelSettings_dkc3a")
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_lock_ = true
