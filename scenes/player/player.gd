@@ -500,7 +500,7 @@ func play_step_sfx():
 			"sand":
 				AudioManager.walk_on_sand_sfx.play()
 			"grass":
-				AudioManager.walk_on_sand_sfx.play()
+				AudioManager.walk_on_grass_sfx.play()
 			#"stone":
 				#break
 

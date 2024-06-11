@@ -16,6 +16,7 @@ extends Node
 @export var walk_on_sand_sfx: AudioStreamPlayer
 @export var bounce_sfx: AudioStreamPlayer
 @export var fox_respawn_sfx: AudioStreamPlayer
+@export var walk_on_grass_sfx: AudioStreamPlayer
 
 @export_group("World Sounds")
 @export var crumbling_block_sfx: AudioStreamPlayer
