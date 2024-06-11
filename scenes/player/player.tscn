@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c7ifo3nn7j0rh"]
+[gd_scene load_steps=37 format=3 uid="uid://c7ifo3nn7j0rh"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kdwnm"]
 [ext_resource type="Script" path="res://scenes/player/player_visuals.gd" id="2_d2q2l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/player/player_camera.gd" id="3_7o83m"]
 [ext_resource type="PackedScene" uid="uid://bvvkvc416ccwd" path="res://scenes/objects/purple_gem_sprite.tscn" id="3_xe434"]
 [ext_resource type="Texture2D" uid="uid://dpqbmsd1gyr8s" path="res://assets/sprites/dust.png" id="4_2xxth"]
+[ext_resource type="FontFile" uid="uid://ccwaavtkpgt3j" path="res://assets/fonts/Dosis/Dosis-SemiBold.ttf" id="4_5rlrk"]
 [ext_resource type="Shader" path="res://assets/shaders/player.gdshader" id="4_tl4wn"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="12_e4xmf"]
 [ext_resource type="Texture2D" uid="uid://bchtxrlu0xe7u" path="res://assets/sprites/fox/body.svg" id="12_vl8k8"]
@@ -20,6 +21,10 @@
 [ext_resource type="Texture2D" uid="uid://b1gdbp67pb101" path="res://assets/sprites/fox/tail1.svg" id="19_nawn4"]
 [ext_resource type="Texture2D" uid="uid://dwht0ffladse3" path="res://assets/sprites/fox/tail2.svg" id="20_hjm17"]
 [ext_resource type="Texture2D" uid="uid://vjib2srih6eq" path="res://assets/sprites/fox/tail3.svg" id="21_88jl7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e4i8h"]
+font = ExtResource("4_5rlrk")
+font_size = 18
 
 [sub_resource type="Curve" id="Curve_f15jo"]
 _data = [Vector2(0, 1), 0.0, -0.154222, 0, 0, Vector2(1, 0.199898), -2.5061, 0.0, 0, 0]
@@ -1315,7 +1320,6 @@ safe_margin = 0.1
 script = ExtResource("1_kdwnm")
 
 [node name="HUD" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("2_tebbt")
 
 [node name="Coin" type="Node2D" parent="HUD"]
@@ -1328,14 +1332,15 @@ texture = ExtResource("2_i7mor")
 metadata/_edit_lock_ = true
 
 [node name="CoinLabel" type="Label" parent="HUD"]
-offset_left = 29.1531
-offset_top = 19.5868
-offset_right = 48.1531
-offset_bottom = 42.5868
+offset_left = 36.0
+offset_top = 12.0
+offset_right = 56.0
+offset_bottom = 36.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 16
 text = "00"
+label_settings = SubResource("LabelSettings_e4i8h")
 metadata/_edit_lock_ = true
 
 [node name="PurpleGem" type="Node2D" parent="HUD"]
@@ -1347,14 +1352,15 @@ scale = Vector2(0.35, 0.277)
 metadata/_edit_lock_ = true
 
 [node name="PurpleGemLabel" type="Label" parent="HUD"]
-offset_left = 77.5593
-offset_top = 19.5868
-offset_right = 96.5593
-offset_bottom = 42.5868
+offset_left = 84.4062
+offset_top = 12.0
+offset_right = 103.406
+offset_bottom = 36.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 16
 text = "0"
+label_settings = SubResource("LabelSettings_e4i8h")
 metadata/_edit_lock_ = true
 
 [node name="AnimatedGem" type="Node2D" parent="HUD"]
