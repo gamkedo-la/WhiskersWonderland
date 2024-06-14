@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://clq66agnaiva4"]
+[gd_scene load_steps=22 format=3 uid="uid://clq66agnaiva4"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_ohgtf"]
 [ext_resource type="Texture2D" uid="uid://bicdfj6l0sadw" path="res://assets/backgrounds/forest-bg1.png" id="2_3k0pg"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bsn8dlt5qpeye" path="res://scenes/objects/crumbling_block.tscn" id="12_qeheb"]
 [ext_resource type="PackedScene" uid="uid://b280ii26f55pm" path="res://scenes/objects/spike.tscn" id="14_d1rvc"]
 [ext_resource type="PackedScene" uid="uid://blsxeqp4v2k1j" path="res://scenes/objects/checkpoint.tscn" id="16_a5f6k"]
+[ext_resource type="AudioStream" uid="uid://mdsp0m1tjcst" path="res://assets/music/desert theme proposals/03 cczero samples and humming.ogg" id="17_0j2fl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fuc8b"]
 shader = ExtResource("7_bbjov")
@@ -301,3 +302,9 @@ position = Vector2(96.3717, 271.18)
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(3050.86, 567.558)
 shape = SubResource("RectangleShape2D_da8qn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+stream = ExtResource("17_0j2fl")
+volume_db = -3.0
+autoplay = true
+bus = &"Music"

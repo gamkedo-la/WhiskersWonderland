@@ -485,6 +485,7 @@ func respawn(at: Vector2):
 	state_machine.change_state(MOVING)
 	if gravity_flipped:
 		_flip_gravity()
+	await Utils.timer(0.5)
 	AudioManager.fox_respawn_sfx.play()
 
 func play_step_sfx():

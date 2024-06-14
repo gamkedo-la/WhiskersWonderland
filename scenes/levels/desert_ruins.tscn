@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://olgh2e41sixh"]
+[gd_scene load_steps=31 format=3 uid="uid://olgh2e41sixh"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_m4w2p"]
 [ext_resource type="TileSet" uid="uid://bik5n3mn3bvfd" path="res://assets/tilesets/desert_tileset.tres" id="2_p0r6n"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="12_alkoh"]
 [ext_resource type="PackedScene" uid="uid://dqv63xk0jh7jo" path="res://scenes/objects/slime.tscn" id="13_yrbt1"]
 [ext_resource type="Texture2D" uid="uid://qye4psgl72w5" path="res://assets/sprites/grass_yellow_64.png" id="17_4l2be"]
+[ext_resource type="AudioStream" uid="uid://bhrgl5mtci8ko" path="res://assets/music/desert_bgm_draft.mp3" id="18_xh5x2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rskbu"]
 shader = ExtResource("6_1w3el")
@@ -513,3 +514,9 @@ texture = ExtResource("17_4l2be")
 position = Vector2(393, 273)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("17_4l2be")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource("18_xh5x2")
+volume_db = -3.0
+autoplay = true
+bus = &"Music"

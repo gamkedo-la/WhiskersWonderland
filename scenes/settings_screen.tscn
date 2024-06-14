@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ojg63mrqx2xv"]
+[gd_scene load_steps=5 format=3 uid="uid://ojg63mrqx2xv"]
 
 [ext_resource type="Script" path="res://scenes/settings_screen.gd" id="1_mavek"]
 [ext_resource type="AudioStream" uid="uid://c3nsxlgyoqtj" path="res://assets/music/HoppyHolidayLoop_20240601_1436.mp3" id="2_1o1q8"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_jtdj8"]
+[ext_resource type="FontFile" uid="uid://ccwaavtkpgt3j" path="res://assets/fonts/Dosis/Dosis-SemiBold.ttf" id="4_b5gwa"]
 
 [node name="SettingsScreen" type="Node2D"]
 script = ExtResource("1_mavek")
@@ -15,7 +16,7 @@ offset_bottom = 103.965
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
-text = "Settings"
+text = "Paused"
 metadata/_edit_lock_ = true
 
 [node name="Music" type="Label" parent="."]
@@ -56,6 +57,16 @@ offset_bottom = 214.542
 value = 100.0
 metadata/_edit_lock_ = true
 
+[node name="MainMenuButton" type="Button" parent="."]
+offset_left = 270.5
+offset_top = 234.0
+offset_right = 361.5
+offset_bottom = 271.0
+theme_override_fonts/font = ExtResource("4_b5gwa")
+theme_override_font_sizes/font_size = 18
+text = "Main Menu"
+metadata/_edit_lock_ = true
+
 [node name="SampleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_1o1q8")
 bus = &"Music"
@@ -69,3 +80,4 @@ bus = &"Sound"
 [connection signal="value_changed" from="MusicSlider" to="." method="change_music_volume"]
 [connection signal="drag_ended" from="SoundSlider" to="." method="_on_sound_slider_drag_ended"]
 [connection signal="value_changed" from="SoundSlider" to="." method="change_sound_volume"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

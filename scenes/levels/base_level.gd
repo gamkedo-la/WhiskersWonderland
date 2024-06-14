@@ -1,6 +1,8 @@
 extends Node2D
 class_name BaseLevel
 
+const TITLE_SCREEN = "res://title_screen.tscn"
+
 @onready var parallax_background = $World/ParallaxBackground
 @onready var camera_bounds = $World/CameraBounds
 @onready var tilemap = $World/TileMap
@@ -69,3 +71,7 @@ func _on_item_collected(item: Collectible):
 	if item is PurpleGem:
 		purple_gems_collected += 1
 		player.hud.update_gems(purple_gems_collected, item)
+
+func _on_main_menu_pressed():
+	Globals.resume()
+	get_tree().change_scene_to_file(TITLE_SCREEN)
