@@ -280,6 +280,12 @@ func moving_update(delta):
 				elif not test_move(right_pos, motion):
 					global_position.x += i
 					break
+	
+	# Modify velocity if on moving platform
+	if is_grounded:
+		if move_direction.x != 0 and abs(get_platform_velocity().x) > 0:
+			if sign(move_direction.x) != sign(get_platform_velocity().x):
+				global_position.x -= get_platform_velocity().x * delta
 
 	# Perform movement
 	move_and_slide()
