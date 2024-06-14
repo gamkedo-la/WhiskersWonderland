@@ -75,7 +75,6 @@ var jumps_available : int = 1
 
 var tracking_slime: Area2D
 var previous_slime_position : Vector2
-var gravity_charges := 0
 var gravity_flipped := false
 
 var was_in_quicksand : bool
@@ -167,11 +166,6 @@ func moving_update(delta):
 	coyote_timer -= delta
 	jump_buffer -= delta
 
-	var reset_y_velocity := false
-
-	if inputs.use_gem.press:
-		reset_y_velocity = _flip_gravity()
-
 	# Update visuals
 	visuals.scale.x = last_direction * -up_direction.y
 	ears.scale.x = last_direction
@@ -257,8 +251,6 @@ func moving_update(delta):
 		velocity.x = Utils.approach(velocity.x, 0, friction * delta)
 
 	# Vertical movement
-	if reset_y_velocity:
-		velocity.y = 0
 	velocity.y += GRAVITY * delta * -up_direction.y
 	if sign(velocity.y) == sign(fall_speed) and abs(velocity.y) > abs(fall_speed):
 		velocity.y = fall_speed
@@ -473,7 +465,6 @@ func is_alive() -> bool:
 	return not state_machine.is_current(DEAD)
 
 func die():
-	gravity_charges = 0
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	visuals.on_death()
 	animation_player.play("die")
@@ -487,7 +478,6 @@ func respawn(at: Vector2):
 	global_position = at
 	state_machine.change_state(MOVING)
 	if gravity_flipped:
-		gravity_charges = 1
 		_flip_gravity()
 	AudioManager.fox_respawn_sfx.play()
 
@@ -514,6 +504,7 @@ func _on_trigger_area_entered(area):
 	
 	if area.is_in_group("bouncy_mushroom"):
 		if is_falling and not is_on_floor():
+			velocity.x = 0
 			AudioManager.bounce_sfx.play()
 			jump(1.75, false)
 			jump_damped = true
@@ -554,17 +545,14 @@ func _on_wall_jump_timer_timeout():
 
 func _on_item_collected(item: Collectible) -> void:
 	if item is GravityGem:
-		gravity_charges += 1
+		_flip_gravity()
+		velocity.y = 0
 	if item is Coin:
 		coins += 1
 		hud.update_coins(coins)
 
 func _flip_gravity(force: bool = false) -> bool:
-	if not gravity_charges:
-		return false
-
 	gravity_flipped = not gravity_flipped
-	gravity_charges -= 1
 	visuals.rotation += PI
 	visuals.scale.x *= -1.0
 	up_direction *= -1.0

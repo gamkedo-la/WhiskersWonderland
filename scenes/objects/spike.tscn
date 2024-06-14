@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/objects/spike.gd" id="1_mbxbb"]
 [ext_resource type="Texture2D" uid="uid://chrlibm1rqccf" path="res://assets/sprites/spike.png" id="2_u0iti"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ibw8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q238r"]
 resource_local_to_scene = true
 size = Vector2(8, 8)
 
@@ -24,6 +24,6 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4)
-shape = SubResource("RectangleShape2D_3ibw8")
+shape = SubResource("RectangleShape2D_q238r")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 metadata/_edit_lock_ = true
