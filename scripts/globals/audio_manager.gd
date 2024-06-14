@@ -27,4 +27,5 @@ extends Node
 @export var gem_pickup_sfx: AudioStreamPlayer
 
 @export_group("Music")
+@export var intro_theme : AudioStreamPlayer
 @export var desert_theme: AudioStreamPlayer

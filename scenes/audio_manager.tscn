@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://p4mx467hp5wk"]
+[gd_scene load_steps=27 format=3 uid="uid://p4mx467hp5wk"]
 
 [ext_resource type="Script" path="res://scripts/globals/audio_manager.gd" id="1_bkuff"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_3mmdb"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bp45nsenu0kbp" path="res://assets/sfx/fox/FoxRespawnSFX.wav" id="10_vwa0e"]
 [ext_resource type="AudioStream" uid="uid://cerjka704vxym" path="res://assets/sfx/waterSplash.wav" id="11_7b4qp"]
 [ext_resource type="AudioStream" uid="uid://bhrgl5mtci8ko" path="res://assets/music/desert_bgm_draft.mp3" id="14_j4yyv"]
+[ext_resource type="AudioStream" uid="uid://b5cy0ptcr7wk7" path="res://assets/music/PluckyPocketJam_20240610.mp3" id="14_jxdcs"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kmac8"]
 random_pitch = 1.1
@@ -81,7 +82,7 @@ streams_count = 1
 stream_0/stream = ExtResource("4_2bw5a")
 stream_0/weight = 1.0
 
-[node name="AudioManager" type="Node" node_paths=PackedStringArray("fox_jump_sfx", "fox_death_sfx", "land_on_platform_sfx", "stick_to_slime_sfx", "land_on_grass_sfx", "walk_on_sand_sfx", "bounce_sfx", "fox_respawn_sfx", "walk_on_grass_sfx", "crumbling_block_sfx", "quicksand_splash_sfx", "robot_death_sfx", "gem_pickup_sfx", "desert_theme")]
+[node name="AudioManager" type="Node" node_paths=PackedStringArray("fox_jump_sfx", "fox_death_sfx", "land_on_platform_sfx", "stick_to_slime_sfx", "land_on_grass_sfx", "walk_on_sand_sfx", "bounce_sfx", "fox_respawn_sfx", "walk_on_grass_sfx", "crumbling_block_sfx", "quicksand_splash_sfx", "robot_death_sfx", "gem_pickup_sfx", "intro_theme", "desert_theme")]
 script = ExtResource("1_bkuff")
 fox_jump_sfx = NodePath("FoxSounds/FoxJumpSFX")
 fox_death_sfx = NodePath("FoxSounds/FoxDeathSFX")
@@ -96,6 +97,7 @@ crumbling_block_sfx = NodePath("WorldSounds/CrumblingBlockSFX")
 quicksand_splash_sfx = NodePath("OtherSounds/QuicksandSplashSFX")
 robot_death_sfx = NodePath("OtherSounds/RobotDeathSFX")
 gem_pickup_sfx = NodePath("OtherSounds/GemPickupSFX")
+intro_theme = NodePath("Music/IntroTheme")
 desert_theme = NodePath("Music/DesertTheme")
 
 [node name="FoxSounds" type="Node" parent="."]
@@ -175,6 +177,10 @@ volume_db = -6.0
 bus = &"Sound"
 
 [node name="Music" type="Node" parent="."]
+
+[node name="IntroTheme" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("14_jxdcs")
+bus = &"Music"
 
 [node name="DesertTheme" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("14_j4yyv")

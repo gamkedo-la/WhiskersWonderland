@@ -9,6 +9,8 @@ const TITLE_LEVEL = preload("res://scenes/levels/title_level.tscn")
 var title_level
 
 func _ready():
+	if not AudioManager.intro_theme.playing:
+		AudioManager.intro_theme.play()
 	load_title_level()
 	Signals.replay_ended.connect(_on_replay_ended)
 
