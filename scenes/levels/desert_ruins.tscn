@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://olgh2e41sixh"]
+[gd_scene load_steps=30 format=3 uid="uid://olgh2e41sixh"]
 
 [ext_resource type="PackedScene" uid="uid://d383w8w2oom0a" path="res://scenes/levels/base_level.tscn" id="1_m4w2p"]
 [ext_resource type="TileSet" uid="uid://bik5n3mn3bvfd" path="res://assets/tilesets/desert_tileset.tres" id="2_p0r6n"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://blsxeqp4v2k1j" path="res://scenes/objects/checkpoint.tscn" id="11_r1ebb"]
 [ext_resource type="PackedScene" uid="uid://b7g50tmge5i1m" path="res://scenes/objects/moving_platform.tscn" id="12_alkoh"]
 [ext_resource type="PackedScene" uid="uid://dqv63xk0jh7jo" path="res://scenes/objects/slime.tscn" id="13_yrbt1"]
+[ext_resource type="Texture2D" uid="uid://qye4psgl72w5" path="res://assets/sprites/grass_yellow_64.png" id="17_4l2be"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rskbu"]
 shader = ExtResource("6_1w3el")
@@ -404,3 +405,111 @@ position = Vector2(131.664, 263.196)
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(2525.52, 581.492)
 shape = SubResource("RectangleShape2D_8mb2p")
+
+[node name="all grass (change z index here)" type="Node2D" parent="." index="3"]
+z_index = 10
+
+[node name="grass" type="Sprite2D" parent="all grass (change z index here)" index="0"]
+position = Vector2(1272, 162)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass2" type="Sprite2D" parent="all grass (change z index here)" index="1"]
+position = Vector2(1463, 291)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass3" type="Sprite2D" parent="all grass (change z index here)" index="2"]
+position = Vector2(1565, 306)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass4" type="Sprite2D" parent="all grass (change z index here)" index="3"]
+position = Vector2(1554, 311)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass18" type="Sprite2D" parent="all grass (change z index here)" index="4"]
+position = Vector2(1533, 305)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass19" type="Sprite2D" parent="all grass (change z index here)" index="5"]
+position = Vector2(1510, 305)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass20" type="Sprite2D" parent="all grass (change z index here)" index="6"]
+position = Vector2(1520, 308)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass21" type="Sprite2D" parent="all grass (change z index here)" index="7"]
+position = Vector2(1581, 309)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass5" type="Sprite2D" parent="all grass (change z index here)" index="8"]
+position = Vector2(1763, 161)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass6" type="Sprite2D" parent="all grass (change z index here)" index="9"]
+position = Vector2(2141, 225)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass7" type="Sprite2D" parent="all grass (change z index here)" index="10"]
+position = Vector2(2240, 209)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass8" type="Sprite2D" parent="all grass (change z index here)" index="11"]
+position = Vector2(2854, 208)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass9" type="Sprite2D" parent="all grass (change z index here)" index="12"]
+position = Vector2(2897, 213)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass10" type="Sprite2D" parent="all grass (change z index here)" index="13"]
+position = Vector2(2932, 209)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass11" type="Sprite2D" parent="all grass (change z index here)" index="14"]
+position = Vector2(3047, -127)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass12" type="Sprite2D" parent="all grass (change z index here)" index="15"]
+position = Vector2(2992, -141)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass13" type="Sprite2D" parent="all grass (change z index here)" index="16"]
+position = Vector2(2091, -238)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass14" type="Sprite2D" parent="all grass (change z index here)" index="17"]
+position = Vector2(1691, -238)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass15" type="Sprite2D" parent="all grass (change z index here)" index="18"]
+position = Vector2(396, 18)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass16" type="Sprite2D" parent="all grass (change z index here)" index="19"]
+position = Vector2(610, 161)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
+
+[node name="grass17" type="Sprite2D" parent="all grass (change z index here)" index="20"]
+position = Vector2(393, 273)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("17_4l2be")
