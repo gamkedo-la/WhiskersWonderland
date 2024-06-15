@@ -1,8 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://c3rkiiu8mj38t"]
+[gd_scene load_steps=16 format=3 uid="uid://c3rkiiu8mj38t"]
 
 [ext_resource type="Script" path="res://title_screen.gd" id="1_jvo25"]
 [ext_resource type="FontFile" uid="uid://c34klx1f0dnbg" path="res://assets/fonts/Dosis/Dosis-Bold.ttf" id="2_cu6gl"]
 [ext_resource type="FontFile" uid="uid://cukaxamd6g0ja" path="res://assets/fonts/Dosis/Dosis-Medium.ttf" id="3_2w07c"]
+[ext_resource type="Texture2D" uid="uid://b1gdbp67pb101" path="res://assets/sprites/fox/tail1.svg" id="4_an3dd"]
+[ext_resource type="Texture2D" uid="uid://dwht0ffladse3" path="res://assets/sprites/fox/tail2.svg" id="5_48ogc"]
+[ext_resource type="Texture2D" uid="uid://vjib2srih6eq" path="res://assets/sprites/fox/tail3.svg" id="6_ph8j7"]
+[ext_resource type="Texture2D" uid="uid://con0jccvx3rvq" path="res://assets/sprites/fox/arm.svg" id="7_1td34"]
+[ext_resource type="Texture2D" uid="uid://ci6ltbervn7xf" path="res://assets/sprites/fox/leg.svg" id="8_wk7c2"]
+[ext_resource type="Texture2D" uid="uid://g1rdkt1mygd3" path="res://assets/sprites/fox/head.svg" id="9_nc77i"]
+[ext_resource type="Texture2D" uid="uid://cdm858erymlae" path="res://assets/sprites/fox/ear.svg" id="10_582h1"]
+[ext_resource type="Texture2D" uid="uid://bin6ib7h1mnpc" path="res://assets/sprites/fox/eye.svg" id="11_w2gc7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6u0uq"]
 font = ExtResource("2_cu6gl")
@@ -58,6 +66,118 @@ metadata/_edit_lock_ = true
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 2
+
+[node name="Fox Parts" type="Sprite2D" parent="HUD"]
+position = Vector2(130, 251)
+scale = Vector2(0.3, 0.3)
+offset = Vector2(-21.5914, -98.2855)
+
+[node name="EarL2" type="Sprite2D" parent="HUD/Fox Parts"]
+position = Vector2(-173.333, -680)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("10_582h1")
+offset = Vector2(-63.8319, -210.403)
+
+[node name="EarR2" type="Sprite2D" parent="HUD/Fox Parts"]
+position = Vector2(-43.3333, -680)
+rotation = 3.14159
+scale = Vector2(0.15, -0.15)
+texture = ExtResource("10_582h1")
+offset = Vector2(-63.8319, -210.403)
+
+[node name="Tail" type="Node2D" parent="HUD/Fox Parts"]
+show_behind_parent = true
+position = Vector2(373.333, -370)
+scale = Vector2(-1, 1)
+
+[node name="0" type="Sprite2D" parent="HUD/Fox Parts/Tail"]
+position = Vector2(-0.919827, -0.350342)
+texture = ExtResource("4_an3dd")
+offset = Vector2(-262.558, -61.1857)
+
+[node name="1" type="Sprite2D" parent="HUD/Fox Parts/Tail"]
+position = Vector2(-164.964, 9.09398)
+texture = ExtResource("5_48ogc")
+offset = Vector2(-98.5144, -70.6301)
+
+[node name="2" type="Sprite2D" parent="HUD/Fox Parts/Tail"]
+position = Vector2(-322.336, -4.1783)
+texture = ExtResource("6_ph8j7")
+offset = Vector2(58.8578, -57.3578)
+
+[node name="ArmR" type="Sprite2D" parent="HUD/Fox Parts"]
+visible = false
+show_behind_parent = true
+position = Vector2(116.023, -175.625)
+rotation = 2.80939
+scale = Vector2(1, -1)
+texture = ExtResource("7_1td34")
+offset = Vector2(1.59164, 98.8851)
+metadata/_edit_lock_ = true
+
+[node name="LegR" type="Sprite2D" parent="HUD/Fox Parts"]
+visible = false
+show_behind_parent = true
+position = Vector2(66.2832, -23.6002)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_wk7c2")
+offset = Vector2(-6.87975, 65.1093)
+metadata/_edit_lock_ = true
+
+[node name="LegL" type="Sprite2D" parent="HUD/Fox Parts"]
+visible = false
+show_behind_parent = true
+position = Vector2(-77.1806, -22.1799)
+texture = ExtResource("8_wk7c2")
+offset = Vector2(-6.01956, 63.689)
+metadata/_edit_lock_ = true
+
+[node name="ArmL" type="Sprite2D" parent="HUD/Fox Parts"]
+visible = false
+position = Vector2(-137.578, -175.625)
+rotation = 0.339588
+texture = ExtResource("7_1td34")
+offset = Vector2(0.966309, 102.022)
+metadata/_edit_lock_ = true
+
+[node name="Head" type="Sprite2D" parent="HUD/Fox Parts"]
+visible = false
+position = Vector2(11.2015, -190.787)
+texture = ExtResource("9_nc77i")
+offset = Vector2(-37.7167, -234.851)
+
+[node name="Ears" type="Node2D" parent="HUD/Fox Parts/Head"]
+show_behind_parent = true
+position = Vector2(-17.727, 0)
+metadata/_edit_lock_ = true
+
+[node name="EarL" type="Sprite2D" parent="HUD/Fox Parts/Head/Ears"]
+position = Vector2(-136.603, -289.801)
+texture = ExtResource("10_582h1")
+offset = Vector2(-63.8319, -210.403)
+metadata/_edit_lock_ = true
+
+[node name="EarR" type="Sprite2D" parent="HUD/Fox Parts/Head/Ears"]
+position = Vector2(148.025, -281.278)
+scale = Vector2(-1, 1)
+texture = ExtResource("10_582h1")
+offset = Vector2(-63.8319, -210.403)
+metadata/_edit_lock_ = true
+
+[node name="Eyes" type="Node2D" parent="HUD/Fox Parts/Head"]
+position = Vector2(27.2523, -316.685)
+metadata/_edit_lock_ = true
+
+[node name="EyeL" type="Sprite2D" parent="HUD/Fox Parts/Head/Eyes"]
+position = Vector2(-144.887, 3.7964)
+texture = ExtResource("11_w2gc7")
+metadata/_edit_lock_ = true
+
+[node name="EyeR" type="Sprite2D" parent="HUD/Fox Parts/Head/Eyes"]
+position = Vector2(141.262, 4.26133)
+scale = Vector2(-1, 1)
+texture = ExtResource("11_w2gc7")
+metadata/_edit_lock_ = true
 
 [node name="TitleLabel" type="Label" parent="HUD"]
 offset_top = 26.421
