@@ -10,12 +10,14 @@ font_size = 18
 
 [node name="CreditsScreen" type="Node2D"]
 script = ExtResource("1_trca0")
-SCROLL_SPEED = 50.0
+SCROLL_SPEED = 25.0
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="."]
-offset_right = 640.0
-offset_bottom = 368.0
+offset_left = -140.0
+offset_top = -134.0
+offset_right = 752.0
+offset_bottom = 462.0
 color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 metadata/_edit_lock_ = true
 
@@ -29,19 +31,13 @@ anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -122.805
+offset_top = -35.9077
 offset_right = 127.195
-offset_bottom = 11879.0
+offset_bottom = 11843.1
 grow_horizontal = 2
 grow_vertical = 2
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce aliquet est orci, sed suscipit libero faucibus at. Mauris auctor vestibulum dolor, et elementum ipsum blandit a. Etiam scelerisque lorem ac eros malesuada, sollicitudin lacinia odio molestie. Fusce suscipit sapien volutpat felis consequat porta. Praesent id ligula sed velit varius ultrices. Maecenas dictum mauris non sapien maximus sollicitudin. Praesent justo purus, tincidunt sit amet aliquet et, interdum a augue. Nulla a rutrum libero. Etiam ornare erat in justo porta, in lobortis neque dapibus. Donec in velit venenatis, lacinia felis vel, aliquam dolor. Pellentesque vulputate non mauris condimentum rutrum.
-
-Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis eu ante pretium, ullamcorper arcu vulputate, posuere mauris. Mauris eleifend a risus in fringilla. Vivamus massa enim, congue et magna ut, accumsan vulputate augue. Cras porta interdum iaculis. Quisque id condimentum magna. Suspendisse sit amet leo tellus. Vivamus tempor dolor nec elementum laoreet. Ut eu nisl ultrices lorem laoreet gravida nec in urna. Mauris enim massa, sodales nec mauris ac, pretium convallis turpis. Nam gravida, metus ut egestas consectetur, ipsum enim cursus lorem, ac tempus elit nisl a diam. Suspendisse eget tristique velit, sit amet dapibus arcu. Phasellus quis dui molestie, tempus ligula quis, fringilla dui. Praesent maximus luctus viverra. Vivamus dictum dictum ex nec cursus.
-
-Suspendisse iaculis in mi at ultricies. Nulla non velit et nulla consequat dapibus eu eu eros. Integer sed maximus tellus, et luctus justo. Quisque sit amet nulla non urna dictum tristique. Maecenas commodo euismod orci et iaculis. Cras rhoncus, mi vitae congue ullamcorper, mauris justo fermentum est, nec imperdiet nisi dolor id nulla. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut neque nisi, elementum non turpis iaculis, scelerisque varius libero. Aenean commodo, tellus in eleifend convallis, leo tellus accumsan urna, sed interdum erat lacus quis purus. Sed tempus nisl sed elit egestas, sit amet fringilla metus sagittis. Praesent condimentum sem eu libero aliquam aliquam. Donec eu mi faucibus, dapibus massa eu, imperdiet augue.
-
-Cras hendrerit orci ante, in dignissim nulla euismod a. Pellentesque ultrices iaculis sem, sit amet laoreet libero semper feugiat. Donec ac elit odio. Curabitur eu tortor vel mi dictum auctor eget id leo. Donec blandit justo augue, eget venenatis metus tempor in. Donec luctus mattis efficitur. Morbi libero odio, congue a accumsan in, tempus auctor nunc. Ut nec semper mi. Donec non scelerisque leo, eu venenatis elit. Curabitur faucibus ligula tellus, et lacinia massa iaculis in.
-
-In et porttitor lorem. Nullam id viverra orci, vitae varius nibh. In ut elementum risus. Sed nulla nibh, consectetur sed tellus quis, ultricies efficitur purus. Mauris sit amet tempus velit. Aenean id rutrum neque. In posuere nisl ac lorem mollis, id lobortis enim egestas.
+text = "Vitor M
+Project lead, core gameplay, physics mechanics, player movement, spikes, checkpoints, core tilesets, level design, hazards (falling platforms, quicksand, crumbling blocks, arrow traps), quicksand art, robot enemy (art and functionality), particle effects, title screen, transitions, coins, camera, tuning, surface-based step sound, backgrounds, settings screen
 
 
 
@@ -51,16 +47,61 @@ In et porttitor lorem. Nullam id viverra orci, vitae varius nibh. In ut elementu
 
 
 
-Thanks for playing!"
+Christer \"McFunkypants\" Kaitila:
+Assorted environment art (cactus, brick tiles, rocks, crystals, castle tiles, columns, jungle sun rays, grass), title screen, bounce sounds with variations and integration
+
+
+
+
+
+
+
+
+
+
+AdilShafiq
+Stage select screen, desert theme, moving platform, slime sprite, audio manager, obstacle placement (quicksand, arrow trap), assorted sound hookups, arrow art, font selection, various bug fixes
+
+
+
+
+
+
+
+
+
+
+Jason Timms
+Upbeat songs (level select and menu), fox respawn sound, player spawn sound
+
+
+
+jakeyouh dogwalker
+Forest theme music loops, desert theme drafts
+
+
+
+Tomas Alvarez
+Slime surfaces, gravity gem, spawners, purple gem collectible
+
+
+
+Vaan Hope Khani
+Quicksand splash sound
+
+
+
+Gabriel Cornish
+Landing sound
+
+
+
+Randy Tan Shaoxian
+Falling platform"
 label_settings = SubResource("LabelSettings_dkc3a")
 horizontal_alignment = 1
 autowrap_mode = 2
 metadata/_edit_lock_ = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 65.0
-one_shot = true
-autostart = true
 
 [node name="CreditsMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_bl2ev")
@@ -68,4 +109,13 @@ volume_db = -3.0
 autoplay = true
 bus = &"Music"
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Back" type="Button" parent="."]
+offset_left = 533.908
+offset_top = 310.0
+offset_right = 624.908
+offset_bottom = 347.0
+theme_override_fonts/font = ExtResource("2_783wn")
+theme_override_font_sizes/font_size = 18
+text = "Back"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
