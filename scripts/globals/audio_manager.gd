@@ -28,4 +28,3 @@ extends Node
 
 @export_group("Music")
 @export var intro_theme : AudioStreamPlayer
-@export var desert_theme: AudioStreamPlayer

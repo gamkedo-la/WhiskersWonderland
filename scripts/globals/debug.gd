@@ -6,16 +6,14 @@ signal reloaded_scene
 const BUILD_VERSION = "0.1.5"
 
 func _ready():
-	print("Build v%s" % [BUILD_VERSION])
+	if Globals.debug_mode:
+		print("Build v%s" % [BUILD_VERSION])
 	process_mode = Node.PROCESS_MODE_ALWAYS # This script still executes during game pause
 
 ### Controls for Debugging
 func _process(_delta):
-	var is_running_in_editor = OS.has_feature("editor")
-	var is_debug_build = OS.is_debug_build()
-
 	# Debug controls
-	if is_running_in_editor or is_debug_build:
+	if Globals.debug_mode:
 		if Input.is_action_just_pressed("debug_exit"):
 			quit()
 

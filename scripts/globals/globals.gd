@@ -1,5 +1,7 @@
 extends Node
 
+var debug_mode : bool = true
+
 var camera : Node2D
 var current_level : int
 

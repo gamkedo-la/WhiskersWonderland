@@ -75,3 +75,7 @@ func _on_item_collected(item: Collectible):
 func _on_main_menu_pressed():
 	Globals.resume()
 	get_tree().change_scene_to_file(TITLE_SCREEN)
+
+func _on_player_exited_level():
+	Globals.pause()
+	animation_player.play("level_complete")

@@ -17,8 +17,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Utils="*res://scripts/globals/utils.gd"
 Globals="*res://scripts/globals/globals.gd"
+Utils="*res://scripts/globals/utils.gd"
 Debug="*res://scripts/globals/debug.gd"
 DampedSpringSystem="*res://scripts/damped_springs.gd"
 Signals="*res://scripts/globals/signals.gd"

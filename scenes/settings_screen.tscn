@@ -1,34 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://ojg63mrqx2xv"]
+[gd_scene load_steps=7 format=3 uid="uid://ojg63mrqx2xv"]
 
 [ext_resource type="Script" path="res://scenes/settings_screen.gd" id="1_mavek"]
 [ext_resource type="AudioStream" uid="uid://c3nsxlgyoqtj" path="res://assets/music/HoppyHolidayLoop_20240601_1436.mp3" id="2_1o1q8"]
+[ext_resource type="FontFile" uid="uid://c34klx1f0dnbg" path="res://assets/fonts/Dosis/Dosis-Bold.ttf" id="2_20ibh"]
 [ext_resource type="AudioStream" uid="uid://cnfhx6rwum7tq" path="res://assets/sfx/pickupCoin.wav" id="2_jtdj8"]
 [ext_resource type="FontFile" uid="uid://ccwaavtkpgt3j" path="res://assets/fonts/Dosis/Dosis-SemiBold.ttf" id="4_b5gwa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_q888d"]
+font = ExtResource("2_20ibh")
+font_size = 20
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 4)
 
 [node name="SettingsScreen" type="Node2D"]
 script = ExtResource("1_mavek")
 
-[node name="Settings" type="Label" parent="."]
-offset_left = 273.404
+[node name="Paused" type="Label" parent="."]
+offset_left = 268.642
 offset_top = 69.9649
-offset_right = 365.404
+offset_right = 360.642
 offset_bottom = 103.965
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 24
 text = "Paused"
-metadata/_edit_lock_ = true
+label_settings = SubResource("LabelSettings_q888d")
+horizontal_alignment = 1
 
 [node name="Music" type="Label" parent="."]
 offset_left = 198.209
-offset_top = 161.075
+offset_top = 157.066
 offset_right = 244.209
-offset_bottom = 184.075
+offset_bottom = 183.066
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 16
 text = "Music"
-metadata/_edit_lock_ = true
+label_settings = SubResource("LabelSettings_q888d")
 
 [node name="MusicSlider" type="HSlider" parent="."]
 offset_left = 267.845
@@ -39,15 +50,15 @@ value = 100.0
 metadata/_edit_lock_ = true
 
 [node name="Sound" type="Label" parent="."]
-offset_left = 198.209
-offset_top = 193.617
-offset_right = 247.209
-offset_bottom = 216.617
+offset_left = 196.204
+offset_top = 190.722
+offset_right = 248.204
+offset_bottom = 216.722
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 16
 text = "Sound"
-metadata/_edit_lock_ = true
+label_settings = SubResource("LabelSettings_q888d")
 
 [node name="SoundSlider" type="HSlider" parent="."]
 offset_left = 267.845

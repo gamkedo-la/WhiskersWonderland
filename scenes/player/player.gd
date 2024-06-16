@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal exited_level
+
 const INPUT_ACTIONS = ['jump', 'use_gem']
 
 const MOVING = 'moving'
@@ -526,6 +528,9 @@ func _on_trigger_area_entered(area):
 		):
 			var entity = area.get_parent()
 			entity.fall(up_direction)
+	
+	if area.is_in_group("level_exit"):
+		exited_level.emit()
 
 func _on_hitbox_area_entered(area):
 	# Stomp enemy
@@ -545,7 +550,8 @@ func _on_replay_started(data):
 	global_position = data.player_position
 
 func _on_replay_ended(_data):
-	print("Player stopped at %s" % [str(global_position)])
+	if Globals.debug_mode:
+		print("Player stopped at %s" % [str(global_position)])
 
 func _on_wall_jump_timer_timeout():
 	camera.move_on_x = true

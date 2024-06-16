@@ -1,10 +1,20 @@
-[gd_scene load_steps=11 format=3 uid="uid://d383w8w2oom0a"]
+[gd_scene load_steps=14 format=3 uid="uid://d383w8w2oom0a"]
 
 [ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1_v1el1"]
+[ext_resource type="FontFile" uid="uid://c34klx1f0dnbg" path="res://assets/fonts/Dosis/Dosis-Bold.ttf" id="2_6ka0m"]
 [ext_resource type="TileSet" uid="uid://c2hrwukt7g7lv" path="res://assets/tilesets/base_tileset.tres" id="2_as5if"]
 [ext_resource type="PackedScene" uid="uid://ojg63mrqx2xv" path="res://scenes/settings_screen.tscn" id="2_o8sqn"]
 [ext_resource type="Script" path="res://scenes/levels/tilemap.gd" id="3_8sttt"]
 [ext_resource type="PackedScene" uid="uid://c7ifo3nn7j0rh" path="res://scenes/player/player.tscn" id="3_l3lqv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0nsc"]
+font = ExtResource("2_6ka0m")
+font_size = 54
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 4)
 
 [sub_resource type="Animation" id="Animation_4dlp2"]
 length = 0.001
@@ -19,6 +29,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/CompleteLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HUD/SettingsScreen:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_yyyl3"]
@@ -107,9 +141,51 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_slx1q"]
+resource_name = "level_complete"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HUD/ColorOverlay:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.392157)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HUD/CompleteLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_main_menu_pressed"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lkex1"]
 _data = {
 "RESET": SubResource("Animation_4dlp2"),
+"level_complete": SubResource("Animation_slx1q"),
 "pause": SubResource("Animation_yyyl3"),
 "player_died": SubResource("Animation_5hqrv"),
 "resume": SubResource("Animation_jm0uu")
@@ -130,12 +206,13 @@ offset_bottom = 368.0
 color = Color(0, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="PauseLabel" type="Label" parent="HUD"]
+[node name="CompleteLabel" type="Label" parent="HUD"]
 visible = false
 offset_right = 640.0
 offset_bottom = 360.0
 theme_override_font_sizes/font_size = 24
-text = "Paused"
+text = "Level Complete!"
+label_settings = SubResource("LabelSettings_k0nsc")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_lock_ = true
@@ -191,3 +268,4 @@ libraries = {
 }
 
 [connection signal="main_menu" from="HUD/SettingsScreen" to="." method="_on_main_menu_pressed"]
+[connection signal="exited_level" from="World/player" to="." method="_on_player_exited_level"]

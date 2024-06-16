@@ -33,7 +33,8 @@ func _physics_process(_delta):
 	if mode == ButtonRecorderMode.REPLAY:
 		data.frame_index += 1
 		if data.has_replay_ended():
-			print("Replay ended")
+			if Globals.debug_mode:
+				print("Replay ended")
 			replay_ended.emit(data)
 			Signals.replay_ended.emit()
 			mode = ButtonRecorderMode.NONE
@@ -56,7 +57,8 @@ func save_recording():
 		var file = FileAccess.open(REPLAY_FOLDER + '/' + filename, FileAccess.WRITE_READ)
 		file.store_var(data.serialize())
 		file.close()
-		print("Saved session to file %s" % [filename])
+		if Globals.debug_mode:
+			print("Saved session to file %s" % [filename])
 
 func load_replay_file():
 	var filepath = replay_file_path
@@ -66,7 +68,8 @@ func load_replay_file():
 		
 		if files.is_empty():
 			mode = ButtonRecorderMode.NONE
-			print("No replay files found")
+			if Globals.debug_mode:
+				print("No replay files found")
 			return
 		
 		# Play most recent file
@@ -75,13 +78,15 @@ func load_replay_file():
 	
 	var file = FileAccess.open(filepath, FileAccess.READ)
 	data = ReplayFile.load_from_file(file)
-	if data.build_version != Debug.BUILD_VERSION:
-		print("Replay build version (v%s) is different from current build" % [data.build_version])
-	if data.current_level != Globals.current_level:
-		print("Replay level (%s) is different from current level being played" % [str(data.current_level)])
+	if Globals.debug_mode:
+		if data.build_version != Debug.BUILD_VERSION:
+			print("Replay build version (v%s) is different from current build" % [data.build_version])
+		if data.current_level != Globals.current_level:
+			print("Replay level (%s) is different from current level being played" % [str(data.current_level)])
 	
 	replay_started.emit(data)
-	print("Replay started (%s)" % [ProjectSettings.globalize_path(filepath)])
+	if Globals.debug_mode:
+		print("Replay started (%s)" % [ProjectSettings.globalize_path(filepath)])
 
 func _on_reload_scene():
 	save_recording()

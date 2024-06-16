@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://rdv5piwvqb01"]
+
+[ext_resource type="Texture2D" uid="uid://byvreprbmy82d" path="res://assets/sprites/star.png" id="1_hggqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwg3m"]
+size = Vector2(64, 11.9589)
+
+[sub_resource type="Curve" id="Curve_csg45"]
+_data = [Vector2(0, 1), 0.0, -0.0331154, 0, 0, Vector2(1, 0.0485197), -3.07825, 0.0, 0, 0]
+point_count = 2
+
+[node name="LevelExit" type="Area2D" groups=["level_exit"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.97945)
+shape = SubResource("RectangleShape2D_lwg3m")
+debug_color = Color(0.121569, 0.647059, 0, 0.419608)
+metadata/_edit_lock_ = true
+
+[node name="StarParticles" type="CPUParticles2D" parent="."]
+amount = 12
+lifetime = 0.7
+explosiveness = 0.05
+lifetime_randomness = 0.1
+texture = ExtResource("1_hggqa")
+emission_shape = 3
+emission_rect_extents = Vector2(32, 1)
+direction = Vector2(0, -1)
+spread = 0.0
+gravity = Vector2(0, -75)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angular_velocity_min = 75.0
+angular_velocity_max = 125.0
+angle_max = 359.0
+scale_amount_min = 0.2
+scale_amount_max = 0.25
+scale_amount_curve = SubResource("Curve_csg45")
+metadata/_edit_lock_ = true
