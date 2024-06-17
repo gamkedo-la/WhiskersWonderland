@@ -66,11 +66,12 @@ func _on_player_died():
 func register_collectible(item: Collectible):
 	if item is PurpleGem:
 		purple_gems_count += 1
+		player.hud.purple_gem_label.text = "0/" + str(purple_gems_count)
 
 func _on_item_collected(item: Collectible):
 	if item is PurpleGem:
 		purple_gems_collected += 1
-		player.hud.update_gems(purple_gems_collected, item)
+		player.hud.update_gems(purple_gems_collected, purple_gems_count, item)
 
 func _on_main_menu_pressed():
 	Globals.resume()

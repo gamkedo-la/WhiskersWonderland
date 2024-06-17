@@ -222,7 +222,7 @@ position = Vector2(4176, 96)
 position = Vector2(4176, 128)
 
 [node name="Coin13" parent="World/Objects/Coins" index="19" instance=ExtResource("11_pfyr0")]
-position = Vector2(2464, -96)
+position = Vector2(2480, -96)
 
 [node name="Gems" type="Node2D" parent="World/Objects" index="1"]
 metadata/_edit_lock_ = true
@@ -272,25 +272,25 @@ position = Vector2(1056, 224)
 position = Vector2(1328, 176)
 
 [node name="CrumblingBlock6" parent="World/Objects" index="7" instance=ExtResource("12_qeheb")]
-position = Vector2(1424, 144)
+position = Vector2(1408, 160)
 
 [node name="CrumblingBlock7" parent="World/Objects" index="8" instance=ExtResource("12_qeheb")]
-position = Vector2(2544, 192)
+position = Vector2(2544, 160)
 
 [node name="CrumblingBlock8" parent="World/Objects" index="9" instance=ExtResource("12_qeheb")]
 position = Vector2(2656, 112)
 
 [node name="CrumblingBlock9" parent="World/Objects" index="10" instance=ExtResource("12_qeheb")]
-position = Vector2(2560, 16)
+position = Vector2(2576, 16)
 
 [node name="CrumblingBlock10" parent="World/Objects" index="11" instance=ExtResource("12_qeheb")]
-position = Vector2(2464, -64)
+position = Vector2(2480, -64)
 
 [node name="CrumblingBlock11" parent="World/Objects" index="12" instance=ExtResource("12_qeheb")]
 position = Vector2(2576, -144)
 
 [node name="CrumblingBlock12" parent="World/Objects" index="13" instance=ExtResource("12_qeheb")]
-position = Vector2(2672, -240)
+position = Vector2(2672, -224)
 
 [node name="BouncyMushroom2" parent="World/Objects" index="14" instance=ExtResource("10_emokf")]
 position = Vector2(2128, 288)
@@ -570,7 +570,7 @@ debug_color = Color(0.627451, 0.34902, 1, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="Checkpoint6" parent="World/Checkpoints" index="5" instance=ExtResource("16_a5f6k")]
-position = Vector2(3392, 32)
+position = Vector2(3136, -32)
 number = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="World/Checkpoints/Checkpoint6" index="0"]
@@ -595,7 +595,6 @@ position = Vector2(96, 272)
 [node name="CollisionShape2D" parent="World/DeathZone" index="0"]
 position = Vector2(3050.86, 567.558)
 shape = SubResource("RectangleShape2D_da8qn")
-debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="World/DeathZone" index="1"]
 position = Vector2(3048.9, -871.176)

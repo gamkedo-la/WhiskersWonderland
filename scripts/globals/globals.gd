@@ -2,6 +2,9 @@ extends Node
 
 var debug_mode : bool = false
 
+var music_volume : float = 1.0
+var sound_volume : float = 1.0
+
 var camera : Node2D
 var current_level : int
 

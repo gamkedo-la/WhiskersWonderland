@@ -17,8 +17,8 @@ func _process(delta):
 	coin_sprite.scale = Vector2.ONE + 0.5 * Vector2(coin_spring.position, -coin_spring.position)
 	purple_gem_sprite.scale = Vector2.ONE + 0.5 * Vector2(gem_spring.position, -gem_spring.position)
 
-func update_gems(amount: int, item: Collectible):
-	purple_gem_label.text = str(amount)
+func update_gems(amount: int, max_amount: int, item: Collectible):
+	purple_gem_label.text = str(amount) + "/" + str(max_amount)
 	animated_gem.position = to_hud_position(item.global_position)
 	animated_gem.visible = true
 	

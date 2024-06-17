@@ -15,7 +15,7 @@ func _ready():
 	Signals.replay_ended.connect(_on_replay_ended)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("start"):
+	if Input.is_action_just_pressed("start") or Input.is_action_just_pressed("jump"):
 		get_tree().change_scene_to_packed(STAGE_SELECT)
 
 func load_title_level():
